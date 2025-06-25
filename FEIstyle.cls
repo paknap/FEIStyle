@@ -502,21 +502,18 @@
         \begin{tabbing}
             \hspace*{5cm}\= \kill
             \@tempStudProgr \> \@skolaStudPr \\
-            % \ifthenelse{\boolean{isThesis}}
-            % {
-             \@tempNazovStud \> \@skolaStudPrCisl \\
+            \ifthenelse{\boolean{isThesis}}
+            {\@tempNazovStud \> \@skolaStudPrCisl \\
              \@tempSkolPracov \> \@skolaSkolPrac \\
-             \@tempCourse \> \parbox[t]{9cm}{\@skolaCourse\vspace{1ex}} \\ 
              \@tempVedPrace \> \printVeduciZaverecnejPrace \\
              \IfEqCase*{\@tempKonzultant}{
                     {0}{}
                     {1}{\@tempKonzultanta \> \printKonzultant}
                     }[]
-            % }
-            % {\@tempCourse \> \parbox[t]{9cm}{\@skolaCourse\vspace{1ex}} \\ %TODO use this for abstract minipage
-            %     \@tempLecturer \> \@skolaLecturer \\
-            %     \@tempTa \> \@skolaTa \\
-            % }
+            }{\@tempCourse \> \parbox[t]{9cm}{\@skolaCourse\vspace{1ex}} \\ %TODO use this for abstract minipage
+                \@tempLecturer \> \@skolaLecturer \\
+                \@tempTa \> \@skolaTa \\
+            }
         \end{tabbing}
         }
         \vspace{3.43cm}
