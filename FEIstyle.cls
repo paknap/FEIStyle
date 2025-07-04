@@ -62,12 +62,12 @@
 
 \usepackage[acronym,nopostdot,nogroupskip,nonumberlist]{glossaries}
 
-\usepackage[final, babel, nopatch=item]{microtype}
+\usepackage[final, babel, nopatch=item, nopatch=footnote]{microtype}
 \usepackage[utf8]{inputenc}
 % we should use ISO 690 & 690-2 http://www.fei.stuba.sk/sk/kniznica-fei/vzory-bibliografickych-odkazov-a-citovanie.html?page_id=1756 
 % package for biblatex https://github.com/michal-h21/biblatex-iso690
 \usepackage[backend=biber,
-            sorting=none,
+            sorting=nyt,
             style=iso-numeric,
             shortnumeration=true,
             citestyle=numeric-comp,
@@ -124,9 +124,15 @@
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage[all]{nowidow}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{standalone}
 %\usepackage{showframe} % debugging overflows
 
 % \cftsetpnumwidth{1.8em} % set the dots width in loX (f,t,l,a...) https://tex.stackexchange.com/q/369283/106389
+
+\numberwithin{equation}{section} % equations labeled with section number (<# of section>.<# of equation>)
 
 % https://stackoverflow.com/a/74266238
 \lstset{
