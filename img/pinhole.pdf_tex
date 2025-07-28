@@ -1,0 +1,83 @@
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'img/pinhole.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{410.4200228bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.65606125)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{img/pinhole.pdf}}%
+    \put(0.42787326,0.63776832){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}${\mathbf P} = {(x,y,z)}^{\top}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{img/pinhole.pdf}}%
+    \put(0.5,0.06043361){\color[rgb]{0,0,0}\rotatebox{20}{\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{img/pinhole.pdf}}%
+    \put(0.33,0.2){\color[rgb]{0,0,0}\rotatebox{20}{\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{c}\small stred\\\small optickej osi\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{img/pinhole.pdf}}%
+    \put(0.81915958,0.06053359){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$Y_c$\end{tabular}}}}%
+    \put(0.74559016,0.13626673){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$Z_c$\end{tabular}}}}%
+    \put(0.86027178,0.12977537){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$X_c$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{img/pinhole.pdf}}%
+    \put(0.9650576,0.37542038){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$X_w$\end{tabular}}}}%
+    \put(0.94017386,0.29968716){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$Y_w$\end{tabular}}}}%
+    \put(0.84929385,0.36027373){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}$Z_w$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{img/pinhole.pdf}}%
+    \put(0.8,0.27495944){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}[$R|t$]\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{img/pinhole.pdf}}%
+    \put(0.1339362,0.32){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.80000001}\smash{\begin{tabular}[t]{l}\small optická os\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{img/pinhole.pdf}}%
+    \put(0.68,0.40978188){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\mathbf{p}={(u,v)}^{\top}$\end{tabular}}}}%
+    \put(0.17083015,0.42269608){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$z$\end{tabular}}}}%
+    \put(0.6894525,0.345){\color[rgb]{0,0,0}\rotatebox{20}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$x$\end{tabular}}}}}%
+    \put(0.69519303,0.52){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$u$\end{tabular}}}}%
+    \put(0.35,0.00622868){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$v$\end{tabular}}}}%
+    \put(0.37,0.085){\color[rgb]{0,0,0}\rotatebox{20.34586}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$z = f$\end{tabular}}}}}%
+    \put(0.41128785,0.16){\color[rgb]{0,0,0}\rotatebox{20.34586}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{$(u_c, v_c)$}\end{tabular}}}}}%
+  \end{picture}%
+\endgroup%

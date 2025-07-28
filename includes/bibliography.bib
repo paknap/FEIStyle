@@ -76,6 +76,64 @@
   file = {/home/gugo/Zotero/storage/PK26NVIW/Bai et al. - 2022 - Faster-LIO Lightweight Tightly Coupled Lidar-Inertial Odometry Using Parallel Sparse Incremental Vo.pdf}
 }
 
+@article{baiICPAlgorithmTheory2023,
+  title = {{{ICP Algorithm}}: {{Theory}}, {{Practice And Its SLAM-oriented Taxonomy}}},
+  shorttitle = {{{ICP Algorithm}}},
+  author = {Bai, Hao},
+  date = {2023-03-22},
+  journaltitle = {Applied and Computational Engineering},
+  shortjournal = {ACE},
+  volume = {2},
+  number = {1},
+  eprint = {2206.06435},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  pages = {451--462},
+  issn = {2755-2721, 2755-273X},
+  doi = {10.54254/2755-2721/2/20220512},
+  url = {http://arxiv.org/abs/2206.06435},
+  urldate = {2025-07-27},
+  abstract = {The Iterative Closest Point (ICP) algorithm is one of the most important algorithms for geometric alignment of three-dimensional surface registration, which is frequently used in computer vision tasks, including the Simultaneous Localization And Mapping (SLAM) tasks. In this paper, we illustrate the theoretical principles of the ICP algorithm, how it can be used in surface registration tasks, and the traditional taxonomy of the variants of the ICP algorithm. As SLAM is becoming a popular topic, we also introduce a SLAM-oriented taxonomy of the ICP algorithm, based on the characteristics of each type of SLAM task, including whether the SLAM task is online or not and whether the landmarks are present as features in the SLAM task. We make a synthesis of each type of SLAM task by comparing several up-to-date research papers and analyzing their implementation details.},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  note = {Comment: Accepted by CONF-CDS'22},
+  file = {/home/gugo/Zotero/storage/SUEN7W6C/Bai - 2023 - ICP Algorithm Theory, Practice And Its SLAM-oriented Taxonomy.pdf;/home/gugo/Zotero/storage/XW9VPLVV/2206.html}
+}
+
+@inproceedings{baySURFSpeededRobust2006,
+  title = {{{SURF}}: {{Speeded Up Robust Features}}},
+  shorttitle = {{{SURF}}},
+  booktitle = {Computer {{Vision}} – {{ECCV}} 2006},
+  author = {Bay, Herbert and Tuytelaars, Tinne and Van Gool, Luc},
+  editor = {Leonardis, Aleš and Bischof, Horst and Pinz, Axel},
+  date = {2006},
+  pages = {404--417},
+  publisher = {Springer},
+  location = {Berlin, Heidelberg},
+  doi = {10.1007/11744023_32},
+  abstract = {In this paper, we present a novel scale- and rotation-invariant interest point detector and descriptor, coined SURF (Speeded Up Robust Features). It approximates or even outperforms previously proposed schemes with respect to repeatability, distinctiveness, and robustness, yet can be computed and compared much faster.},
+  isbn = {978-3-540-33833-8},
+  langid = {english},
+  keywords = {Hessian Matrix,Integral Image,Interest Point,Robust Feature,Viewpoint Change},
+  file = {/home/gugo/Zotero/storage/H7QR999Y/Bay et al. - 2006 - SURF Speeded Up Robust Features.pdf}
+}
+
+@article{beslMethodRegistration3D1992,
+  title = {A Method for Registration of 3-{{D}} Shapes},
+  author = {Besl, P.J. and McKay, Neil D.},
+  date = {1992-02},
+  journaltitle = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume = {14},
+  number = {2},
+  pages = {239--256},
+  issn = {1939-3539},
+  doi = {10.1109/34.121791},
+  url = {https://ieeexplore.ieee.org/document/121791},
+  urldate = {2025-07-27},
+  abstract = {The authors describe a general-purpose, representation-independent method for the accurate and computationally efficient registration of 3-D shapes including free-form curves and surfaces. The method handles the full six degrees of freedom and is based on the iterative closest point (ICP) algorithm, which requires only a procedure to find the closest point on a geometric entity to a given point. The ICP algorithm always converges monotonically to the nearest local minimum of a mean-square distance metric, and the rate of convergence is rapid during the first few iterations. Therefore, given an adequate set of initial rotations and translations for a particular class of objects with a certain level of 'shape complexity', one can globally minimize the mean-square distance metric over all six degrees of freedom by testing each initial registration. One important application of this method is to register sensed data from unfixtured rigid objects with an ideal geometric model, prior to shape inspection. Experimental results show the capabilities of the registration algorithm on point sets, curves, and surfaces.{$<>$}},
+  keywords = {Convergence,Inspection,Iterative algorithms,Iterative closest point algorithm,Iterative methods,Motion estimation,Quaternions,Shape measurement,Solid modeling,Testing},
+  file = {/home/gugo/Zotero/storage/ZJZDAQM4/121791.html}
+}
+
 @online{caiIkdTreeIncrementalKD2021,
   title = {Ikd-{{Tree}}: {{An Incremental K-D Tree}} for {{Robotic Applications}}},
   shorttitle = {Ikd-{{Tree}}},
@@ -90,7 +148,47 @@
   abstract = {This paper proposes an efficient data structure, ikd-Tree, for dynamic space partition. The ikd-Tree incrementally updates a k-d tree with new coming points only, leading to much lower computation time than existing static k-d trees. Besides point-wise operations, the ikd-Tree supports several features such as box-wise operations and down-sampling that are practically useful in robotic applications. In parallel to the incremental operations (i.e., insert, re-insert, and delete), ikd-Tree actively monitors the tree structure and partially re-balances the tree, which enables efficient nearest point search in later stages. The ikd-Tree is carefully engineered and supports multi-thread parallel computing to maximize the overall efficiency. We validate the ikd-Tree in both theory and practical experiments. On theory level, a complete time complexity analysis is presented to prove the high efficiency. On experiment level, the ikd-Tree is tested on both randomized datasets and real-world LiDAR point data in LiDAR-inertial odometry and mapping application. In all tests, ikd-Tree consumes only 4\% of the running time in a static k-d tree.},
   pubstate = {prepublished},
   keywords = {Computer Science - Robotics},
-  file = {/home/gugo/Zotero/storage/ZU7JUTYP/Cai et al. - 2021 - ikd-Tree An Incremental K-D Tree for Robotic Applications.pdf;/home/gugo/Zotero/storage/2EXTX7D7/2102.html}
+  file = {/home/gugo/Zotero/storage/ZU7JUTYP/Cai et al. - 2021 - ikd-Tree An Incremental K-D Tree for Robotic Applications.pdf}
+}
+
+@inproceedings{calonderBRIEFBinaryRobust2010,
+  title = {{{BRIEF}}: {{Binary Robust Independent Elementary Features}}},
+  shorttitle = {{{BRIEF}}},
+  booktitle = {Computer {{Vision}} – {{ECCV}} 2010},
+  author = {Calonder, Michael and Lepetit, Vincent and Strecha, Christoph and Fua, Pascal},
+  editor = {Daniilidis, Kostas and Maragos, Petros and Paragios, Nikos},
+  date = {2010},
+  pages = {778--792},
+  publisher = {Springer},
+  location = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-642-15561-1_56},
+  abstract = {We propose to use binary strings as an efficient feature point descriptor, which we call BRIEF.We show that it is highly discriminative even when using relatively few bits and can be computed using simple intensity difference tests. Furthermore, the descriptor similarity can be evaluated using the Hamming distance, which is very efficient to compute, instead of the L2 norm as is usually done.},
+  isbn = {978-3-642-15561-1},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/46NT9NIX/Calonder et al. - 2010 - BRIEF Binary Robust Independent Elementary Features.pdf}
+}
+
+@online{CameraCalibration3D,
+  title = {Camera {{Calibration}} and {{3D Reconstruction}} — {{OpenCV}} 2.4.13.7 Documentation},
+  url = {https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html},
+  urldate = {2025-07-26}
+}
+
+@inproceedings{chienWhenUseWhat2016,
+  title = {When to Use What Feature? {{SIFT}}, {{SURF}}, {{ORB}}, or {{A-KAZE}} Features for Monocular Visual Odometry},
+  shorttitle = {When to Use What Feature?},
+  booktitle = {2016 {{International Conference}} on {{Image}} and {{Vision Computing New Zealand}} ({{IVCNZ}})},
+  author = {Chien, Hsiang-Jen and Chuang, Chen-Chi and Chen, Chia-Yen and Klette, Reinhard},
+  date = {2016-11},
+  pages = {1--6},
+  issn = {2151-2205},
+  doi = {10.1109/IVCNZ.2016.7804434},
+  url = {https://ieeexplore.ieee.org/document/7804434},
+  urldate = {2025-07-25},
+  abstract = {Image feature-based ego-motion estimation has been dominating the development of visual odometry (VO) visual simultaneously localisation and mapping (V-SLAM) and structure-from-motion (SfM) for several years. The detection extraction or representation of image features play crucial roles when solving camera pose estimation problems in terms of accuracy and computational cost. In this paper we review three popular classes of image features namely SIFT SURF and ORB as well as the recently proposed A-KAZE features. These image features are evaluated using the KITTI benchmark dataset to conclude about reasons for deciding about the selection of a particular feature when implementing monocular visual odometry.},
+  eventtitle = {2016 {{International Conference}} on {{Image}} and {{Vision Computing New Zealand}} ({{IVCNZ}})},
+  keywords = {Cameras,Dogs,Feature extraction,Maximum likelihood estimation,Three-dimensional displays,Visualization},
+  file = {/home/gugo/Zotero/storage/ICHNP8M5/Chien et al. - 2016 - When to use what feature SIFT, SURF, ORB, or A-KAZE features for monocular visual odometry.pdf}
 }
 
 @incollection{christensenSensingEstimation2016,
@@ -133,8 +231,7 @@
   urldate = {2025-06-26},
   abstract = {Today, EGNOS uses a set of geostationary satellites and a network of ground stations to increase the accuracy of GPS. A new, more powerful system called ‘EGNOS V3’ is currently under preparation. It will strengthen both Galileo and GPS signals, resulting in an even better user experience.},
   langid = {english},
-  organization = {EU Agency for the Space Programme},
-  file = {/home/gugo/Zotero/storage/VCJH82I3/egnos.html}
+  organization = {EU Agency for the Space Programme}
 }
 
 @article{ferreiraVehicleLocalizationSystem2013,
@@ -153,7 +250,24 @@
   urldate = {2025-06-29},
   abstract = {Most mobile vehicle localization approaches rely on onboard sensors. However, whenever the installation of sensors onboard the vehicle is unfeasible, an alternative solution is to install them in the environment. One such environment is the ITER nuclear fusion reactor, where all maintenance operations have to be performed by remote handling, due to the radiation levels. This paper addresses the problem of vehicle localization in a structured environment, using a network of laser range finder sensors. The approach taken is based on: (1) the optimization of the sensor placement in the environment, aiming at the maximization of the area covered by the sensors and the redundancy of the sensor network, and (2) a probabilistic approach for vehicle localization. Two localization methods were evaluated: Extended Kalman Filter and Particle Filter. These two methods are compared, with respect to localization performance and robustness, both in simulation and using a real vehicle in a mock-up scenario.},
   keywords = {Autonomous vehicles,Localization,Range finders},
-  file = {/home/gugo/Skola/PHD/Zdroje/Ferreira_2013_Vehicle_localization_system_using_offboard_range_sensor_network.pdf;/home/gugo/Zotero/storage/VZEERHMB/S147466701534917X.html}
+  file = {/home/gugo/Skola/PHD/Zdroje/Ferreira_2013_Vehicle_localization_system_using_offboard_range_sensor_network.pdf}
+}
+
+@article{fischlerRandomSampleConsensus1981,
+  title = {Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography},
+  shorttitle = {Random Sample Consensus},
+  author = {Fischler, Martin A. and Bolles, Robert C.},
+  date = {1981-06-01},
+  journaltitle = {Commun. ACM},
+  volume = {24},
+  number = {6},
+  pages = {381--395},
+  issn = {0001-0782},
+  doi = {10.1145/358669.358692},
+  url = {https://dl.acm.org/doi/10.1145/358669.358692},
+  urldate = {2025-07-26},
+  abstract = {A new paradigm, Random Sample Consensus (RANSAC), for fitting a model to experimental data is introduced. RANSAC is capable of interpreting/smoothing data containing a significant percentage of gross errors, and is thus ideally suited for applications in automated image analysis where interpretation is based on the data provided by error-prone feature detectors. A major portion of this paper describes the application of RANSAC to the Location Determination Problem (LDP): Given an image depicting a set of landmarks with known locations, determine that point in space from which the image was obtained. In response to a RANSAC requirement, new results are derived on the minimum number of landmarks needed to obtain a solution, and algorithms are presented for computing these minimum-landmark solutions in closed form. These results provide the basis for an automatic system that can solve the LDP under difficult viewing},
+  file = {/home/gugo/Zotero/storage/P3SWHFEW/Fischler and Bolles - 1981 - Random sample consensus a paradigm for model fitting with applications to image analysis and automa.pdf}
 }
 
 @article{furtadoComparativeAnalysisOptitrack18,
@@ -175,8 +289,18 @@
   title = {{{GNSS}}},
   url = {https://www.unoosa.org/oosa/de/ourwork/psa/gnss/gnss.html},
   urldate = {2025-06-26},
-  organization = {United Nations Office for Outer Space Affairs},
-  file = {/home/gugo/Zotero/storage/SAYCWEHM/gnss.html}
+  organization = {United Nations Office for Outer Space Affairs}
+}
+
+@inproceedings{harrisCombinedCornerEdge1988,
+  title = {A {{Combined Corner}} and {{Edge Detector}}},
+  shorttitle = {Harris {{Corner Detector}}},
+  author = {Harris, C. and Stephens, M.},
+  date = {1988-08},
+  pages = {147--151},
+  location = {Manchester, UK},
+  eventtitle = {Proceedings of the 4th {{Alvey Vision Conference}}},
+  langid = {english}
 }
 
 @online{InertialMeasurementUnit2023,
@@ -185,8 +309,7 @@
   url = {https://www.advancednavigation.com/tech-articles/inertial-measurement-unit-imu-an-introduction/},
   urldate = {2025-06-29},
   abstract = {A guide to inertial measurement unit (IMU) sensors, capabilities, uses, and inertial sensor technologies from Advanced Navigation.},
-  organization = {Advanced Navigation},
-  file = {/home/gugo/Zotero/storage/K7LKJTQX/inertial-measurement-unit-imu-an-introduction.html}
+  organization = {Advanced Navigation}
 }
 
 @inproceedings{inproceedings,
@@ -216,6 +339,24 @@
   langid = {english},
   keywords = {Electronic Product Code,European Article Numbering,Smart Card,Traditional Identification System,Ultra High Frequency},
   file = {/home/gugo/Zotero/storage/67QA36JQ/Khattab et al. - 2017 - Introduction to RFID.pdf}
+}
+
+@book{kletteConciseComputerVision2014,
+  title = {Concise {{Computer Vision}}: {{An Introduction}} into {{Theory}} and {{Algorithms}}},
+  shorttitle = {Concise {{Computer Vision}}},
+  author = {Klette, Reinhard},
+  date = {2014},
+  series = {Undergraduate {{Topics}} in {{Computer Science}}},
+  publisher = {Springer},
+  location = {London},
+  issn = {1863-7310, 2197-1781},
+  doi = {10.1007/978-1-4471-6320-6},
+  url = {https://link.springer.com/10.1007/978-1-4471-6320-6},
+  urldate = {2025-07-26},
+  isbn = {978-1-4471-6319-0 978-1-4471-6320-6},
+  langid = {english},
+  keywords = {Computer Vision,Feature Detection and Tracking,Image Processing and Analysis,Image Segmentation,Object Detection,Shape Reconstruction},
+  file = {/home/gugo/Zotero/storage/IXEBKLNK/Klette - 2014 - Concise Computer Vision An Introduction into Theory and Algorithms.pdf}
 }
 
 @incollection{krombachCombiningFeatureBasedDirect2017,
@@ -257,6 +398,58 @@
   file = {/home/gugo/Zotero/storage/XWDBIFD2/Lee et al. - 2024 - LiDAR odometry survey recent advancements and remaining challenges.pdf}
 }
 
+@article{lepetitEPnPAccurateSolution2009,
+  title = {{{EPnP}}: {{An Accurate O}}(n) {{Solution}} to the {{PnP Problem}}},
+  shorttitle = {{{EPnP}}},
+  author = {Lepetit, Vincent and Moreno-Noguer, Francesc and Fua, Pascal},
+  date = {2009-02-01},
+  journaltitle = {International Journal of Computer Vision},
+  shortjournal = {Int J Comput Vis},
+  volume = {81},
+  number = {2},
+  pages = {155--166},
+  issn = {1573-1405},
+  doi = {10.1007/s11263-008-0152-6},
+  url = {https://doi.org/10.1007/s11263-008-0152-6},
+  urldate = {2025-07-26},
+  abstract = {We propose a non-iterative solution to the PnP problem—the estimation of the pose of a calibrated camera from n 3D-to-2D point correspondences—whose computational complexity grows linearly with n. This is in contrast to state-of-the-art methods that are O(n5) or even O(n8), without being more accurate. Our method is applicable for all n≥4 and handles properly both planar and non-planar configurations. Our central idea is to express the n 3D points as a weighted sum of four virtual control points. The problem then reduces to estimating the coordinates of these control points in the camera referential, which can be done in O(n) time by expressing these coordinates as weighted sum of the eigenvectors of a 12×12 matrix and solving a small constant number of quadratic equations to pick the right weights. Furthermore, if maximal precision is required, the output of the closed-form solution can be used to initialize a Gauss-Newton scheme, which improves accuracy with negligible amount of additional time. The advantages of our method are demonstrated by thorough testing on both synthetic and real-data.},
+  langid = {english},
+  keywords = {3-D Image Reconstruction,Absolute orientation,Computational Complexity,Optimization,Peptide nucleic acid oligo,Perspective-n-Point,Pose estimation,Problem Solving,Projective Geometry},
+  file = {/home/gugo/Zotero/storage/QUYYYMYL/Lepetit et al. - 2009 - EPnP An Accurate O(n) Solution to the PnP Problem.pdf}
+}
+
+@online{limReviewVisualOdometry2020,
+  title = {A {{Review}} of {{Visual Odometry Methods}} and {{Its Applications}} for {{Autonomous Driving}}},
+  author = {Lim, Kai Li and Bräunl, Thomas},
+  date = {2020-09-19},
+  eprint = {2009.09193},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.2009.09193},
+  url = {http://arxiv.org/abs/2009.09193},
+  urldate = {2025-07-25},
+  abstract = {The research into autonomous driving applications has observed an increase in computer vision-based approaches in recent years. In attempts to develop exclusive vision-based systems, visual odometry is often considered as a key element to achieve motion estimation and self-localisation, in place of wheel odometry or inertial measurements. This paper presents a recent review to methods that are pertinent to visual odometry with an emphasis on autonomous driving. This review covers visual odometry in their monocular, stereoscopic and visual-inertial form, individually presenting them with analyses related to their applications. Discussions are drawn to outline the problems faced in the current state of research, and to summarise the works reviewed. This paper concludes with future work suggestions to aid prospective developments in visual odometry.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Electrical Engineering and Systems Science - Image and Video Processing},
+  file = {/home/gugo/Zotero/storage/S8QB9C5Y/Lim and Bräunl - 2020 - A Review of Visual Odometry Methods and Its Applications for Autonomous Driving.pdf}
+}
+
+@inproceedings{loweObjectRecognitionLocal1999,
+  title = {Object Recognition from Local Scale-Invariant Features},
+  booktitle = {Proceedings of the {{Seventh IEEE International Conference}} on {{Computer Vision}}},
+  author = {Lowe, D.G.},
+  date = {1999-09},
+  volume = {2},
+  pages = {1150-1157 vol.2},
+  doi = {10.1109/ICCV.1999.790410},
+  url = {https://ieeexplore.ieee.org/document/790410},
+  urldate = {2025-07-26},
+  abstract = {An object recognition system has been developed that uses a new class of local image features. The features are invariant to image scaling, translation, and rotation, and partially invariant to illumination changes and affine or 3D projection. These features share similar properties with neurons in inferior temporal cortex that are used for object recognition in primate vision. Features are efficiently detected through a staged filtering approach that identifies stable points in scale space. Image keys are created that allow for local geometric deformations by representing blurred image gradients in multiple orientation planes and at multiple scales. The keys are used as input to a nearest neighbor indexing method that identifies candidate object matches. Final verification of each match is achieved by finding a low residual least squares solution for the unknown model parameters. Experimental results show that robust object recognition can be achieved in cluttered partially occluded images with a computation time of under 2 seconds.},
+  eventtitle = {The {{Seventh IEEE International Conference}} on {{Computer Vision}}},
+  keywords = {Computer science,Electrical capacitance tomography,Filters,Image recognition,Layout,Lighting,Neurons,Object recognition,Programmable logic arrays,Reactive power},
+  file = {/home/gugo/Zotero/storage/N8IJ6KNU/790410.html}
+}
+
 @mvbook{moebsUniversityPhysics2016,
   title = {University {{Physics}}},
   author = {Moebs, William and Ling, Samuel J. and Sanny, Jeff},
@@ -271,8 +464,7 @@
   abstract = {University Physics Volume 1 is the first of a three book series that (together) covers a two- or three-semester calculus-based physics course. This text has been developed to meet the scope and sequence of most university physics courses (in terms of what Volume 1 is designed to deliver) and provides a foundation for a career in mathematics, science, or engineering. The book provides an important opportunity for students to learn the core concepts of physics and understand how those concepts apply to their lives and to the world around them.},
   isbn = {978-1-938168-27-7},
   langid = {english},
-  volumes = {3},
-  file = {/home/gugo/Zotero/storage/DRLN6I9R/11-3-precession-of-a-gyroscope.html}
+  volumes = {3}
 }
 
 @online{MotionCaptureRobotics,
@@ -281,8 +473,47 @@
   urldate = {2025-06-28},
   abstract = {Industry leading precision motion capture and 3D tracking systems for Robotics, Quadrotors, and drone applications},
   langid = {english},
-  organization = {OptiTrack},
-  file = {/home/gugo/Zotero/storage/GA5ICVQC/index.html}
+  organization = {OptiTrack}
+}
+
+@article{mur-artalORBSLAMVersatileAccurate2015,
+  title = {{{ORB-SLAM}}: A {{Versatile}} and {{Accurate Monocular SLAM System}}},
+  shorttitle = {{{ORB-SLAM}}},
+  author = {Mur-Artal, Raul and Montiel, J. M. M. and Tardos, Juan D.},
+  date = {2015-10},
+  journaltitle = {IEEE Transactions on Robotics},
+  shortjournal = {IEEE Trans. Robot.},
+  volume = {31},
+  number = {5},
+  eprint = {1502.00956},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  pages = {1147--1163},
+  issn = {1552-3098, 1941-0468},
+  doi = {10.1109/TRO.2015.2463671},
+  url = {http://arxiv.org/abs/1502.00956},
+  urldate = {2025-07-26},
+  abstract = {This paper presents ORB-SLAM, a feature-based monocular SLAM system that operates in real time, in small and large, indoor and outdoor environments. The system is robust to severe motion clutter, allows wide baseline loop closing and relocalization, and includes full automatic initialization. Building on excellent algorithms of recent years, we designed from scratch a novel system that uses the same features for all SLAM tasks: tracking, mapping, relocalization, and loop closing. A survival of the fittest strategy that selects the points and keyframes of the reconstruction leads to excellent robustness and generates a compact and trackable map that only grows if the scene content changes, allowing lifelong operation. We present an exhaustive evaluation in 27 sequences from the most popular datasets. ORB-SLAM achieves unprecedented performance with respect to other state-of-the-art monocular SLAM approaches. For the benefit of the community, we make the source code public.},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Robotics},
+  note = {Comment: 17 pages. 13 figures. IEEE Transactions on Robotics, 2015. Project webpage (videos, code): http://webdiis.unizar.es/\textasciitilde raulmur/orbslam/},
+  file = {/home/gugo/Zotero/storage/PNIYEEB8/Mur-Artal et al. - 2015 - ORB-SLAM a Versatile and Accurate Monocular SLAM System.pdf;/home/gugo/Zotero/storage/2DEP3P7G/1502.html}
+}
+
+@article{nisterEfficientSolutionFivepoint2004,
+  title = {An Efficient Solution to the Five-Point Relative Pose Problem},
+  author = {Nister, D.},
+  date = {2004-06},
+  journaltitle = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume = {26},
+  number = {6},
+  pages = {756--770},
+  issn = {1939-3539},
+  doi = {10.1109/TPAMI.2004.17},
+  url = {https://ieeexplore.ieee.org/document/1288525},
+  urldate = {2025-07-26},
+  abstract = {An efficient algorithmic solution to the classical five-point relative pose problem is presented. The problem is to find the possible solutions for relative camera pose between two calibrated views given five corresponding points. The algorithm consists of computing the coefficients of a tenth degree polynomial in closed form and, subsequently, finding its roots. It is the first algorithm well-suited for numerical implementation that also corresponds to the inherent complexity of the problem. We investigate the numerical precision of the algorithm. We also study its performance under noise in minimal as well as overdetermined cases. The performance is compared to that of the well-known 8 and 7-point methods and a 6-point scheme. The algorithm is used in a robust hypothesize-and-test framework to estimate structure and motion in real-time with low delay. The real-time system uses solely visual input and has been demonstrated at major conferences.},
+  keywords = {Calibration,camera calibration,Cameras,Delay estimation,ego-motion estimation,Geometry,Imaging geometry,Layout,motion,Motion estimation,Noise robustness,Polynomials,Real time systems,relative orientation,scene reconstruction.,Sparse matrices,structure from motion},
+  file = {/home/gugo/Zotero/storage/ISC4JYLD/1288525.html}
 }
 
 @inproceedings{nisterVisualOdometry2004,
@@ -322,7 +553,24 @@
   abstract = {A monocular visual-inertial system (VINS), consisting of a camera and a low-cost inertial measurement unit (IMU), forms the minimum sensor suite for metric six degrees-of-freedom (DOF) state estimation. However, the lack of direct distance measurement poses significant challenges in terms of IMU processing, estimator initialization, extrinsic calibration, and nonlinear optimization. In this work, we present VINS-Mono: a robust and versatile monocular visual-inertial state estimator.Our approach starts with a robust procedure for estimator initialization and failure recovery. A tightly-coupled, nonlinear optimization-based method is used to obtain high accuracy visual-inertial odometry by fusing pre-integrated IMU measurements and feature observations. A loop detection module, in combination with our tightly-coupled formulation, enables relocalization with minimum computation overhead.We additionally perform four degrees-of-freedom pose graph optimization to enforce global consistency. We validate the performance of our system on public datasets and real-world experiments and compare against other state-of-the-art algorithms. We also perform onboard closed-loop autonomous flight on the MAV platform and port the algorithm to an iOS-based demonstration. We highlight that the proposed work is a reliable, complete, and versatile system that is applicable for different applications that require high accuracy localization. We open source our implementations for both PCs and iOS mobile devices.},
   keywords = {Computer Science - Robotics},
   note = {Comment: journal paper},
-  file = {/home/gugo/Zotero/storage/6S4DNFNU/Qin et al. - 2018 - VINS-Mono A Robust and Versatile Monocular Visual-Inertial State Estimator.pdf;/home/gugo/Zotero/storage/GVK528FD/1708.html}
+  file = {/home/gugo/Zotero/storage/6S4DNFNU/Qin et al. - 2018 - VINS-Mono A Robust and Versatile Monocular Visual-Inertial State Estimator.pdf}
+}
+
+@inproceedings{rostenMachineLearningHighSpeed2006,
+  title = {Machine {{Learning}} for {{High-Speed Corner Detection}}},
+  booktitle = {Computer {{Vision}} – {{ECCV}} 2006},
+  author = {Rosten, Edward and Drummond, Tom},
+  editor = {Leonardis, Aleš and Bischof, Horst and Pinz, Axel},
+  date = {2006},
+  pages = {430--443},
+  publisher = {Springer},
+  location = {Berlin, Heidelberg},
+  doi = {10.1007/11744023_34},
+  abstract = {Where feature points are used in real-time frame-rate applications, a high-speed feature detector is necessary. Feature detectors such as SIFT (DoG), Harris and SUSAN are good methods which yield high quality features, however they are too computationally intensive for use in real-time applications of any complexity. Here we show that machine learning can be used to derive a feature detector which can fully process live PAL video using less than 7\% of the available processing time. By comparison neither the Harris detector (120\%) nor the detection stage of SIFT (300\%) can operate at full frame rate.},
+  isbn = {978-3-540-33833-8},
+  langid = {english},
+  keywords = {Corner Detection,Feature Detector,Interest Point,Interest Point Detector,Segment Test},
+  file = {/home/gugo/Zotero/storage/7E5ZB98B/Rosten and Drummond - 2006 - Machine Learning for High-Speed Corner Detection.pdf}
 }
 
 @inproceedings{rouveureRobotLocalizationNavigation2019,
@@ -337,8 +585,7 @@
   urldate = {2025-06-29},
   abstract = {Global Positioning System (GPS) is intensively used for localization and navigation in mobile robotics due to its ease of use, its precision, and its worldwide accessibility. But in presence of tall obstacles (buildings) or vegetation (trees), the reception of GPS signals can be poor or impossible. Such a situation is not compatible with autonomous mobile robotics applications, and redundant localization tools need to be implemented. We present in this paper a solution for localization in mobile robotics based on PELICAN radar. PELICAN is a K-band panoramic radar, whose images are used to build radar maps of the traveled environments. The proposed solution realizes a real-time 3D matching between the current radar image and the pre-existing radar map, in order to estimate the position and the orientation of the radar within the map. Results obtained in localization and navigation are illustrated with a path-following application.},
   eventtitle = {2019 {{International Radar Conference}} ({{RADAR}})},
-  keywords = {localization,mobile robotics,navigation,radar},
-  file = {/home/gugo/Zotero/storage/IM4Q85CD/9079132.html}
+  keywords = {localization,mobile robotics,navigation,radar}
 }
 
 @online{RTKGPSTechnologyPrecise,
@@ -347,15 +594,63 @@
   urldate = {2025-06-26},
   abstract = {Learn how Real-Time Kinematic GPS provides centimeter-level accuracy for outdoor positioning and tracking applications.},
   langid = {english},
-  organization = {RTLS Alliance},
-  file = {/home/gugo/Zotero/storage/WT6CCG5X/rtk-gps.html}
+  organization = {RTLS Alliance}
+}
+
+@inproceedings{rubleeORBEfficientAlternative2011,
+  title = {{{ORB}}: {{An}} Efficient Alternative to {{SIFT}} or {{SURF}}},
+  shorttitle = {{{ORB}}},
+  booktitle = {2011 {{International Conference}} on {{Computer Vision}}},
+  author = {Rublee, Ethan and Rabaud, Vincent and Konolige, Kurt and Bradski, Gary},
+  date = {2011-11},
+  pages = {2564--2571},
+  issn = {2380-7504},
+  doi = {10.1109/ICCV.2011.6126544},
+  url = {https://ieeexplore.ieee.org/document/6126544},
+  urldate = {2025-07-26},
+  abstract = {Feature matching is at the base of many computer vision problems, such as object recognition or structure from motion. Current methods rely on costly descriptors for detection and matching. In this paper, we propose a very fast binary descriptor based on BRIEF, called ORB, which is rotation invariant and resistant to noise. We demonstrate through experiments how ORB is at two orders of magnitude faster than SIFT, while performing as well in many situations. The efficiency is tested on several real-world applications, including object detection and patch-tracking on a smart phone.},
+  eventtitle = {2011 {{International Conference}} on {{Computer Vision}}},
+  keywords = {Boats},
+  file = {/home/gugo/Zotero/storage/629SZQ7X/6126544.html}
+}
+
+@inproceedings{rusinkiewiczEfficientVariantsICP,
+  title = {Efficient Variants of the {{ICP}} Algorithm},
+  booktitle = {Proceedings {{Third International Conference}} on 3-{{D Digital Imaging}} and {{Modeling}}},
+  author = {Rusinkiewicz, S. and Levoy, M.},
+  pages = {145--152},
+  publisher = {IEEE Comput. Soc},
+  location = {Quebec City, Que., Canada},
+  doi = {10.1109/im.2001.924423},
+  url = {http://ieeexplore.ieee.org/document/924423/},
+  urldate = {2025-07-27},
+  abstract = {The ICP (Iterative Closest Point) algorithm is widely used for geometric alignment of three-dimensional models when an initial estimate of the relative pose is known. Many variants of ICP have been proposed, affecting all phases of the algorithm from the selection and matching of points to the minimization strategy. We enumerate and classify many of these variants, and evaluate their effect on the speed with which the correct alignment is reached. In order to improve convergence for nearly-flat meshes with small features, such as inscribed surfaces, we introduce a new variant based on uniform sampling of the space of normals. We conclude by proposing a combination of ICP variants optimized for high speed. We demonstrate an implementation that is able to align two range images in a few tens of milliseconds, assuming a good initial guess. This capability has potential application to real-time 3D model acquisition and model-based tracking.},
+  eventtitle = {Third {{International Conference}} on 3-{{D Digital Imaging}} and {{Modeling}}},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/C9XWT9YA/Rusinkiewicz and Levoy - Efficient variants of the ICP algorithm.pdf}
+}
+
+@article{sampsonFittingConicSections1982,
+  title = {Fitting Conic Sections to “Very Scattered” Data: {{An}} Iterative Refinement of the Bookstein Algorithm},
+  shorttitle = {Fitting Conic Sections to “Very Scattered” Data},
+  author = {Sampson, Paul D},
+  date = {1982-01-01},
+  journaltitle = {Computer Graphics and Image Processing},
+  shortjournal = {Computer Graphics and Image Processing},
+  volume = {18},
+  number = {1},
+  pages = {97--108},
+  issn = {0146-664X},
+  doi = {10.1016/0146-664X(82)90101-0},
+  url = {https://www.sciencedirect.com/science/article/pii/0146664X82901010},
+  urldate = {2025-07-26},
+  abstract = {An examination of the geometric interpretation of the error-of-fit measure of the Bookstein algorithm for fitting conic sections shows why it may not be entirely satisfoctory when the data are “very scattere” in the sense that the data points are distributed rather widely about an underlying smooth curve. A simple iterative refinement of the Bookstein al;gorithm, similar in spirit to iterative weighted least-squares methods in regression analysis, results in a fitted conic section that approximates the conic that would minimize the sum of squared orthogonal distances of data points from the fitted conic. The usefulness and limitations of the refined algorithm are demonstrated on two different types of “very scattered” data.}
 }
 
 @online{SatelliteNavigationWAAS,
   title = {Satellite {{Navigation}} - {{WAAS}} - {{How It Works}} | {{Federal Aviation Administration}}},
   url = {https://www.faa.gov/about/office_org/headquarters_offices/ato/service_units/techops/navservices/gnss/waas/howitworks},
-  urldate = {2025-06-26},
-  file = {/home/gugo/Zotero/storage/Z7LDE58L/howitworks.html}
+  urldate = {2025-06-26}
 }
 
 @book{siegwartIntroductionAutonomousMobile2011,
@@ -389,6 +684,18 @@
   file = {/home/gugo/Skola/PHD/Zdroje/ProbabilisticRobotics.pdf}
 }
 
+@report{tomasiDetectionTrackingPoint1991a,
+  type = {Technical Report},
+  title = {Detection and {{Tracking}} of {{Point Features}}},
+  author = {Tomasi, Carlo and Kanade, Takeo},
+  date = {1991-04},
+  number = {CMU‑CS‑91‑132},
+  institution = {Carnegie Mellon University, School of Computer Science},
+  location = {Pittsburgh, PA},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/AJNRBZJL/Tomasi and Kanade - Detection and Tracking of Point Features.pdf}
+}
+
 @article{vizzoKISSICPDefensePointtoPoint2023,
   title = {{{KISS-ICP}}: {{In Defense}} of {{Point-to-Point ICP}} -- {{Simple}}, {{Accurate}}, and {{Robust Registration If Done}} the {{Right Way}}},
   shorttitle = {{{KISS-ICP}}},
@@ -408,8 +715,7 @@
   urldate = {2025-06-30},
   abstract = {Robust and accurate pose estimation of a robotic platform, so-called sensor-based odometry, is an essential part of many robotic applications. While many sensor odometry systems made progress by adding more complexity to the ego-motion estimation process, we move in the opposite direction. By removing a majority of parts and focusing on the core elements, we obtain a surprisingly effective system that is simple to realize and can operate under various environmental conditions using different LiDAR sensors. Our odometry estimation approach relies on point-to-point ICP combined with adaptive thresholding for correspondence matching, a robust kernel, a simple but widely applicable motion compensation approach, and a point cloud subsampling strategy. This yields a system with only a few parameters that in most cases do not even have to be tuned to a specific LiDAR sensor. Our system using the same parameters performs on par with state-of-the-art methods under various operating conditions using different platforms: automotive platforms, UAV-based operation, vehicles like segways, or handheld LiDARs. We do not require integrating IMU information and solely rely on 3D point cloud data obtained from a wide range of 3D LiDAR sensors, thus, enabling a broad spectrum of different applications and operating conditions. Our open-source system operates faster than the sensor frame rate in all presented datasets and is designed for real-world scenarios.},
   keywords = {Computer Science - Robotics},
-  note = {Comment: 8 pages},
-  file = {/home/gugo/Zotero/storage/8WYJAH84/Vizzo et al. - 2023 - KISS-ICP In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the.pdf;/home/gugo/Zotero/storage/MVWDU8ED/2209.html}
+  file = {/home/gugo/Zotero/storage/8WYJAH84/Vizzo et al. - 2023 - KISS-ICP In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the.pdf}
 }
 
 @online{WhatGNSS,
@@ -418,8 +724,7 @@
   urldate = {2025-06-26},
   abstract = {Global Navigation Satellite System (GNSS) refers to any satellite constellation that provides global positioning, navigation, and timing services. Several GNSS are currently available:},
   langid = {english},
-  organization = {EU Agency for the Space Programme},
-  file = {/home/gugo/Zotero/storage/RHYWNUB8/what-gnss.html}
+  organization = {EU Agency for the Space Programme}
 }
 
 @inproceedings{zhengLodoNetDeepNeural2020,
