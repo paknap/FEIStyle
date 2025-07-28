@@ -127,7 +127,7 @@
 \usepackage[all]{nowidow}
 \usepackage{multicol}
 \usepackage{tikz}
-\usetikzlibrary{positioning, calc, shapes.geometric, arrows.meta, fit, backgrounds, angles, patterns}
+\usetikzlibrary{positioning, calc, shapes.geometric, arrows.meta, fit, backgrounds, angles, patterns, 3d, intersections}
 \usepackage{pgfmath}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
@@ -661,6 +661,7 @@
 }
 
 \newcommand\FEIglossaries[1]{
+    \setlength{\glsdescwidth}{11cm}
     \setglossarystyle{FEIlong}
     \makeglossaries
     \loadglsentries{#1}

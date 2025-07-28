@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+    scale=1.0,
+    node distance=1.0cm and 0.7cm,
+    arrow/.style = {thick,->,>=stealth},
+    line/.style = {thick,>=stealth},
+    block/.style={rectangle, draw, minimum width=1.5cm, minimum height=1.0cm, text width=4.5cm, text centered, inner xsep=0.2cm},
+]
+
+\node (input) [block] {vstupno-výstupné trénovacie dáta (vzory)};
+\node (nn) [block,below=of input] {neurónová sieť};
+\node (learn) [block,below=of nn] {učiaci algoritmus};
+
+\node (sum) [circle,draw,minimum size=0.5cm,inner sep=0.02cm,right=of nn] {\tiny$+$\hspace{0.3cm}$-$};
+
+% helpers
+\node (help1) [left=of input,fill=none] {};
+\node (help2) [right=of sum,fill=none] {};
+
+
+% arrows
+\draw [line] (input.west) -- (help1.center);
+\draw [arrow] (help1.center) -- node [anchor=east] {$X$} (help1.center |- nn.west) -- (nn.west);
+\draw [arrow] (nn) -- node [anchor=south] {$\hat y$} (sum);
+\draw [arrow] (sum.south) -- node [anchor=west] {$\mathcal{L}$} (sum.south |- learn.east) -- (learn.east);
+\draw [line] (input.east) -| (help2.center);
+\draw [arrow] (help2.center) -- node [anchor=south] {$y$} (sum.east);
+\draw [arrow] (learn) -- node [anchor=east] {$w,\theta$} (nn);
+    
+\end{tikzpicture}

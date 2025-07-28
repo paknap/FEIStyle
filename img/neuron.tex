@@ -1,0 +1,40 @@
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.5cm,
+    every node/.style={font=\normalsize},
+    circ_node/.style = {circle, minimum size=1.0cm, text centered, inner sep = 0pt, draw=black, thick},
+    rect_node/.style = {rectangle, minimum width=0.5cm, minimum height=0.5cm, draw=black, thick},
+    arrow/.style = {thick,->,>=stealth},
+    line/.style = {thick,>=stealth}
+]
+
+\node (w1) [circ_node] {$w_1$};
+\node (w2) [circ_node, below of=w1] {$w_2$};
+\node (dots) [below of=w2] {$\dots$};
+\node (wn1) [circ_node, below of=dots] {$w_{n-1}$};
+\node (wn0) [circ_node, below of=wn1] {$w_n$};
+
+\node (x1) [left=of w1] {$x_1$};
+\node (x2) [left=of w2] {$x_2$};
+\node (xn1) [left=of wn1] {$x_{n-1}$};
+\node (xn0) [left=of wn0] {$x_n$};
+
+\node (sum) [circ_node, right=of dots, inner sep=5pt] {$\sum$};
+\node (func) [rect_node, right=of sum, minimum width=1cm, minimum height=1cm] {$f(a)$};
+\node (th) [below=0.8cm of sum] {$\theta$};
+\node (output) [right=of func] {};
+
+\draw [arrow] (x1) -- (w1);
+\draw [arrow] (x2) -- (w2);
+\draw [arrow] (xn1) -- (wn1);
+\draw [arrow] (xn0) -- (wn0);
+
+\draw [arrow] (w1) -- (sum);
+\draw [arrow] (w2) -- (sum);
+\draw [arrow] (wn1) -- (sum);
+\draw [arrow] (wn0) -- (sum);
+\draw [arrow] (th) -- (sum);
+
+\draw [arrow] (sum) -- node[anchor=south] {$a$} (func);
+\draw [arrow] (func) -- node[anchor=south] {$y$} (output);
+   
+\end{tikzpicture}
