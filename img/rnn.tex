@@ -1,0 +1,48 @@
+\begin{tikzpicture}[>=Stealth, node distance=0.8cm and 1.5cm,
+    every node/.style={font=\small},
+    rnn/.style={draw, thick, rounded corners, minimum height=1.2cm, minimum width=1.8cm, fill=blue!10},
+    io/.style={font=\small}
+]
+
+% RNN cells
+\node[rnn] (r0) at (0,0) {RNN$_0$};
+\node[rnn, right=of r0] (r1) {RNN$_1$};
+\node[rnn, right=of r1] (r2) {RNN$_2$};
+
+% Inputs
+\node[below=of r0, io] (x0) {$\mathbf{x}_0$};
+\node[below=of r1, io] (x1) {$\mathbf{x}_1$};
+\node[below=of r2, io] (x2) {$\mathbf{x}_2$};
+
+% Outputs
+\node[above=of r0, io] (y0) {$\mathbf{y}_0$};
+\node[above=of r1, io] (y1) {$\mathbf{y}_1$};
+\node[above=of r2, io] (y2) {$\mathbf{y}_2$};
+
+% Hidden states
+\node[above right=0.2cm and -0.5cm of r0, io] (h1) {};
+\node[above right=0.2cm and -0.5cm of r1, io] (h2) {};
+\node[above right=0.2cm and -0.5cm of r2, io] (h3) {};
+
+% Arrows: input to RNN
+\draw[->, thick] (x0) -- (r0);
+\draw[->, thick] (x1) -- (r1);
+\draw[->, thick] (x2) -- (r2);
+
+% Arrows: RNN to output
+\draw[->, thick] (r0) -- (y0);
+\draw[->, thick] (r1) -- (y1);
+\draw[->, thick] (r2) -- (y2);
+
+% Arrows: hidden state feedback
+\draw[->, thick] (r0.east) -- node[above] {$\mathbf{h}_1$} (r1.west);
+\draw[->, thick] (r1.east) -- node[above] {$\mathbf{h}_2$} (r2.west);
+
+% Optional: Initial hidden state
+\node[left=1.5cm of r0, io] (h0) {$\mathbf{h}_0$};
+\draw[->, thick] (h0) -- (r0.west);
+
+% Dots if needed
+%\node[right=1.2cm of r2] (dots) {$\cdots$};
+
+\end{tikzpicture}

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+    node distance=1.0cm and 1.7cm,
+    every node/.style={font=\footnotesize},
+    neuron/.style={circle, draw=black, thick, minimum size=0.5cm},
+    input/.style={neuron, fill=black},
+    conn/.style={thick,->,>=stealth}
+]
+
+% Hidden layer
+\node[neuron] (H1) {};
+\node[neuron, below=of H1] (H2) {};
+\node[neuron, below=of H2] (H3) {};
+
+% Input layer
+\node[input, left=of $(H1)!0.5!(H2)$] (I1) {};
+\node[input, left=of $(H2)!0.5!(H3)$] (I2) {};
+
+% Output layer
+% \node[neuron, right=of $(H1)!0.5!(H2)$] (O1) {};
+\node[neuron, right=of H2] (O1) {};
+
+% Connections: input to hidden
+\foreach \i in {1,2}
+  \foreach \h in {1,2,3}
+    \draw[conn] (I\i) -- (H\h);
+
+% Connections: hidden to output
+\foreach \h in {1,2,3}
+  \foreach \o in {1}
+    \draw[conn] (H\h) -- (O\o);
+
+% Labels
+\node[below=0.1cm of H3] (V_j) {$h_{j}$};
+\node[left=of V_j, anchor=center] {$x_k$};
+\node[right=of V_j, anchor=center] {$y_1$};
+
+% Weight labels (just two examples)
+\node[left= 0.5cm of H3, anchor=north east] {$W_{1k}$};
+\node[right=0.5cm of H3, anchor=north west] {$W_{2j}$};
+
+\end{tikzpicture}
