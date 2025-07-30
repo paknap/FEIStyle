@@ -1,0 +1,23 @@
+Cieľom tejto práce bolo poskytnúť teoretické predpoklady pre prácu na zadaní dizertačného projektu, ktorého témou je fúzia senzorických dát pre účely lokalizácie mobilných robotov. Zaoberali sme sa prehľadom dostupných snímačov, ktoré je možné využiť na určenie polohy mobilných robotov, ako aj metód a~algoritmov navrhnutých na spracovanie surových senzorických dát práve s cieľom získať vyhovujúce vstupné údaje pre odhad polohy. Vzhľadom na rozsiahlosť problematiky bolo dôležité zvoliť vhodnú úroveň priblíženia sa k~nej tak, aby práca na jednej strane spĺňala požadovanú kvalitatívnu úroveň, no na druhej strane bola zachovaná jej vecnosť, čitateľnosť a~prehľadnosť. Vo všeobecnosti bola zvýšená pozornosť venovaná najmä vysvetleniu základných princípov fungovania, popisu slabých a~silných stránok opisovaných predmetov a~uvedeniu konkrétnych príkladov aplikácie s~odkazom na súvisiace vedecké práce.
+
+Spomedzi viacerých zaužívaných taxonómií sme pre prehľad dostupných snímačov zvolili takú, ktorá podľa nášho úsudku najlepšie zodpovedá rozhodovaciemu procesu pri návrhu lokalizačného systému pre mobilný robotický systém. Skúmaním súčasného stavu poznania sme zistili, že väčšina aplikácií lokalizácie využíva kombináciu minimálne dvoch senzorov, pričom minimálne dva z~použitých senzorov sú v~komplementárnom vzťahu. Tam kde je to možné, je obvykle volená kombinácia externého a~interného senzora pre extrakciu výhodných vlastností a~marginalizáciu chýb.
+
+Kľúčovým pilierom algoritmov na fúziu lokalizačných dát mobilných robotov ostáva aj v~súčasnosti \acrshort{ekf} a~jeho varianty. Obľúbené sú najmä pre nenáročnú implementáciu, spoľahlivosť a~schopnosť pracovať v~reálnom čase. Ich vývoj smeruje k~zvýšenej adaptívnosti, robustnosti, konzistentnosti a~integrácii učenia, čím lepšie reagujú na výzvy dynamického a~neistého prostredia.
+
+Technológie umelých neurónových sietí a~hlbokého učenia zohrávajú čoraz dôležitejšiu úlohu v~oblasti vnímania a~lokalizácie autonómnych vozidiel. Oblasť fúzie senzorických dát síce nepatrí medzi tradičné príklady implementácie metód umelej inteligencie, avšak problém s~náročnosťou analytického modelovania komplexných systémov v~súlade s~rozvojom umelej inteligencie podnecuje rozvoj aplikácií aj v~týchto kombináciách\@. \acrshort{uns} majú potenciál zohrať dôležitú úlohu nie len v~samotnom spájaní senzorických tokov do jedného, ale najmä v~inteligentnom predspracovaní senzorických dát za účelom potlačenia šumov či iných nežiadúcich faktorov. Zlepšenie lokalizácie by bolo možné tiež dosiahnuť detekciou výrazných a~stabilných orientačných bodov (napr.\ značky, stĺpy v~exteriéri alebo dvere, schodiská v~interiéri) a~ich porovnávaním s~mapou, pričom využitie 3D neurónových sietí zvyšuje robustnosť voči rušivým vplyvom prostredia.
+
+% Kým konvolučné siete sú dnes štandardom pri spracovaní obrazov, v~lokalizácii a~mapovaní je potenciál iných architektúr, najmä rekurentných, stále nevyužitý.
+
+Poznatky z~analýzy v~tejto práci ako aj z~vlastných skúseností nás vedú k~úsudku, že aj napriek veľkému množstvu metód fúzie lokalizačných senzorov stále neexistuje ustálený, a~už vôbec nie univerzálny spôsob jej riešenia. V~bežnej praxi sa navyše často využívajú len tie najzákladnejšie prístupy s empiricky volenými parametrami, ktoré nie sú schopné vyťažiť všetky výhody dostupných senzorov a~nezohľadňujú ich meracie modely. Stále aktuálnou otázkou je tiež dlhodobá stabilita lokalizácie, a~to najmä pri nasadení v~reálnom prostredí, kde nie je možné eliminovať ťažko modelovateľné vplyvy, akými sú okolité pohyblivé objekty či otrasy a~vibrácie spôsobené pohybom po nerovnom povrchu. Presná lokalizácia v~neznámom prostredí tiež predstavuje aktuálnu a~veľmi zaujímavú výzvu, keďže jej úspešné riešenie môže prispieť k~univerzálnosti a~jednoduchému nasadenia mobilného robota pre široké spektrum aplikácií.
+
+Na základe uvedených záverov sme sa teda rozhodli smerovanie nášho ďalšieho výskumu formulovať prostredníctvom nasledujúcich téz.
+
+\phantomsection{} 
+\addcontentsline{toc}{subsection}{Tézy dizertačnej práce}
+\subsection*{Tézy dizertačnej práce}
+
+\begin{enumerate}
+\item Komplexné porovnanie metód získavania a~modelovania neistoty merania jednotlivých snímačov voči vierohodnej referencii, vrátane ich vplyvu na presnosť lokalizácie mobilného robota.
+\item Návrh a~verifikácia vlastnej metódy adaptívneho nastavovania parametrov senzorickej fúzie s cieľom zlepšenia spoľahlivosti a~robustnosti lokalizačného systému.
+\item Návrh a~verifikácia systému lokalizácie mobilného robota založeného na senzorickej fúzii údajov s dlhodobou stabilitou bez potreby externej kalibračnej infraštruktúry.
+\end{enumerate}

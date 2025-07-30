@@ -1,4 +1,10 @@
-\section{Čo sú umelé neurónové siete}
+\section{Metódy fúzie s využitím umelej inteligencie a strojového učenia}
+
+Cieľom technológií umelej inteligencie (\acrshort{ui}) je pomocou technických prostriedkov napodobniť biologické princípy ako ľudského organizmu, iných živočíchov a~rastlín, ale aj prírodných zákonitostí ako takých. Výskum v~oblasti \acrshort{ui} začal už v~prvej polovici 20.\ storočia, dlhé desaťročia boli však viaceré koncepty \acrshort{ui} len na úrovni matematickej teórie, keďže vtedy známe technické prostriedky nedisponovali takým výpočtovým výkonom, ktorý by postačoval na efektívnu implementáciu týchto návrhov. V~posledných desaťročiach, keď sa hranice výpočtových možností posúvajú závratným tempom ďalej, sme však svedkami masívneho rozmachu v~oblasti výskumu a~aplikácií metód umelej inteligencie. Uplatnenie nachádzajú najmä v~riešení komplexných úloh, ktoré sú problémové na analytický opis a~riešenie konvenčnými analytickými metódami.
+
+Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo rôzneho typu je tiež jednou z~možných aplikácií \acrshort{ui}. Cieľom je aj v~tomto prípade zabezpečiť stabilitu výsledného dátového toku, znížiť šum meraní či zamedziť negatívnym vplyvom skokovitej chyby meraní niektorého zo senzorov. Oproti klasickým metódam ako sú Kalmanove či časticové filtre, potenciál nástrojov \acrshort{ui} je v~rozpoznávaní zložitejších vzorov v~senzorických dátach, schopnosti spracúvať veľké množstvo zdrojov dát, ale tiež v~možnosti uskutočniť komplexnejší rozhodovací proces. Na to sa využívajú viaceré prístupy \acrshort{ui}, ako sú umelé neurónové siete a~ich modifikácie (hlboké, konvolučné, rekurentné), strojové učenie a~jeho modifikácie (učenie s~posilňovaním, hlboké učenie) či fuzzy logika. V~nasledujúcich častiach si predstavíme základný princíp fungovania niektorých z týchto metód a~ukážeme aj príklady ich použitia v~konkrétnych aplikáciách na fúziu údajov pre lokalizáciu.
+
+\subsection{Čo sú umelé neurónové siete}
   Cieľom umelých neurónových sietí (\acrshort{uns}) je napodobniť štruktúru a~spôsob fungovania ľudského mozgu. Ten je na vonkajšej strane pokrytý mozgovou kôrou, ktorá obsahuje obrovské množstvo neurónov (v literatúre sa uvádza číslo približne $10^{10}$~\cite{mehligMachineLearningNeural2021}), ktoré sú vzájomne prepojené axónmi cez spojenia tvorené synapsami na jednej strane a~dendridmi na druhej, vďaka čomu dochádza k~prenosu informácií v~podobe elektrického signálu. Jeden ľudský neurón môže byť prepojený s~tisíckami iných~\cite{mehligMachineLearningNeural2021}. Centrálna nervová sústava je schopná paralelne spracúvať veľké množstvo informácií z~receptorov, pracovať s~pamäťou a~učiť sa z~poznatkov, názorných aj analogických príkladov, zovšeobecňovať, konkretizovať a~v~konečnom dôsledku generovať riadiace pokyny pre ostatné časti tela.
 
   Elementárnym prvkom \acrshort{uns} je \emph{umelý neurón}. Zjednodušený model umelého neurónu, používaný v~podstate dodnes, bol predstavený ešte v~roku 1943 v~práci McCullocha a~Pittsa~\cite{mccullochLogicalCalculusIdeas1943}. Jeho grafické znázornenie môžeme vidieť na obrázku~\ref{fig:neuron}. Matematicky je možné vyjadriť vstupno-výstupnú závislosť umelého neurónu ako
@@ -10,7 +16,7 @@
   \begin{figure}[b!]
     \centering
     \includegraphics[width=0.55\textwidth]{img/neuron.tex}
-    \caption[McCulloch-Pittsov model neurónu.]{McCulloch-Pittsov model neurónu. $x_i$ sú vstupy neurónu, $w_i$ váhy synaptických spojení, $\theta$ je prah neurónu, $f(a)$ predstavuje aktivačnú funkciu, $a$ vnútornú aktivitu, $y$ je výstup z~neurónu.}\label{fig:neuron}
+    \caption[McCulloch-Pittsov model neurónu]{McCulloch-Pittsov model neurónu. $x_i$ sú vstupy neurónu, $w_i$ váhy synaptických spojení, $\theta$ je prah neurónu, $f(a)$ predstavuje aktivačnú funkciu, $a$ vnútornú aktivitu, $y$ je výstup z~neurónu.}\label{fig:neuron}
   \end{figure}
 
   \acrshort{uns} sa skladajú z~množstva neurónov, ktoré sú usporiadané do vrstiev. Prvá vrstva sa nazýva vstupná, neuróny v~nej prijímajú vstupné informácie a~posielajú ich ďalej. Posledná vrstva neurónovej siete, ktorá poskytuje výsledok, sa nazýva výstupná. Medzi vstupnou a~výstupnou vrstvou sa môžu vyskytovať tzv.\ skryté vrstvy, ktoré slúžia na vykonávanie medzivýpočtov, čím umožňujú riešenie komplexnejších úloh. Výpočtový výkon siete je daný práve schopnosťou skrytých vrstiev modelovať nelineárne vzťahy medzi vstupmi a~výstupmi.\ \acrshort{uns} je možné rozdeliť do viacerých kategórií:
@@ -42,7 +48,7 @@
   %   \item \emph{Neuro-evolúcia}~--~princíp je podobný ako pri \acrshort{rl}, s~tým rozdielom, že na hľadanie parametrov \acrshort{uns} sa využívajú evolučné algoritmy. Tie sú založené na generovaní veľkého množstva riešení (v tomto prípade parametrov \acrshort{uns}) v~početných iteráciách, pričom rôznymi metódami modifikácie jednotlivých riešení, generovania nových náhodných riešení a~výberu tých najvhodnejších pomocou zvolenej kriteriálnej funkcie dochádza k~postupnej konvergencii výsledného riešenia.
   % \end{enumerate}
 
-  \subsection{Aktivačná funkcia}
+  \subsubsection{Aktivačná funkcia}
 
   Aktivačná funkcia zabezpečuje nelinearitu neurónu, vďaka čomu je \acrshort{uns} schopná riešiť zložitejšie problémy. Výber vhodnej aktivačnej funkcie je jednou z~kritických častí návrhu \acrshort{uns} a~musí byť prispôsobený typu úlohy, ktorú má neurónová sieť vykonávať. V~pôvodnom modeli~\cite{mccullochLogicalCalculusIdeas1943} sa používala len binárna (skoková) funkcia $f(a) = \mathrm{sgn}(a)$. Tá je stále používaná v~perceptrónových neurónových sieťach, ktoré vykonávajú klasifikáciu. V~mnohých prípadoch sa však vyžaduje spojitý výstup siete, preto sa používajú viaceré typy spojitých aktivačných funkcií~\cite{aggarwalNeuralNetworksDeep2018}:
   \begin{itemize}
@@ -89,7 +95,7 @@
       \input{img/activation/htanh.tex}
       \caption{Hard Tanh}\label{fig:htanh}
     \end{subfigure}      
-    \caption{Vybrané aktivačné funkcie.}\label{fig:activation}
+    \caption[Vybrané aktivačné funkcie]{Vybrané aktivačné funkcie}\label{fig:activation}
   \end{figure}
 
   Aktivačné funkcie ReLU a~Hard Tanh v~poslednej dobe zväčša nahrádzajú klasické typy, ako sú sigmoid a~hyperbolický tangens, a~to pre zjednodušenie trénovania viacvrstvových neurónových sietí s~týmito funkciami~\cite{aggarwalNeuralNetworksDeep2018}. Grafické znázornenia aktivačných funkcií sa nachádzajú na obr.\ \ref{fig:activation}.
@@ -101,13 +107,13 @@
   kde $H = {(h_1,\dots,h_k)}^{\top}$ je vektor výstupov poslednej skrytej vrstvy a~$k$ je počet výstupných neurónov aj neurónov poslednej skrytej vrstvy. Tento typ aktivačnej funkcie je výhodné použiť na klasifikáciu väčšieho množstva tried~\cite{aggarwalNeuralNetworksDeep2018}.
 
 
-\section{Perceptróny}\label{ssec:slp}
+\subsection{Perceptróny}\label{ssec:slp}
 
   Základným typom neurónových sietí sú perceptróny. Slúžia na klasifikáciu vstupných údajov a~pôvodne boli predstavené predstavené Rosenblattom v~roku 1958~\cite{rosenblattPerceptronProbabilisticModel1958}, ktorý ich architektúru rozdelil na tri vrstvy: senzorickú, asociačnú a~výstupnú. Senzorická vrstva sa namiesto plnohodnotných neurónov skladá len zo vstupných terminálov, ktorých počet zodpovedá rozmeru vstupného vektora a~ich úlohou je preposielanie vstupných hodnôt ďalej (príp.\ normalizácia vstupných hodnôt). Za ňou môže nasledovať asociačná, teda skrytá vrstva, v~ktorej neuróny slúžia na vykonávanie medzivýpočtov a~umožňujú riešenie lineárne neseparovateľných problémov (viac v časti~\ref{ssec:lin-sep}). Výstupy skrytej vrstvy nie sú čitateľné, slúžia ako vstupy pre neuróny poslednej, výstupnej vrstvy. V~pôvodnej architektúre váhy skrytej vrstvy nepodliehali učeniu. Napokon, výstupná vrstva slúži na výsledné výpočty siete. Počet neurónov v~nej zodpovedá počtu tried, ktoré sa v~rámci úlohy klasifikácie rozlišujú. Neuróny v~takejto sieti sú pospájané v~doprednom smere (angl.\ \emph{feed-forward}), teda zľava doprava. Všetky prepojenia perceptrónu sú jednosmerné, informácie sa posielajú len v~smere dopredu k~neurónom susediacim sprava. Nenachádzajú sa v~ňom žiadne spätné prepojenia ani prepojenia preskakujúce vrstvu~\cite{mehligMachineLearningNeural2021}.
 
   Počas nasledujúceho vývoju v~oblasti \acrshort{uns} však došlo z~didaktických dôvodov k~ustáleniu termínu \emph{perceptrón} iba na jednovrstvovú lineárne separovateľnú architektúru, \emph{jednovrstvový perceptrón (\acrshort{slp})}. Klasifikačné siete s~menej ako štyrmi skrytými vrstvami sa zvyknú označovať aj \emph{viacvrstvové perceptróny (\acrshort{mlp})}.
   
-  \subsection{Jednovrstvové perceptróny}
+  \subsubsection{Jednovrstvové perceptróny}
   Vstupná vrstva jednovrstvového perceptrónu obsahuje $d$ vstupných terminálov pre vstupný vektor $X = {(x_1, x_2, \dots, x_d)}^{\top}$, ku ktorým je priradený vektor váh $W = {(w_1, w_2, \dots, w_d)}^{\top}$. Výstupná jednotka vypočíta vážený súčet vstupov a~výsledok spracuje pomocou skokovej funkcie, ktorá určuje výstupnú triedu~\cite{aggarwalNeuralNetworksDeep2018}:
 
   \begin{equation}
@@ -117,7 +123,7 @@
 
   Perceptrón funguje ako lineárny klasifikátor: rozhodovaciu hranicu tvorí hyper-rovina \( W \cdot X + \theta = 0 \), ktorá rozdeľuje vstupný priestor na dve triedy. Tento prístup je účinný v~prípadoch, keď sú dáta \emph{lineárne separovateľné}.
 
-  \subsection{Lineárna separovateľnosť~--~problém klasifikácie}\label{ssec:lin-sep}
+  \subsubsection{Lineárna separovateľnosť~--~problém klasifikácie}\label{ssec:lin-sep}
 
   Problém lineárnej separovateľnosti je možné priblížiť na jednoduchom príklade. Majme klasifikačnú úlohu pre dvojrozmerné reálne vstupné vektory $X = {(x_1, x_2)}^{\top}$, ktoré majú byť rozdelené do cieľových skupín, teda tried $y \in \{-1, 1\}$. Na riešenie teoreticky stačí použiť jeden neurón so skokovou aktivačnou funkciou, teda výstup neurónu je počítaný ako skalárny súčin vstupov a~váh:
   \begin{equation}
@@ -144,7 +150,7 @@
   \begin{figure}[b!]
     \centering
     \input{img/linear_separation/lin_sep_classification.tex}
-    \caption{Geometrické riešenie klasifikácie.}\label{fig:classification-geometry}
+    \caption[Geometrické riešenie klasifikácie]{Geometrické riešenie klasifikácie}\label{fig:classification-geometry}
   \end{figure}
 
   V~uvedenom príklade sme pre zjednodušenie neuvažovali s~biasom neurónu $\theta$. Jeho vplyv na rozhodovaciu hranicu je však zrejmý keď položíme argument zo vzťahu~\ref{eq:lin-sep1} rovný nule a~odvodíme
@@ -168,7 +174,7 @@
       \input{img/linear_separation/xor.tex}
       \caption{Exkluzívna disjunkcia (XOR)~--~lineárne neseparovateľná}
     \end{subfigure}
-    \caption[Lineárna separovateľnosť vybraných logických funkcií.]{Lineárna separovateľnosť vybraných logických funkcií.\ $\bullet{}$ pre pravd.\ hodnotu \uv{TRUE} ($y = 1$), $\circ{}$ pre pravd.\ hodnotu \uv{FALSE} ($y = -1$).}\label{fig:boolean}
+    \caption[Lineárna separovateľnosť vybraných logických funkcií]{Lineárna separovateľnosť vybraných logických funkcií.\ $\bullet{}$ pre pravd.\ hodnotu \uv{TRUE} ($y = 1$), $\circ{}$ pre pravd.\ hodnotu \uv{FALSE} ($y = -1$).}\label{fig:boolean}
   \end{figure}
 
   % Perceptrón sa teda skladá zo vstupných terminálov ${\bf x}^{(\mu)} = {\left(x_1^{(\mu)}, x_2^{(\mu)}, \dots, x_N^{(\mu)}\right)}^\top$, kde $N$ vyjadruje rozmer vstupných vektorov označených $\mu = 1,\dots,p$, $M$ výstupných neurónov podľa rozmeru riešenia úlohy (napr.\ počtu tried pri klasifikácii) a~určitého počtu skrytých vrstiev. V~prípade, že sieť neobsahuje skryté vrstvy, ide o~jednovrstvovú neurónovú sieť; ak obsahuje aspoň jednu skrytú vrstvu, je to viac-vrstvová neurónová sieť. Výstupy skrytých neurónov $V_j$ a~výstupných neurónov $O_i$ sú potom počítané analogicky ako
@@ -198,7 +204,7 @@
   %   \caption{Lineárne separovateľná a~neseparovateľná klasifikácia~\cite{mehligMachineLearningNeural2021}}\label{fig:lin-sep}
   % \end{figure}    
 
-\subsection{Viacvrstvové perceptróny}\label{ssec:mlp}
+\subsubsection{Viacvrstvové perceptróny}\label{ssec:mlp}
 
   V~prípade \acrshort{slp} je jediná výpočtová vrstva výstupná, keďže vstupná vrstva nevykonáva žiadne výpočty. Viacvrstvové perceptróny (\acrshort{mlp}) obsahujú viacero výpočtových vrstiev. Keďže ale výsledky vrstiev pridaných medzi vstupnú a~výstupnú vrstvu nie sú viditeľné pre užívateľa, označujú sa ako \emph{skryté vrstvy}.
   
@@ -213,7 +219,7 @@
   \begin{figure}[b!]
     \centering
     \includegraphics[width=0.4\textwidth]{img/perceptron.tex}
-    \caption[Viacvrstvový perceptrón.]{Viacvrstvový perceptrón s~jednou skrytou vrstvou so vstupnými terminálmi $x_k$, skrytými neurónmi $h_{j}$, výstupným neurónom $y_1$, a~váhami prepojení medzi vrstvami $w_{jk}$ a~$w_{1j}$.~\cite{mehligMachineLearningNeural2021}}\label{fig:mlp}
+    \caption[Viacvrstvový perceptrón]{Viacvrstvový perceptrón s~jednou skrytou vrstvou so vstupnými terminálmi $x_k$, skrytými neurónmi $h_{j}$, výstupným neurónom $y_1$, a~váhami prepojení medzi vrstvami $w_{jk}$ a~$w_{1j}$.~\cite{mehligMachineLearningNeural2021}}\label{fig:mlp}
   \end{figure}
 
   \begin{figure}[t!]
@@ -227,7 +233,7 @@
       \input{img/linear_separation/lin_unsep.tex}
       \caption{Lineárne neseparovateľný problém klasifikovaný pomocou \acrshort{mlp}, tvoriacej po častiach lineárnu rozhodovaciu hranicu.}
     \end{subfigure}
-    \caption{Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}.}\label{fig:lin-sep-solution}
+    \caption[Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}]{Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}}\label{fig:lin-sep-solution}
   \end{figure}
 
   Mechanizmus klasifikácie je možné si predstaviť tak, že každý zo vstupných bodov obdrží množinu výstupných hodnôt skrytých neurónov $\{h_1, h_2, h_3\}$. Každý zo segmentov je potom charakterizovaný unikátnou kombináciou výstupov skrytej vrstvy. Váhy $w_{1j}$ a~prahové hodnoty ${\theta_j}$ musia byť nastavené tak, aby každému vzniknutému segmentu vstupnej roviny pridelil výstupný neurón správnu triedu $y_i$, čo už opäť predstavuje lineárne separovateľný problém. To prebieha v~tomto konkrétnom príklade na základe vzťahu
@@ -249,17 +255,17 @@
   
   Základnými parametrami pri návrhu siete sú teda počet skrytých vrstiev, počty skrytých vrstiev a~neurónov v~jednotlivých vrstvách, a~tiež výber aktivačných funkcií neurónov. V~neposlednom rade, úspešnosť trénovania neurónovej siete závisí od výberu optimalizačnej funkcie odchýlky.
   
-\section{Trénovanie UNS}\label{ssec:training}
+\subsection{Trénovanie UNS}\label{ssec:training}
 
   Trénovanie umelých neurónových sietí predstavuje kľúčový proces, prostredníctvom ktorého sa model učí z~dostupných dát optimalizáciou svojich parametrov, najmä váh a~prahov neurónov. Cieľom trénovania je minimalizovať odchýlku medzi výstupom siete $\hat y$ a~požadovaným výstupom $y$, čo sa dosahuje iteratívnym prispôsobovaním parametrov na základe výpočtu gradientu chyby. Jedným z~kľúčových aspektov trénovania je preto výber vhodnej funkcie na výpočet odchýlky (v angl.\ literatúre označovanej \emph{loss function}) vzhľadom ku konkrétnemu typu úlohy, ktorú \acrshort{uns} rieši. Obrázok~\ref{fig:training} znázorňuje základný princíp trénovania \acrshort{uns}. V~tejto časti sa podrobnejšie pozrieme na jeden z~prvých používaných algoritmov~--~perceptrónové kritérium~-- ale aj na v~súčasnosti najbežnejšiu metódu spätného šírenia chyby. Priblížime tiež časté problémy, ktoré sa pri procese trénovania môžu vyskytnúť.
 
   \begin{figure}[b!]
     \centering
     \input{img/training.tex}
-    \caption{Základná schéma algoritmov trénovania UNS.}\label{fig:training}
+    \caption[Základná schéma algoritmov trénovania UNS]{Základná schéma algoritmov trénovania UNS}\label{fig:training}
   \end{figure}
 
-  \subsection{Perceptrónové kritérium}
+  \subsubsection{Perceptrónové kritérium}
     Pôvodný perceptrónový algoritmus prebiehal heuristicky pomocou elektrických obvodov, na rozdiel od súčasného chápania problému ako optimalizačnej úlohy. V~každom prípade, cieľ ostáva zachovaný a~je ním nájsť také váhy $W$, ktoré minimalizujú počet chybne klasifikovaných príkladov v~množine trénovacích vstupno-výstupných párov $(X, y)$. Úlohu perceptrónového algoritmu je teda možné zapísať v~tvare účelovej funkcie najmenších štvorcov pre všetky trénovacie objekty datasetu $\mathcal{D}$~\cite{aggarwalNeuralNetworksDeep2018} ako
     \begin{equation}
       \mathcal{L} = \arg\min_{W} \sum_{(X, y) \in \mathcal{D}} {\left( y - \hat y \right)}^2 = \sum_{(X, y) \in \mathcal{D}} {\left[ y - \operatorname{sign}(W \cdot X) \right]}^2
@@ -301,7 +307,7 @@
   %   \end{equation} 
 
 
-  \subsection{Spätné šírenie chyby}
+  \subsubsection{Spätné šírenie chyby}
 
     Optimalizačné kritérium pre \acrshort{slp} je ľahko definovateľné, keďže výstup siete je priamou funkciou váh. To umožňuje jednoduchý výpočet gradientu pomocou diferenciácie. Pri viacvrstvových sieťach je však odchýlka výstupu komplikovanou zloženou funkciou váh v~predošlých vrstvách, ktorú môžeme zjednodušene zapísať ako $\mathcal{L} = f(o(h_r(w_r)))$. Preto sa za účelom výpočtu jej gradientu používa algoritmus \emph{spätného šírenia chyby}. Ten využíva reťazové pravidlo diferenciálneho počtu, ktoré počíta gradienty chyby ako sumu násobkov lokálnych gradientov skrytých neurónov pozdĺž rôznych ciest od daného neurónu až po výstup. Keďže počet ciest medzi skrytým neurónom a~výstupom môže rásť exponenciálne s~hĺbkou a~šírkou siete, priamy výpočet všetkých príspevkov by bol výpočtovo náročný. Preto sa spätné šírenie realizuje efektívne pomocou dynamického programovania, ktoré opakovane (rekurzívne) využíva už vypočítané medzivýsledky. Výpočet spätného šírenia chyby prebieha vo viacerých cykloch, tzv.\ \emph{epochách}, pričom každá pozostáva z~dvoch hlavných fáz:
     \begin{enumerate}
@@ -388,13 +394,13 @@
 
     Proces trénovania \acrshort{uns} môže prebiehať v~dvoch režimoch. Pri \emph{vzorkovom režime} dochádza k~úprave váh po privedení každej novej vstupnej vzorky. V~\emph{dávkovom režime} sa váhy korigujú až po uskutočnení celej epochy, teda po kompletnom prechode celého trénovacieho súboru cez sieť, s~využitím globálnej chyby zo všetkých vzoriek a~výstupov.
         
-    \subsection{Problémy trénovania UNS}\label{ssec:training-problems}
+    \subsubsection{Problémy trénovania UNS}\label{ssec:training-problems}
 
       Neurónové siete poskytujú silný nástroj pri riešení komplexných a~analyticky ťažko odvoditeľných úloh. Aby ich trénovanie nebolo kontraproduktívne, je treba si uvedomiť problémy, ktoré s~ním môžu byť spojené. Medzi najzávažnejšie problémy patria \emph{pretrénovanie} a~\emph{problém miznúceho gradientu}. Ťažkosti môžu nastať aj pri nedostatočnej konvergencii účelovej funkcie, uviaznutí v~lokálnom alebo falošnom optime či nedostatočnom výpočtovom výkone.
 
-      \subsubsection{Pretrénovanie} \
+      \paragraph{Pretrénovanie} \
 
-      Podstata trénovania neurónových sietí, ktoré je príkladom \emph{učenia s~učiteľom}, spočíva v~tom, že sieť je schopná sa na základe testovacích dát naučiť všeobecné závislosti medzi vstupnými a~výstupnými hodnotami, ktoré má byť následne schopná rozlíšiť aj na neznámych dátach. Po ukončení trénovania siete teda vždy prebieha fáza testovania, kedy je na vstup siete privedená množina vzoriek, ktoré sú odlišné od trénovacích.
+      \noindent Podstata trénovania neurónových sietí, ktoré je príkladom \emph{učenia s~učiteľom}, spočíva v~tom, že sieť je schopná sa na základe testovacích dát naučiť všeobecné závislosti medzi vstupnými a~výstupnými hodnotami, ktoré má byť následne schopná rozlíšiť aj na neznámych dátach. Po ukončení trénovania siete teda vždy prebieha fáza testovania, kedy je na vstup siete privedená množina vzoriek, ktoré sú odlišné od trénovacích.
 
       Pretrénovanie (angl.\ \emph{overfitting}) je jav, ktorý môže nastať dôsledkom neskorého ukončenia procesu trénovania, nedostatočnej trénovacej množiny dát, či nevhodnej architektúry siete. Prejavuje sa tak, že neurónová sieť síce dosahuje vysokú úspešnosť pri trénovacích dátach, no jej úspešnosť výrazne klesá pri zovšeobecnení na testovacích dátach, ktoré sú odlišné. Tento problém nastáva často napríklad vtedy, keď \acrshort{uns} obsahuje viac neurónov a~prepojení, než zodpovedá skutočnej zložitosti riešenej úlohy, či v~prípade nedostatočne veľkej testovacej množiny, čo do počtu a~rozsahu prvkov vstupných vzoriek. V~prvom prípade je dôsledkom, že sieť sa naučí zaznamenať aj také súvislosti vo vstupných dátach, ktoré nie sú všeobecné a~súvisia len s~danou množinou vstupných dát. V~druhom prípade je zase problém v~tom, že sieť sa nestihne naučiť všetky vstupno-výstupné závislosti.
 
@@ -406,9 +412,9 @@
         \item \emph{výmena šírky za hĺbku}~--~namiesto veľkého počtu neurónov v~jednej vrstve a~malému počtu skrytých vrstiev sa preferuje málo neurónov a~veľa skrytých vrstiev. Takáto \emph{hlboká sieť} je schopná dosiahnuť rovnakú, a~často aj lepšiu úspešnosť, a~navyše môže obsahovať menšie množstvo parametrov.
       \end{enumerate}
 
-      \subsubsection{Miznúce a~explodújúce gradienty}
+      \paragraph{Miznúce a~explodújúce gradienty} \
 
-        Problém miznúcich a~explodujúcich gradientov býva zvyčajne spojený s~trénovaním hlbokých neurónových sietí a~súvisí s~využívaním reťazového pravidla (vzťah~\ref{eq:chain-rule-multi}) pri spätnom šírení chyby. Keďže pri výpočte celkového gradientu účelovej funkcie dochádza k~početnému násobeniu lokálnych gradientov pozdĺž prepojení, zvlášť pri veľkom počte skrytých vrstiev môže spôsobiť buď exponenciálny útlm k~nule alebo naopak rýchly nárast gradientu. Oba javy tak spôsobujú nestabilitu procesu trénovania.
+        \noindent Problém miznúcich a~explodujúcich gradientov býva zvyčajne spojený s~trénovaním hlbokých neurónových sietí a~súvisí s~využívaním reťazového pravidla (vzťah~\ref{eq:chain-rule-multi}) pri spätnom šírení chyby. Keďže pri výpočte celkového gradientu účelovej funkcie dochádza k~početnému násobeniu lokálnych gradientov pozdĺž prepojení, zvlášť pri veľkom počte skrytých vrstiev môže spôsobiť buď exponenciálny útlm k~nule alebo naopak rýchly nárast gradientu. Oba javy tak spôsobujú nestabilitu procesu trénovania.
 
         Častou príčinou vzniku miznúceho gradientu býva napríklad použitie aktivačnej funkcie sigmoid. Tá má v~celom definičnom obore deriváciu menšiu ako 0,25. Riešením je jej náhrada funkciou \acrshort{relu}. Okrem tohto riešenia existujú aj pokročilejšie prístupy, ako napríklad~\cite{aggarwalNeuralNetworksDeep2018}:
         \begin{enumerate}
@@ -417,24 +423,24 @@
           \item \emph{Normalizácia po dávkach} (angl.\ \emph{batch normalization})~--~normalizuje vstupy každej vrstvy v~rámci jednej dávky tak, aby mali nulový priemer a~jednotkovú varianciu. Tým sa potláča nežiaduce kolísanie rozdelenia vstupných hodnôt spôsobené priebežným menením váh vo vrstvách. Výsledkom je rýchlejšia a~stabilnejšia konvergencia počas učenia, ako aj zmiernenie problémov s~miznúcim gradientom. Normalizácia v~rámci dávky tiež často umožňuje použiť vyššiu rýchlosť učenia a~znižuje závislosť na počiatočnom nastavení váh. Je však menej účinná pri veľmi malých dávkach alebo v~rekurentných sieťach.
         \end{enumerate}
 
-      \subsubsection{Ťažkosti s~konvergenciou} \
+      \paragraph{Ťažkosti s~konvergenciou} \
 
-        Zvlášť v~prípade hlbokých neurónových sietí sa vyskytuje problém s~konvergenciou účelovej funkcie, keďže veľký počet skrytých vrstiev spôsobuje ťažší tok gradientov cez sieť. Čiastočne tento problém súvisí s~miznutím gradientov, ale má svoje osobitné špecifiká~\cite{aggarwalNeuralNetworksDeep2018}.
+        \noindent Zvlášť v~prípade hlbokých neurónových sietí sa vyskytuje problém s~konvergenciou účelovej funkcie, keďže veľký počet skrytých vrstiev spôsobuje ťažší tok gradientov cez sieť. Čiastočne tento problém súvisí s~miznutím gradientov, ale má svoje osobitné špecifiká~\cite{aggarwalNeuralNetworksDeep2018}.
 
         Jedným so spôsobov riešenia sú tzv.\ \emph{bránové siete}. Využívajú špecifické neuróny (bunky), obsahujúce adaptívne riadiace mechanizmy (brány), ktoré selektívne kontrolujú tok informácie v~sieti. Ich cieľom je zabezpečiť, aby sa relevantné informácie udržali a~prenášali počas spracovania vstupu, zatiaľ čo menej dôležité sa potláčajú. Tento prístup je kľúčový najmä pri modelovaní sekvenčných dát (napr.\ spracovanie textu, videa), kde dlhodobé závislosti často bránia efektívnemu učeniu. Takéto siete sa radia medzi rekurentné neurónové siete a~patria tu napr.\ \acrshort{lstm} či \acrshort{gru} (bližšie o~nich v~časti~\ref{ssec:rnn}).
         
         Ďalšou možnosťou sú \emph{reziduálne siete}, ktoré zavádzajú reziduálne prepojenia, teda obchádzajúce vetvy, ktoré umožňujú prenášať informáciu aj gradient priamo naprieč viacerými vrstvami bez ich transformácie. Tým sa výrazne znižuje riziko miznutia gradientu a~zlepšuje sa stabilita učenia, čo umožňuje trénovať siete s~desiatkami až stovkami vrstiev. Tento prístup zároveň urýchľuje konvergenciu a~vedie k~lepšiemu využitiu kapacity modelu. Známy príklad takejto architektúry je ResNet~\cite{heDeepResidualLearning2016}. Princíp fungovania reziduálnych sietí spočíva v~tom, že namiesto učenia sa váh, teda priamej transformácie vstupu na výstup, sa učí len rozdiel medzi vstupom a~výstupom. Takéto prepojenie umožňuje gradientom efektívne pretekať aj do veľmi hlbokých vrstiev siete počas spätného šírenia chyby.
 
-      \subsubsection{Lokálne a~falošné optimá}
+      \paragraph{Lokálne a~falošné optimá} \
         
-      Optimalizačná funkcia neurónových sietí je silne nelineárna a~obsahuje veľké množstvo lokálnych extrémov. Preto je výber vhodnej inicializácie parametrov kľúčový. Nesprávne inicializačné body môžu viesť k~nevhodným (lokálnym alebo falošným) minimám. Jednou z~metód, ako sa tomu vyhnúť, je tzv.\ \emph{predtrénovanie} (angl.\ \emph{pretraining}), ktoré spočíva v~postupnom trénovaní jednotlivých vrstiev siete, často pomocou učenia bez učiteľa. Tento prístup poskytuje rozumné počiatočné hodnoty váh, ktoré obchádzajú irelevantné časti parametrového priestoru. Predtrénovanie tiež pomáha znižovať riziko pretrénovania, keďže sa vyhýba minimám, ktoré sú síce vhodné pre trénovaciu množinu, no zlyhávajú na testovacích dátach~--~tzv.\ falošným optimám~\cite{aggarwalNeuralNetworksDeep2018}.
+      \noindent Optimalizačná funkcia neurónových sietí je silne nelineárna a~obsahuje veľké množstvo lokálnych extrémov. Preto je výber vhodnej inicializácie parametrov kľúčový. Nesprávne inicializačné body môžu viesť k~nevhodným (lokálnym alebo falošným) minimám. Jednou z~metód, ako sa tomu vyhnúť, je tzv.\ \emph{predtrénovanie} (angl.\ \emph{pretraining}), ktoré spočíva v~postupnom trénovaní jednotlivých vrstiev siete, často pomocou učenia bez učiteľa. Tento prístup poskytuje rozumné počiatočné hodnoty váh, ktoré obchádzajú irelevantné časti parametrového priestoru. Predtrénovanie tiež pomáha znižovať riziko pretrénovania, keďže sa vyhýba minimám, ktoré sú síce vhodné pre trénovaciu množinu, no zlyhávajú na testovacích dátach~--~tzv.\ falošným optimám~\cite{aggarwalNeuralNetworksDeep2018}.
 
-      \subsubsection{Výpočtová náročnosť}
+      \paragraph{Výpočtová náročnosť} \
 
         \noindent Jednou z~hlavných výziev pri návrhu neurónových sietí je dlhá doba trénovania, ktorá môže v~oblastiach ako spracovanie textu či obrazu trvať aj celé týždne. Kľúčový pokrok v~tomto smere priniesol vývoj výkonnejšej hardvérovej infraštruktúry, najmä grafických procesorov (\acrshort{gpu}), ktoré sú schopné paralelne vykonávať výpočty typické pre neurónové siete. Platformy ako Torch alebo TensorFlow majú vstavanú podporu pre \acrshort{gpu}, čo umožňuje efektívnejšie učenie aj zložitých architektúr. Hoci k~pokroku v~hlbokom učení prispeli aj algoritmické vylepšenia, značná časť úspechu spočíva v~tom, že existujúce algoritmy dnes dokážeme lepšie využiť vďaka výkonnejšiemu hardvéru.Výhodou väčšiny neurónových sietí je, že náročné výpočty prebiehajú počas trénovania, zatiaľ čo predikčná fáza je už relatívne rýchla, čo je dôležité pri aplikáciách v~reálnom čase~\cite{aggarwalNeuralNetworksDeep2018}.
   
   
-    \subsection{Súčasné prístupy k~trénovaniu}
+    \subsubsection{Súčasné prístupy k~trénovaniu}
 
       Snaha o~vyriešenie vyššie spomenutých problémov trénovania \acrshort{uns} podnietila vznik množstva variácií učiacich algoritmov, ktoré sú síce v~základoch postavené na metódach gradientného zostupu a~spätného šírenia chyby, ale obsahujú aj ďalšie modifikácie a~vylepšenia, týkajúce sa či už len samotného procesu trénovania, alebo aj architektúry celej siete, resp.\ jej buniek.
 
@@ -452,14 +458,14 @@
 
       \begin{subequations}
         \begin{align}
-          F_i &\:\leftarrow\: \rho_f F_i + (1 - \rho_f) \left( \frac{\partial\, \mathcal{L}}{\partial\, \mathcal{w_i}} \right);\ \forall i, \\
-          A_i &\:\leftarrow\: \rho A_i + (1 - \rho) {\left( \frac{\partial\, \mathcal{L}}{\partial\, \mathcal{w_i}} \right)}^2;\ \forall i, \\
+          F_i &\:\leftarrow\: \rho_f F_i + (1 - \rho_f) \left( \frac{\partial\, \mathcal{L}}{\partial\, w_i} \right);\ \forall i, \\
+          A_i &\:\leftarrow\: \rho A_i + (1 - \rho) {\left( \frac{\partial\, \mathcal{L}}{\partial\, w_i} \right)}^2;\ \forall i, \\
           \alpha_t &= \alpha \left( \frac{\sqrt{1 - \rho^t}}{1 - \rho_f^t} \right),
         \end{align}
       \end{subequations}
       pričom $\rho, \rho_f \in (0,1)$ sú voliteľné parametre. Novšia verzia algoritmu, AdamW~\cite{loshchilovDecoupledWeightDecay2019} vylepšuje pôvodný Adam v~tom, že regularizačný člen nemieša s~výpočtom gradientného momentu, ale počíta ho osobitne, čo vedie k~stabilnejšiemu trénovaniu a~lepšiemu generalizačnému výkonu siete.
   
-\section{Hlboké učenie}
+\subsection{Hlboké učenie}
 
   \emph{Hlboké učenie} (angl.\ \emph{deep learning}) predstavuje jednu z najdôležitejších súčasných oblastí vývoja \acrshort{ui}. Prekonáva ťažkosti klasických perceptrónových sietí v riešení komplexnejších úloh využitím viacvrstvových neurónových architektúr, kde každá vrstva extrahuje čoraz abstraktnejšie znaky z~výstupov predchádzajúcich vrstiev. Vďaka tejto hierarchickej reprezentácii je možné modelovať zložité funkcie priamo z~dát bez nutnosti manuálne definovaných príznakov~\cite{lecunDeepLearning2015}. Hlboké siete tak výrazne prevyšujú tradičné \acrshort{mlp} v~schopnosti učiť sa reprezentácie priamo zo surových dát, čím umožňujú riešiť zložité úlohy ako rozpoznávanie objektov, preklad jazykov alebo predikciu dynamiky systémov.
 
@@ -471,7 +477,7 @@
   %   \item \emph{Rekurentné neurónové siete (RNN)}, ktoré sú vhodné na modelovanie sekvenčných údajov a~nachádzajú využitie pri spracovaní senzorických tokov, predikcii pohybu či fúzii dát z~viacerých senzorov s~časovou závislosťou.
   % \end{itemize}
 
-  \subsection{Konvolučné neurónové siete}\label{ssec:cnn}
+  \subsubsection{Konvolučné neurónové siete}\label{ssec:cnn}
 
     Konvolučné neurónové siete (\acrshort{cnn}) sú špeciálne navrhnuté na efektívne spracovanie dát so štruktúrou v~priestore. Hoci boli vynájdené ešte koncom 20.\ storočia, do širšieho používania sa dostali až po práci kolektívu A. Krizhevsky~\cite{krizhevskyImageNetClassificationDeep2012} a~dodnes sú najúspešnejším nástrojom na rozpoznávanie a~klasifikáciu obrazu z~kamery. Oproti klasickým plne prepojeným sieťam majú pri rovnakom počte neurónov menej prepojení, vďaka čomu sú jednoduchšie na natrénovanie a~odolnejšie voči pretrénovaniu. Princíp ich fungovania je inšpirovaný fungovaním mozgu cicavcov pri spracovaní zrakových vnemov~\cite{mehligMachineLearningNeural2021}.
 
@@ -488,12 +494,12 @@
     \begin{figure}[t!]
       \centering
       \includegraphics[width=0.8\textwidth]{img/cnn.png}
-      \caption{Schéma architektúry konvolučnej neurónovej siete.~\cite{mehligMachineLearningNeural2021}}
+      \caption[Schéma architektúry konvolučnej neurónovej siete]{Schéma architektúry konvolučnej neurónovej siete~\cite{mehligMachineLearningNeural2021}}
     \end{figure}
 
     Medzi najvyužívanejšie implementácie patria TensorFlow a~PyTorch, ktoré ponúkajú predpripravené moduly na tvorbu a~trénovanie \acrshort{cnn}, ako aj množstvo predtrénovaných modelov (napr.\ VGG, ResNet, MobileNet či EfficientNet) vhodných na prenos znalostí. Tieto knižnice podporujú aj hardvérovú akceleráciu (napr.\ pomocou \acrshort{gpu}), čo umožňuje efektívne trénovanie rozsiahlych sietí. V~praxi sa \acrshort{cnn} implementácie uplatňujú v~prostrediach ako OpenCV, ktoré ponúka jednoduché rozhranie na inferenciu \acrshort{cnn} modelov v~reálnom čase a~je často využívaný vo vnorených systémoch a~robotike. Vďaka týmto nástrojom je dnes práca s~\acrshort{cnn} prístupná aj bez potreby vlastnej implementácie architektúr od základu.
 
-  \subsection{Rekurentné neurónové siete}\label{ssec:rnn}
+  \subsubsection{Rekurentné neurónové siete}\label{ssec:rnn}
   
     Rekurentné neurónové siete (\acrshort{rnn}) tvoria triedu architektúr umelých neurónových sietí navrhnutých špecificky na spracovanie sekvenčných dát. Na rozdiel od bežných dopredných sietí, ktoré spracúvajú vstupy ako nezávislé a~nemajú vnútornú pamäť, \acrshort{rnn} obsahujú mechanizmus \emph{rekurencie}, ktorý im umožňuje uchovávať informácie o~predchádzajúcich vstupoch v~tzv.\ \emph{skrytom stave}. Táto schopnosť ich predurčuje na úlohy, v~ktorých poradie alebo časový kontext zohráva rozhodujúcu úlohu~--~napríklad pri spracovaní textu, zvuku, signálov zo senzorov či trajektórií v~priestore.
 
@@ -506,7 +512,7 @@
     \begin{figure}[b!]
       \centering
       \input{img/rnn.tex}
-      \caption{Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase.}
+      \caption[Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase]{Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase}
     \end{figure}
 
     Vďaka schopnosti modelovať dlhodobé závislosti v~čase sú \acrshort{rnn} vhodné na spracovanie senzorických dát, kde každé meranie tvorí súčasť väčšej sekvencie. Môžu slúžiť aj ako časový filter, nakoľko dokážu integrovať informácie z~predchádzajúcich meraní a~korigovať neistotu v~aktuálnych pozorovaniach. K~ich výhodám patrí aj prispôsobivosť a~univerzálnosť, keďže tá istá architektúra sa dá použiť na rôzne typy sekvencií. Sú však náročné na trénovanie a~citlivé na dĺžku a~kvalitu sekvencie. Medzi najčastejšie používané implementácie \acrshort{rnn} patria tieto architektúry:
@@ -528,7 +534,7 @@
         \includegraphics[width=\textwidth]{img/gru.png}
         \caption{GRU sieť~--~aktualizačná a~resetovacia brána}\label{fig:gru}
       \end{subfigure}
-      \caption{Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí.~\cite{jiangMixedDeepRecurrent2019}}
+      \caption[Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí]{Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí~\cite{jiangMixedDeepRecurrent2019}}
     \end{figure}
 
 % \section{Strojové učenie}
@@ -541,22 +547,23 @@
 
 % \section{Fuzzy logika}
 
-\section{Fúzia lokalizácie pomocou UNS}
+\subsection{Využitie UNS a hlbokého učenia pre fúziu snímačov}
+
   Presná znalosť polohy v~prostredí~--~lokalizácia~--~predstavuje jeden zo základných predpokladov pre spoľahlivú prevádzku a~efektívne plnenie úloh mobilného robota. Na tento účel sa bežne využíva viacero typov senzorov, ako napríklad \acrshort{gnss}, \acrshort{ins}, vizuálne systémy alebo laserové snímače. Každý z~týchto senzorov však podlieha určitým obmedzeniam a~v~praxi neposkytuje dokonale presné ani spoľahlivé údaje. Na zníženie neistoty a~zvýšenie robustnosti odhadu aktuálnej polohy sa preto využíva fúzia údajov, t.\ j.\ inteligentná integrácia viacerých dátových tokov do jedného spoločného odhadu, ktorý je spravidla presnejší a~konzistentnejší než jednotlivé zdroje samostatne.
 
   Tradičné prístupy k~fúzii údajov sú založené prevažne na pravdepodobnostných modeloch (napr. Bayesovská filtrácia, Kalmanove filtre, časticové filtre) alebo metódach intervalového odhadu. Najväčšou výzvou pri použití týchto metód je však získanie presného modelu systému. V~prípade komplexných a~vysoko dynamických systémov môže byť odvodenie presného modelu zvlášť náročné. Navyše, senzorické dáta bývajú sprevádzané vlastnou nepresnosťou a~neistotou, ktorých zapracovanie do modelu je problematické. Vo výsledku tak nepresný model systému môže vážne obmedziť úspešnosť analytických metód fúzie~\cite{fayyadDeepLearningSensor2020}. 
   
   S~nástupom moderných techník umelej inteligencie~--~predovšetkým umelých neurónových sietí a~hlbokého učenia~--~sa postupne presadzuje aj ich uplatnenie v~tejto oblasti. Tieto modely sú schopné spracovávať veľké objemy vysoko dimenzionálnych dát, učiť sa zložité nelineárne vzťahy medzi jednotlivými vstupmi a~zohľadňovať aj ich časové závislosti bez hlbokej analytickej znalosti modelu, čo z~nich robí atraktívny nástroj pre riešenie úloh lokalizácie prostredníctvom senzorickej fúzie.
 
-  Príkladom využitia štandardnej, plne prepojenej \acrshort{dffn} siete na fúziu lokalizácie môže byť práca Barreto-Cuberto a~kol~\cite{barreto-cuberoSensorDataFusion2022}. Využíva sa tu kombinácia troch typov senzorov: 360-stupňový 2D lidar, stereokamera a~ultrazvukové senzory. Úlohou neurónovej siete bolo zlepšiť schopnosť mobilného robota detegovať rôzne druhy prekážok vrátane sklenených povrchov, ktoré sú pre lidar často neviditeľné. Každý z~týchto senzorov má iné výhody: ultrazvuk vie spoľahlivo detegovať sklo, stereo kamera zachytáva trojrozmernú hĺbkovú štruktúru a~lidar poskytuje vysoké rozlíšenie v~2D rovine. Pred fúziou sa surové senzorické dáta upravujú~--~aplikujú sa filtre (napr. Kalmanov filter na ultrazvuk), transformácie do spoločného súradnicového systému a~projekcia mračien bodov na 2D rovinu. Neurónová sieť bola trénovaná na predikciu spoľahlivých vzdialeností k~prekážkam spojením vstupov zo všetkých troch senzorov. Používa Adam optimalizátor, aktivačnú funkciu \acrshort{relu} a~ďalšie osvedčené techniky pre nelineárne dáta. Výsledkom fúzie je jednotná metrika vzdialeností, ktorú systém využíva na tvorbu 2D okupačnej mapy (angl.\ Occupancy Grid Map). Experimentálne porovnanie viacerých stratégií (lidar-sólo, lidar+sonar, lidar+kamera+sonar) ukázalo, že fúzia pomocou \acrshort{uns} výrazne znižuje strednú kvadratickú chybu (\acrshort{rmse}) (až pod 3~cm), pričom samotný lidar mal chybu cez 2 metre pri prítomnosti skla. Navyše, kombinácia kamery a~sonaru umožňuje rozpoznať aj objekty pod úrovňou skenovania lidaru, čím sa zvyšuje bezpečnosť a~spoľahlivosť navigácie.
-
-  \begin{figure}[t!]
+  \begin{figure}[b!]
     \centering
     \includegraphics[width=0.6\textwidth]{img/mlp_fusion.png}
-    \caption{Fúzia senzorov pomocou \acrshort{dffn}~\cite{barreto-cuberoSensorDataFusion2022}}
+    \caption[Fúzia senzorov pomocou \acrshort{dffn}]{Fúzia senzorov pomocou \acrshort{dffn}~\cite{barreto-cuberoSensorDataFusion2022}}\label{fig:dffn}
   \end{figure}
+  
+  Príkladom využitia štandardnej, plne prepojenej \acrshort{dffn} siete na fúziu lokalizácie môže byť práca Barreto-Cuberto a~kol.~\cite{barreto-cuberoSensorDataFusion2022}. Architektúra tejto siete pre fúziu senzorov je znázornená na obr.~\ref{fig:dffn}. Využíva sa tu kombinácia troch typov senzorov: 360-stupňový 2D lidar, stereokamera a~ultrazvukové senzory. Úlohou neurónovej siete bolo zlepšiť schopnosť mobilného robota detegovať rôzne druhy prekážok vrátane sklenených povrchov, ktoré sú pre lidar často neviditeľné. Každý z~týchto senzorov má iné výhody: ultrazvuk vie spoľahlivo detegovať sklo, stereo kamera zachytáva trojrozmernú hĺbkovú štruktúru a~lidar poskytuje vysoké rozlíšenie v~2D rovine. Pred fúziou sa surové senzorické dáta upravujú~--~aplikujú sa filtre (napr. Kalmanov filter na ultrazvuk), transformácie do spoločného súradnicového systému a~projekcia mračien bodov na 2D rovinu. Neurónová sieť bola trénovaná na predikciu spoľahlivých vzdialeností k~prekážkam spojením vstupov zo všetkých troch senzorov. Používa Adam optimalizátor, aktivačnú funkciu \acrshort{relu} a~ďalšie osvedčené techniky pre nelineárne dáta. Výsledkom fúzie je jednotná metrika vzdialeností, ktorú systém využíva na tvorbu 2D okupačnej mapy (angl.\ Occupancy Grid Map). Experimentálne porovnanie viacerých stratégií (lidar-sólo, lidar+sonar, lidar+kamera+sonar) ukázalo, že fúzia pomocou \acrshort{uns} výrazne znižuje strednú kvadratickú chybu (\acrshort{rmse}) (až pod 3~cm), pričom samotný lidar mal chybu cez 2 metre pri prítomnosti skla. Navyše, kombinácia kamery a~sonaru umožňuje rozpoznať aj objekty pod úrovňou skenovania lidaru, čím sa zvyšuje bezpečnosť a~spoľahlivosť navigácie.
 
-  \subsection{CNN fúzia} \
+  \subsubsection{CNN fúzia}
 
     Nakoľko je architektúra \acrshort{cnn} sietí prispôsobená na spracovanie dvojrozmerných dát, v~súvislosti s~fúziou sa ich využitie objavuje najčastejšie pri spracovaní kamerového obrazu, príp.\ máp.
     
@@ -568,7 +575,7 @@
 
     DeepFusion je riešenie predstavené v~práci~\cite{laidlowDeepFusionRealTimeDense2022}, ktoré systém pre hustú 3D rekonštrukciu z~monokulárneho videa. Kombinuje výhody geometrických metód a~hlbokého učenia. Motiváciou je prekonanie obmedzení existujúcich metód, ako je obmedzený dosah hĺbkových kamier a~nejednoznačnosť mierky pri rekonštrukcii z~fotometrických chýb, čo je kľúčové pre robotické úlohy. Na rozdiel od klasických \acrshort{slam} systémov, ktoré vytvárajú len riedke mapy na základe kľúčových bodov, DeepFusion generuje husté hĺbkové mapy v~mierke pomocou \acrshort{cnn}, ktorá predikuje nielen hĺbku z~jedného obrazu, ale aj jej gradienty a~neistoty. Tieto výstupy sa potom pravdepodobnostne spájajú so čiastočne hustou rekonštrukciou z~viacerých pohľadov, čím sa zachováva globálna konzistencia aj absolútna mierka. Optimalizácia prebieha priebežne počas prechodu novými snímkami, ale sieť sa spúšťa len raz pre každý kľúčový snímok, čím sa zachováva reálny čas spracovania na \acrshort{gpu}. Tento hybridný prístup využíva prednosti učenia (presnosť vo vnútri objektov) aj geometrie (ostré hrany) a~podľa experimentov dosahuje porovnateľné alebo lepšie výsledky ako iné existujúce systémy.
   
-  \subsection{RNN fúzia} \
+  \subsubsection{RNN fúzia}
 
     Ako už bolo spomenuté v~časti~\ref{ssec:rnn}, silnou stránkou \acrshort{rnn} sietí je schopnosť spracúvať časovo-závislé dáta a~pamätať si z~nich vzniknuté závislosti. Vďaka tomu je táto architektúra vhodná na spracovanie meraní z~\acrshort{gnss} a~\acrshort{imu}. 
 

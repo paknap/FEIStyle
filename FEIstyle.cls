@@ -827,11 +827,13 @@
 \newcommand\frontmatter{%
     \clearpage
     %\@mainmatterfalse
+    \pagenumbering{roman}
 }
 
 \newcommand\mainmatter{%
     \cleardoublepage
     % \@mainmattertrue
+    \pagenumbering{arabic}
 }
 
 \newcommand\backmatter{%

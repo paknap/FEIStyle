@@ -114,6 +114,23 @@
   file = {/home/gugo/Zotero/storage/SUEN7W6C/Bai - 2023 - ICP Algorithm Theory, Practice And Its SLAM-oriented Taxonomy.pdf;/home/gugo/Zotero/storage/XW9VPLVV/2206.html}
 }
 
+@article{barrauInvariantExtendedKalman2017,
+  title = {The {{Invariant Extended Kalman Filter}} as a {{Stable Observer}}},
+  author = {Barrau, Axel and Bonnabel, Silvère},
+  date = {2017-04},
+  journaltitle = {IEEE Transactions on Automatic Control},
+  volume = {62},
+  number = {4},
+  pages = {1797--1812},
+  issn = {1558-2523},
+  doi = {10.1109/TAC.2016.2594085},
+  url = {https://ieeexplore.ieee.org/document/7523335},
+  urldate = {2025-07-29},
+  abstract = {We analyze the convergence aspects of the invariant extended Kalman filter (IEKF), when the latter is used as a deterministic nonlinear observer on Lie groups, for continuous-time systems with discrete observations. One of the main features of invariant observers for left-invariant systems on Lie groups is that the estimation error is autonomous. In this paper we first generalize this result by characterizing the (much broader) class of systems for which this property holds. For those systems, the Lie logarithm of the error turns out to obey a linear differential equation. Then, we leverage this “log-linear” property of the error evolution, to prove for those systems the local stability of the IEKF around any trajectory, under the standard conditions of the linear case. One mobile robotics example and one inertial navigation example illustrate the interest of the approach. Simulations evidence the fact that the EKF is capable of diverging in some challenging situations, where the IEKF with identical tuning keeps converging.},
+  keywords = {Asymptotic observers,Convergence,Differential equations,Estimation error,Kalman filters,Mathematical model,nonlinear filters,observers,Observers,Trajectory},
+  file = {/home/gugo/Zotero/storage/Z25PTT8G/Barrau and Bonnabel - 2017 - The Invariant Extended Kalman Filter as a Stable Observer.pdf}
+}
+
 @article{barreto-cuberoSensorDataFusion2022,
   title = {Sensor {{Data Fusion}} for a {{Mobile Robot Using Neural Networks}}},
   author = {Barreto-Cubero, Andres J. and Gómez-Espinosa, Alfonso and Escobedo Cabello, Jesús Arturo and Cuan-Urquizo, Enrique and Cruz-Ramírez, Sergio R.},
@@ -167,6 +184,24 @@
   abstract = {The authors describe a general-purpose, representation-independent method for the accurate and computationally efficient registration of 3-D shapes including free-form curves and surfaces. The method handles the full six degrees of freedom and is based on the iterative closest point (ICP) algorithm, which requires only a procedure to find the closest point on a geometric entity to a given point. The ICP algorithm always converges monotonically to the nearest local minimum of a mean-square distance metric, and the rate of convergence is rapid during the first few iterations. Therefore, given an adequate set of initial rotations and translations for a particular class of objects with a certain level of 'shape complexity', one can globally minimize the mean-square distance metric over all six degrees of freedom by testing each initial registration. One important application of this method is to register sensed data from unfixtured rigid objects with an ideal geometric model, prior to shape inspection. Experimental results show the capabilities of the registration algorithm on point sets, curves, and surfaces.{$<>$}},
   keywords = {Convergence,Inspection,Iterative algorithms,Iterative closest point algorithm,Iterative methods,Motion estimation,Quaternions,Shape measurement,Solid modeling,Testing},
   file = {/home/gugo/Zotero/storage/ZJZDAQM4/121791.html}
+}
+
+@article{boddyExploringWearableSensors2019,
+  title = {Exploring Wearable Sensors as an Alternative to Marker-Based Motion Capture in the Pitching Delivery},
+  author = {Boddy, Kyle J. and Marsh, Joseph A. and Caravan, Alex and Lindley, Kyle E. and Scheffey, John O. and O’Connell, Michael E.},
+  date = {2019-01-24},
+  journaltitle = {PeerJ},
+  shortjournal = {PeerJ},
+  volume = {7},
+  pages = {e6365},
+  publisher = {PeerJ Inc.},
+  issn = {2167-8359},
+  doi = {10.7717/peerj.6365},
+  url = {https://peerj.com/articles/6365},
+  urldate = {2025-07-30},
+  abstract = {Background Improvements in data processing, increased understanding of the biomechanical background behind kinetics and kinematics, and technological advancements in inertial measurement unit (IMU) sensors have enabled high precision in the measurement of joint angles and acceleration on human subjects. This has resulted in new devices that reportedly measure joint angles, arm speed, and stresses to the pitching arms of baseball players. This study seeks to validate one such sensor, the MotusBASEBALL unit, with a marker-based motion capture laboratory. Hypothesis We hypothesize that the joint angle measurements (“arm slot” and “shoulder rotation”) of the MotusBASEBALL device will hold a statistically significant level of reliability and accuracy, but that the “arm speed” and “stress” metrics will not be accurate due to limitations in IMU technology. Methods A total of 10 healthy subjects threw five to seven fastballs followed by five to seven breaking pitches (slider or curveball) in the motion capture lab. Subjects wore retroreflective markers and the MotusBASEBALL sensor simultaneously. Results It was found that the arm slot (R = 0.975, P {$<$} 0.001), shoulder rotation (R = 0.749, P {$<$} 0.001), and stress (R = 0.667, P = 0.001 when compared to elbow torque; R = 0.653, P = 0.002 when compared to shoulder torque) measurements were all significantly correlated with the results from the motion capture lab. Arm speed showed significant correlations to shoulder internal rotation speed (R = 0.668, P = 0.001) and shoulder velocity magnitude (R = 0.659, P = 0.002). For the entire sample, arm slot and shoulder rotation measurements were on a similar scale, or within 5–15\% in absolute value, of magnitude to measurements from the motion capture test, averaging eight degrees less (12.9\% relative differences) and nine degrees (5.4\%) less, respectively. Arm speed had a much larger difference, averaging 3,745 deg/s (80.2\%) lower than shoulder internal rotation velocity, and 3,891 deg/s (80.8\%) less than the shoulder velocity magnitude. The stress metric was found to be 41 Newton meter (Nm; 38.7\%) less when compared to elbow torque, and 42 Nm (39.3\%) less when compared to shoulder torque. Despite the differences in magnitude, the correlations were extremely strong, indicating that the MotusBASEBALL sensor had high reliability for casual use. Conclusion This study attempts to validate the use of the MotusBASEBALL for future studies that look at the arm slot, shoulder rotation, arm speed, and stress measurements from the MotusBASEBALL sensor. Excepting elbow extension velocity, all metrics from the MotusBASEBALL unit showed significant correlations to their corresponding metrics from motion capture and while some magnitudes differ substantially and therefore fall short in validity, the link between the metrics is strong enough to indicate reliable casual use. Further research should be done to further investigate the validity and reliability of the arm speed metric.},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/5BEXSRYG/Boddy et al. - 2019 - Exploring wearable sensors as an alternative to marker-based motion capture in the pitching delivery.pdf}
 }
 
 @online{caiIkdTreeIncrementalKD2021,
@@ -353,6 +388,15 @@
   organization = {EU Agency for the Space Programme}
 }
 
+@article{elmenreichIntroductionSensorFusion,
+  title = {An {{Introduction}} to {{Sensor Fusion}}},
+  author = {Elmenreich, Wilfried},
+  pages = {29},
+  abstract = {This paper gives an overview over the basic concepts of sensor fusion. First we investigate on definitions and terminology and then discuss motivations and limitations of sensor fusion. The next sections present a survey on architectures for sensor fusion and describe algorithms and methods like the Kalman Filter, inference methods, and the application of sensor fusion in robotic vision. Sensor fusion offers a great opportunity to overcome physical limitations of sensing systems. An important point will be the reduction of software complexity, in order to hide the properties of the physical sensors behind a sensor fusion layer.},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/E8944TFF/Elmenreich - An Introduction to Sensor Fusion.pdf}
+}
+
 @article{fayyadDeepLearningSensor2020,
   title = {Deep {{Learning Sensor Fusion}} for {{Autonomous Vehicle Perception}} and {{Localization}}: {{A Review}}},
   shorttitle = {Deep {{Learning Sensor Fusion}} for {{Autonomous Vehicle Perception}} and {{Localization}}},
@@ -500,6 +544,15 @@
   url = {https://ieeexplore.ieee.org/abstract/document/6795963},
   urldate = {2025-07-20},
   abstract = {Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.}
+}
+
+@online{HowDoesGPS2025,
+  title = {How {{Does GPS Work}}? | {{GlobalSpec}}},
+  date = {2025},
+  url = {https://insights.globalspec.com/article/10315/how-does-gps-work},
+  urldate = {2025-07-30},
+  organization = {GlobalSpec},
+  file = {/home/gugo/Zotero/storage/BBDYSNUW/how-does-gps-work.html}
 }
 
 @article{huangApplicationMultisensorFusion2025a,
@@ -651,6 +704,43 @@
   file = {/home/gugo/Zotero/storage/IXEBKLNK/Klette - 2014 - Concise Computer Vision An Introduction into Theory and Algorithms.pdf}
 }
 
+@article{kolarSurveyDatafusionTechniques2020,
+  title = {Survey of {{Datafusion Techniques}} for {{Laser}} and {{Vision Based Sensor Integration}} for {{Autonomous Navigation}}},
+  author = {Kolar, Prasanna and Benavidez, Patrick and Jamshidi, Mo},
+  date = {2020-01},
+  journaltitle = {Sensors},
+  volume = {20},
+  number = {8},
+  pages = {2180},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  issn = {1424-8220},
+  doi = {10.3390/s20082180},
+  url = {https://www.mdpi.com/1424-8220/20/8/2180},
+  urldate = {2022-02-04},
+  abstract = {This paper focuses on data fusion, which is fundamental to one of the most important modules in any autonomous system: perception. Over the past decade, there has been a surge in the usage of smart/autonomous mobility systems. Such systems can be used in various areas of life like safe mobility for the disabled, senior citizens, and so on and are dependent on accurate sensor information in order to function optimally. This information may be from a single sensor or a suite of sensors with the same or different modalities. We review various types of sensors, their data, and the need for fusion of the data with each other to output the best data for the task at hand, which in this case is autonomous navigation. In order to obtain such accurate data, we need to have optimal technology to read the sensor data, process the data, eliminate or at least reduce the noise and then use the data for the required tasks. We present a survey of the current data processing techniques that implement data fusion using different sensors like LiDAR that use light scan technology, stereo/depth cameras, Red Green Blue monocular (RGB) and Time-of-flight (TOF) cameras that use optical technology and review the efficiency of using fused data from multiple sensors rather than a single sensor in autonomous navigation tasks like mapping, obstacle detection, and avoidance or localization. This survey will provide sensor information to researchers who intend to accomplish the task of motion control of a robot and detail the use of LiDAR and cameras to accomplish robot navigation.},
+  issue = {8},
+  langid = {english},
+  keywords = {autonomous systems,data alignment,data fusion,data integration,datafusion,deep learning,fusion,information fusion,LiDAR,localization,mapping,mobile robot,multimodal,navigation,neural networks,obstacle avoidance,obstacle detection,optical,review,RGB,robot,SLAM,stereo vision,survey,vision},
+  file = {/home/gugo/Zotero/storage/ZEWPYIRP/htm.html}
+}
+
+@online{krishnanDeepKalmanFilters2015,
+  title = {Deep {{Kalman Filters}}},
+  author = {Krishnan, Rahul G. and Shalit, Uri and Sontag, David},
+  date = {2015-11-25},
+  eprint = {1511.05121},
+  eprinttype = {arXiv},
+  eprintclass = {stat},
+  doi = {10.48550/arXiv.1511.05121},
+  url = {http://arxiv.org/abs/1511.05121},
+  urldate = {2025-07-29},
+  abstract = {Kalman Filters are one of the most influential models of time-varying phenomena. They admit an intuitive probabilistic interpretation, have a simple functional form, and enjoy widespread adoption in a variety of disciplines. Motivated by recent variational methods for learning deep generative models, we introduce a unified algorithm to efficiently learn a broad spectrum of Kalman filters. Of particular interest is the use of temporal generative models for counterfactual inference. We investigate the efficacy of such models for counterfactual inference, and to that end we introduce the "Healing MNIST" dataset where long-term structure, noise and actions are applied to sequences of digits. We show the efficacy of our method for modeling this dataset. We further show how our model can be used for counterfactual inference for patients, based on electronic health record data of 8,000 patients over 4.5 years.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  note = {Comment: 17 pages, 14 figures: Fixed typo in Fig. 1(b) and added reference},
+  file = {/home/gugo/Zotero/storage/6KJGRZR8/Krishnan et al. - 2015 - Deep Kalman Filters.pdf;/home/gugo/Zotero/storage/F7G6JICF/1511.html}
+}
+
 @inproceedings{krizhevskyImageNetClassificationDeep2012,
   title = {{{ImageNet Classification}} with {{Deep Convolutional Neural Networks}}},
   booktitle = {Advances in {{Neural Information Processing Systems}}},
@@ -681,6 +771,17 @@
   isbn = {978-3-319-48035-0},
   langid = {english},
   file = {/home/gugo/Zotero/storage/45ECEYB2/Krombach et al. - 2017 - Combining Feature-Based and Direct Methods for Semi-dense Real-Time Stereo Visual Odometry.pdf}
+}
+
+@unpublished{laganiereSensorFusionAutonomous2021,
+  title = {Sensor {{Fusion}} for {{Autonomous Vehicles}}: {{Strategies}}, {{Methods}}, and {{Tradeoffs}} | {{Synopsys}}},
+  shorttitle = {Sensor {{Fusion}} for {{Autonomous Vehicles}}},
+  author = {Laganière, Robert},
+  date = {2021-01-23},
+  url = {https://www.youtube.com/watch?v=2Fcmh7SLPBI},
+  urldate = {2022-01-13},
+  abstract = {This video presents key sensor fusion strategies for combining heterogeneous sensor data in automotive SoCs. It discusses the three main fusion methods that can be applied in a perception system: early fusion, late fusion and mid-level fusion. Learn more about Synopsys: https://www.synopsys.com/ Subscribe: https://www.youtube.com/synopsys Follow Synopsys on Twitter: https://twitter.com/synopsys Like Synopsys on Facebook: https://www.facebook.com/Synopsys Follow Synopsys on LinkedIn: https://www.LinkedIn.com/Synopsys},
+  venue = {Synopsis}
 }
 
 @online{laidlowDeepFusionRealTimeDense2022,
@@ -1216,6 +1317,25 @@
   file = {/home/gugo/Zotero/storage/2BTDKPN7/Siegwart - 2004 - Introduction to autonomous mobile robots.pdf}
 }
 
+@article{simanekEvaluationEKFBasedEstimation2015,
+  title = {Evaluation of the {{EKF-Based Estimation Architectures}} for {{Data Fusion}} in {{Mobile Robots}}},
+  author = {Simanek, Jakub and Reinstein, Michal and Kubelka, Vladimir},
+  date = {2015-04},
+  journaltitle = {IEEE/ASME Transactions on Mechatronics},
+  shortjournal = {IEEE/ASME Trans. Mechatron.},
+  volume = {20},
+  number = {2},
+  pages = {985--990},
+  publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+  issn = {1083-4435, 1941-014X},
+  doi = {10.1109/tmech.2014.2311416},
+  url = {http://ieeexplore.ieee.org/document/6782286/},
+  urldate = {2025-07-29},
+  abstract = {This paper presents evaluation of 4 different state estimation architectures exploiting the extended Kalman filter (EKF) for 6DOF dead reckoning of a mobile robot. The EKF is a well proven and commonly used technique for fusion of inertial data and robot’s odometry. However, different approaches to designing the architecture of the state estimator lead to different performance and computational demands. While seeking the best possible solution for the mobile robot, the nonlinear model and the error model are addressed, both with and without a complementary filter for attitude estimation. The performance is determined experimentally by means of precision of both indoor and outdoor navigation, including complex structured environment such as stairs and rough terrain. According to the evaluation, the nonlinear model combined with the complementary filter is selected as a best candidate (reaching 0.8 m RMSE and average of 4\% return position error of distance driven) and implemented for real-time onboard processing during a rescue mission deployment.},
+  langid = {english},
+  file = {/home/gugo/Zotero/storage/BUAHPEPT/Simanek et al. - 2015 - Evaluation of the EKF-Based Estimation Architectures for Data Fusion in Mobile Robots.pdf}
+}
+
 @book{thrunProbabilisticRobotics2005,
   title = {Probabilistic {{Robotics}}},
   author = {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
@@ -1241,21 +1361,65 @@
   file = {/home/gugo/Zotero/storage/AJNRBZJL/Tomasi and Kanade - Detection and Tracking of Point Features.pdf}
 }
 
-@online{valenteDeepSensorFusion2019,
+@inproceedings{trawnyIndirectKalmanFilter2005,
+  title = {Indirect {{Kalman Filter}} for 3 {{D Attitude Estimation}}},
+  author = {Trawny, N. and Roumeliotis, S.},
+  date = {2005},
+  url = {https://www.semanticscholar.org/paper/Indirect-Kalman-Filter-for-3-D-Attitude-Estimation-Trawny-Roumeliotis/56ea520b4a9a7a718c490f392f275f5f8feb2886},
+  urldate = {2025-07-29},
+  abstract = {Semantic Scholar extracted view of "Indirect Kalman Filter for 3 D Attitude Estimation" by N. Trawny et al.},
+  file = {/home/gugo/Zotero/storage/JBL8LZSZ/Trawny and Roumeliotis - 2005 - Indirect Kalman Filter for 3 D Attitude Estimation.pdf}
+}
+
+@incollection{tzafestas12MobileRobot2014,
+  title = {12 - {{Mobile Robot Localization}} and {{Mapping}}},
+  booktitle = {Introduction to {{Mobile Robot Control}}},
+  author = {Tzafestas, Spyros G.},
+  editor = {Tzafestas, Spyros G.},
+  date = {2014-01-01},
+  pages = {479--531},
+  publisher = {Elsevier},
+  location = {Oxford},
+  doi = {10.1016/B978-0-12-417049-0.00012-2},
+  url = {https://www.sciencedirect.com/science/article/pii/B9780124170490000122},
+  urldate = {2022-01-12},
+  abstract = {Localization and mapping are two of the basic operations needed for the navigation of a robot, the other operations being path planning and motion planning studied in Chapter 11. Other fundamental capabilities and functions of an integrated mobile robotic system, from the task/mission specification to the motion/task execution, are cognition of the task specification, perception of the environment, and control of the robot motion. This chapter is devoted to the localization and map building operations. Specifically, the objectives of the chapter are (i) to provide the background concepts on stochastic processes, Kalman estimation, and Bayesian estimation employed in WMR localization, (ii) to discuss the sensor imperfections that have to be taken care in their use, (iii) to introduce the relative localization (dead reckoning) concept and present the kinematic analysis of dead reckoning in WMRs, (iv) to study the absolute localization methods (trilateration, triangulation, map matching), (v) to present the application of Kalman filters for mobile robot localization, sensor calibration, and sensor fusion, and (vi) to treat the simultaneous localization and mapping problem via the extended Kalman filter, Bayesian estimation, and particle filter.},
+  isbn = {978-0-12-417049-0},
+  langid = {english},
+  keywords = {absolute localization,Bayesian estimator SLAM,Bayesian learning,dead reckoning,extended Kalman filter,Kalman filter,Kalman filter-based localization,Kalman filter-based sensor fusion,least-squares estimator,localization by map matching,Mobile robot localization,mobile robot mapping,particle filter SLAM,relative localization,resampling,sensor imperfections,simultaneous localization and mapping,state prediction},
+  file = {/home/gugo/Zotero/storage/RYYW8ZJV/B9780124170490000122.html}
+}
+
+@inproceedings{valenteDeepSensorFusion2019,
   title = {Deep {{Sensor Fusion}} for {{Real-Time Odometry Estimation}}},
-  author = {Valente, Michelle and Joly, Cyril and Fortelle, Arnaud de La},
-  date = {2019-07-31},
-  eprint = {1908.00524},
+  booktitle = {2019 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
+  author = {Valente, Michelle and Joly, Cyril and Fortelle, Atnaud de La},
+  date = {2019-11},
+  pages = {6679--6685},
+  issn = {2153-0866},
+  doi = {10.1109/IROS40897.2019.8967803},
+  url = {https://ieeexplore.ieee.org/document/8967803/},
+  urldate = {2025-07-29},
+  abstract = {Cameras and 2D laser scanners, in combination, are able to provide low-cost, light-weight and accurate solutions, which make their fusion well-suited for many robot navigation tasks. However, correct data fusion depends on precise calibration of the rigid body transform between the sensors. In this paper we present the first framework that makes use of Convolutional Neural Networks (CNNs) for odometry estimation fusing 2D laser scanners and mono-cameras. The use of CNNs provides the tools to not only extract the features from the two sensors, but also to fuse and match them without needing a calibration between the sensors. We transform the odometry estimation into an ordinal classification problem in order to find accurate rotation and translation values between consecutive frames. Results on a real road dataset show that the fusion network runs in real-time and is able to improve the odometry estimation of a single sensor alone by learning how to fuse two different types of data information.},
+  eventtitle = {2019 {{IEEE}}/{{RSJ International Conference}} on {{Intelligent Robots}} and {{Systems}} ({{IROS}})},
+  keywords = {Calibration,Estimation,Feature extraction,Fuses,Laser fusion,Odometry,Real-time systems,Sensor fusion,Sensor phenomena and characterization,Transforms},
+  file = {/home/gugo/Zotero/storage/9ELDC676/Valente et al. - 2019 - Deep Sensor Fusion for Real-Time Odometry Estimation.pdf}
+}
+
+@online{veysiGentleApproachMultiSensor2024,
+  title = {A {{Gentle Approach}} to {{Multi-Sensor Fusion Data Using Linear Kalman Filter}}},
+  author = {Veysi, Parsa and Adeli, Mohsen and Naziri, Nayerosadat Peirov and Adeli, Ehsan},
+  date = {2024-05-27},
+  eprint = {2407.13062},
   eprinttype = {arXiv},
   eprintclass = {cs},
-  doi = {10.48550/arXiv.1908.00524},
-  url = {http://arxiv.org/abs/1908.00524},
-  urldate = {2025-07-04},
-  abstract = {Cameras and 2D laser scanners, in combination, are able to provide low-cost, light-weight and accurate solutions, which make their fusion well-suited for many robot navigation tasks. However, correct data fusion depends on precise calibration of the rigid body transform between the sensors. In this paper we present the first framework that makes use of Convolutional Neural Networks (CNNs) for odometry estimation fusing 2D laser scanners and mono-cameras. The use of CNNs provides the tools to not only extract the features from the two sensors, but also to fuse and match them without needing a calibration between the sensors. We transform the odometry estimation into an ordinal classification problem in order to find accurate rotation and translation values between consecutive frames. Results on a real road dataset show that the fusion network runs in real-time and is able to improve the odometry estimation of a single sensor alone by learning how to fuse two different types of data information.},
+  doi = {10.48550/arXiv.2407.13062},
+  url = {http://arxiv.org/abs/2407.13062},
+  urldate = {2025-07-29},
+  abstract = {This research paper delves into the Linear Kalman Filter (LKF), highlighting its importance in merging data from multiple sensors. The Kalman Filter is known for its recursive solution to the linear filtering problem in discrete data, making it ideal for estimating states in dynamic systems by reducing noise in measurements and processes. Our focus is on linear dynamic systems due to the LKF's assumptions about system dynamics, measurement noise, and initial conditions. We thoroughly explain the principles, assumptions, and mechanisms of the LKF, emphasizing its practical application in multi-sensor data fusion. This fusion is essential for integrating diverse sensory inputs, thereby improving the accuracy and reliability of state estimations. To illustrate the LKF's real-world applicability and versatility, the paper presents two physical examples where the LKF significantly enhances precision and stability in dynamic systems. These examples not only demonstrate the theoretical concepts but also provide practical insights into implementing the LKF in multi-sensor data fusion scenarios. Our discussion underscores the LKF's crucial role in fields such as robotics, navigation, and signal processing. By combining an in-depth exploration of the LKF's theoretical foundations with practical examples, this paper aims to provide a comprehensive and accessible understanding of multi-sensor data fusion. Our goal is to contribute to the growing body of knowledge in this important area of research, promoting further innovations and advancements in data fusion technologies and encouraging their wider adoption across various scientific and industrial fields.},
   pubstate = {prepublished},
-  keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Robotics},
-  note = {Comment: arXiv admin note: substantial text overlap with arXiv:1902.08536},
-  file = {/home/gugo/Zotero/storage/AAM334XS/Valente et al. - 2019 - Deep Sensor Fusion for Real-Time Odometry Estimation.pdf}
+  keywords = {Computer Science - Computational Engineering Finance and Science,Computer Science - Computers and Society},
+  file = {/home/gugo/Zotero/storage/DRXR2TIK/Veysi et al. - 2024 - A Gentle Approach to Multi-Sensor Fusion Data Using Linear Kalman Filter.pdf;/home/gugo/Zotero/storage/CXBU5W4P/2407.html}
 }
 
 @article{vizzoKISSICPDefensePointtoPoint2023,
@@ -1280,6 +1444,21 @@
   file = {/home/gugo/Zotero/storage/8WYJAH84/Vizzo et al. - 2023 - KISS-ICP In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the.pdf}
 }
 
+@inproceedings{wanUnscentedKalmanFilter2000,
+  title = {The Unscented {{Kalman}} Filter for Nonlinear Estimation},
+  booktitle = {Proceedings of the {{IEEE}} 2000 {{Adaptive Systems}} for {{Signal Processing}}, {{Communications}}, and {{Control Symposium}} ({{Cat}}. {{No}}.{{00EX373}})},
+  author = {Wan, E.A. and Van Der Merwe, R.},
+  date = {2000-10},
+  pages = {153--158},
+  doi = {10.1109/ASSPCC.2000.882463},
+  url = {https://ieeexplore.ieee.org/document/882463},
+  urldate = {2025-07-29},
+  abstract = {This paper points out the flaws in using the extended Kalman filter (EKE) and introduces an improvement, the unscented Kalman filter (UKF), proposed by Julier and Uhlman (1997). A central and vital operation performed in the Kalman filter is the propagation of a Gaussian random variable (GRV) through the system dynamics. In the EKF the state distribution is approximated by a GRV, which is then propagated analytically through the first-order linearization of the nonlinear system. This can introduce large errors in the true posterior mean and covariance of the transformed GRV, which may lead to sub-optimal performance and sometimes divergence of the filter. The UKF addresses this problem by using a deterministic sampling approach. The state distribution is again approximated by a GRV, but is now represented using a minimal set of carefully chosen sample points. These sample points completely capture the true mean and covariance of the GRV, and when propagated through the true nonlinear system, captures the posterior mean and covariance accurately to the 3rd order (Taylor series expansion) for any nonlinearity. The EKF in contrast, only achieves first-order accuracy. Remarkably, the computational complexity of the UKF is the same order as that of the EKF. Julier and Uhlman demonstrated the substantial performance gains of the UKF in the context of state-estimation for nonlinear control. Machine learning problems were not considered. We extend the use of the UKF to a broader class of nonlinear estimation problems, including nonlinear system identification, training of neural networks, and dual estimation problems. In this paper, the algorithms are further developed and illustrated with a number of additional examples.},
+  eventtitle = {The {{IEEE}} 2000 {{Adaptive Systems}} for {{Signal Processing}}, {{Communications}}, and {{Control Symposium}} ({{Cat}}. {{No}}.{{00EX373}})},
+  keywords = {Computational complexity,Filters,Machine learning,Neural networks,Nonlinear dynamical systems,Nonlinear systems,Performance gain,Random variables,Sampling methods,Taylor series},
+  file = {/home/gugo/Zotero/storage/6SFQ685W/Wan and Van Der Merwe - 2000 - The unscented Kalman filter for nonlinear estimation.pdf}
+}
+
 @online{WhatGNSS,
   title = {What Is {{GNSS}}},
   url = {https://www.euspa.europa.eu/eu-space-programme/galileo/what-gnss},
@@ -1287,6 +1466,18 @@
   abstract = {Global Navigation Satellite System (GNSS) refers to any satellite constellation that provides global positioning, navigation, and timing services. Several GNSS are currently available:},
   langid = {english},
   organization = {EU Agency for the Space Programme}
+}
+
+@online{WhySensorFusion2024,
+  title = {Why {{Sensor Fusion}}?},
+  shorttitle = {Why {{Sensor Fusion}}?},
+  date = {2024},
+  url = {https://infohub.delltechnologies.com/en-us/l/dell-automotive-reference-architecture/why-sensor-fusion/},
+  urldate = {2025-07-29},
+  abstract = {The Dell Automotive Reference Architecture defines a starter kit of clustered servers, storage, and software applications optimized for AI model development and verification for SAE levels L2 to L5 autonomous vehicle programs targeted to automotive companies.},
+  langid = {american},
+  organization = {Dell Automotive Reference Architecture | Dell Technologies Info Hub},
+  file = {/home/gugo/Zotero/storage/ZGKE9534/why-sensor-fusion.html}
 }
 
 @article{xiaoDynamicSLAMSemanticMonocular2019,
