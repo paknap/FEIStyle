@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \begin{axis}[
+    axis lines=left,
+    ymin=-1.2, ymax=1.2,
+    xmin=-6, xmax=6,
+    samples=200,
+    domain=-6:6,
+    width=6cm, height=4cm,
+    xlabel={$x$}, ylabel={$f(x)$}
+    ]
+    \addplot[black,thick]{tanh(x)};
+    \end{axis}
+\end{tikzpicture}

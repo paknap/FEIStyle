@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=2.0]
+  % osi
+  \draw[->] (0,0) -- (2,0) node[below] {$x_1$};
+  \draw[->] (0,0) -- (0,2) node[left] {$x_2$};
+
+  % vstupy
+  \draw[thick] (0,0) circle (1.3 pt);
+  \draw[thick] (0,1) circle (1.3 pt) node [label=left:1] {};
+  \draw[thick] (1,0) circle (1.3 pt) node [label=below:1] {};
+  \fill (1,1) circle (1.3 pt);
+
+  % rozhodovacia hranica
+  \draw[gray, ultra thick] (0,1.5) -- (1.5,0);
+
+\end{tikzpicture}

@@ -333,6 +333,15 @@
   file = {/home/gugo/Zotero/storage/UCXJIA9W/Chung et al. - 2014 - Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling.pdf}
 }
 
+@unpublished{cyrillstachnissEKFSLAMCyrillStachniss2020,
+  title = {{{EKF-SLAM}} ({{Cyrill Stachniss}})},
+  author = {{Cyrill Stachniss}},
+  date = {2020-10-02},
+  url = {https://www.youtube.com/watch?v=X30sEgIws0g},
+  urldate = {2025-08-21},
+  abstract = {EKF-SLAM: Landmark-based SLAM using the Extended Klaman Filter Cyrill Stachniss, Fall2020}
+}
+
 @article{daiINSGNSSIntegrated2020,
   title = {An {{INS}}/{{GNSS}} Integrated Navigation in {{GNSS}} Denied Environment Using Recurrent Neural Network},
   author = {Dai, Hai-fa and Bian, Hong-wei and Wang, Rong-ying and Ma, Heng},
@@ -484,6 +493,23 @@
   abstract = {This paper presents an object classification method for vision and light detection and ranging (LIDAR) fusion of autonomous vehicles in the environment. This method is based on convolutional neural network (CNN) and image upsampling theory. By creating a point cloud of LIDAR data upsampling and converting into pixel-level depth information, depth information is connected with Red Green Blue data and fed into a deep CNN. The proposed method can obtain informative feature representation for object classification in autonomous vehicle environment using the integrated vision and LIDAR data. This method is also adopted to guarantee both object classification accuracy and minimal loss. Experimental results are presented and show the effectiveness and efficiency of object classification strategies.},
   keywords = {Autonomous vehicle,Autonomous vehicles,Cameras,convolutional neural network (CNN),Informatics,Laser radar,object classification,sensor fusion,Three-dimensional displays,Uncertainty},
   file = {/home/gugo/Zotero/storage/DF47YB2H/Gao et al. - 2018 - Object Classification Using CNN-Based Fusion of Vision and LIDAR in Autonomous Vehicle Environment.pdf}
+}
+
+@inproceedings{geigerAreWeReady2012,
+  title = {Are We Ready for Autonomous Driving? {{The KITTI}} Vision Benchmark Suite},
+  shorttitle = {Are We Ready for Autonomous Driving?},
+  booktitle = {2012 {{IEEE Conference}} on {{Computer Vision}} and {{Pattern Recognition}}},
+  author = {Geiger, Andreas and Lenz, Philip and Urtasun, Raquel},
+  date = {2012-06},
+  pages = {3354--3361},
+  issn = {1063-6919},
+  doi = {10.1109/CVPR.2012.6248074},
+  url = {https://ieeexplore.ieee.org/document/6248074},
+  urldate = {2025-08-15},
+  abstract = {Today, visual recognition systems are still rarely employed in robotics applications. Perhaps one of the main reasons for this is the lack of demanding benchmarks that mimic such scenarios. In this paper, we take advantage of our autonomous driving platform to develop novel challenging benchmarks for the tasks of stereo, optical flow, visual odometry/SLAM and 3D object detection. Our recording platform is equipped with four high resolution video cameras, a Velodyne laser scanner and a state-of-the-art localization system. Our benchmarks comprise 389 stereo and optical flow image pairs, stereo visual odometry sequences of 39.2 km length, and more than 200k 3D object annotations captured in cluttered scenarios (up to 15 cars and 30 pedestrians are visible per image). Results from state-of-the-art algorithms reveal that methods ranking high on established datasets such as Middlebury perform below average when being moved outside the laboratory to the real world. Our goal is to reduce this bias by providing challenging benchmarks with novel difficulties to the computer vision community. Our benchmarks are available online at: www.cvlibs.net/datasets/kitti},
+  eventtitle = {2012 {{IEEE Conference}} on {{Computer Vision}} and {{Pattern Recognition}}},
+  keywords = {Benchmark testing,Cameras,Measurement,Optical imaging,Optical sensors,Visualization},
+  file = {/home/gugo/Zotero/storage/JUMYCDF5/Geiger et al. - 2012 - Are we ready for autonomous driving The KITTI vision benchmark suite.pdf}
 }
 
 @online{GNSS,
@@ -1406,6 +1432,22 @@
   file = {/home/gugo/Zotero/storage/9ELDC676/Valente et al. - 2019 - Deep Sensor Fusion for Real-Time Odometry Estimation.pdf}
 }
 
+@online{valenteLSTMNetworkRealTime2019,
+  title = {An {{LSTM Network}} for {{Real-Time Odometry Estimation}}},
+  author = {Valente, Michelle and Joly, Cyril and Fortelle, Arnaud de La},
+  date = {2019-02-22},
+  eprint = {1902.08536},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  doi = {10.48550/arXiv.1902.08536},
+  url = {http://arxiv.org/abs/1902.08536},
+  urldate = {2025-08-15},
+  abstract = {The use of 2D laser scanners is attractive for the autonomous driving industry because of its accuracy, light-weight and low-cost. However, since only a 2D slice of the surrounding environment is detected at each scan, it is a challenge to execute important tasks such as the localization of the vehicle. In this paper we present a novel framework that explores the use of deep Recurrent Convolutional Neural Networks (RCNN) for odometry estimation using only 2D laser scanners. The application of RCNNs provides the tools to not only extract the features of the laser scanner data using Convolutional Neural Networks (CNNs), but in addition it models the possible connections among consecutive scans using the Long Short-Term Memory (LSTM) Recurrent Neural Network. Results on a real road dataset show that the method can run in real-time without using GPU acceleration and have competitive performance compared to other methods, being an interesting approach that could complement traditional localization systems.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Robotics},
+  file = {/home/gugo/Zotero/storage/WXBEUNC5/Valente et al. - 2019 - An LSTM Network for Real-Time Odometry Estimation.pdf;/home/gugo/Zotero/storage/EVH3889K/1902.html}
+}
+
 @online{veysiGentleApproachMultiSensor2024,
   title = {A {{Gentle Approach}} to {{Multi-Sensor Fusion Data Using Linear Kalman Filter}}},
   author = {Veysi, Parsa and Adeli, Mohsen and Naziri, Nayerosadat Peirov and Adeli, Ehsan},
@@ -1442,6 +1484,25 @@
   abstract = {Robust and accurate pose estimation of a robotic platform, so-called sensor-based odometry, is an essential part of many robotic applications. While many sensor odometry systems made progress by adding more complexity to the ego-motion estimation process, we move in the opposite direction. By removing a majority of parts and focusing on the core elements, we obtain a surprisingly effective system that is simple to realize and can operate under various environmental conditions using different LiDAR sensors. Our odometry estimation approach relies on point-to-point ICP combined with adaptive thresholding for correspondence matching, a robust kernel, a simple but widely applicable motion compensation approach, and a point cloud subsampling strategy. This yields a system with only a few parameters that in most cases do not even have to be tuned to a specific LiDAR sensor. Our system using the same parameters performs on par with state-of-the-art methods under various operating conditions using different platforms: automotive platforms, UAV-based operation, vehicles like segways, or handheld LiDARs. We do not require integrating IMU information and solely rely on 3D point cloud data obtained from a wide range of 3D LiDAR sensors, thus, enabling a broad spectrum of different applications and operating conditions. Our open-source system operates faster than the sensor frame rate in all presented datasets and is designed for real-world scenarios.},
   keywords = {Computer Science - Robotics},
   file = {/home/gugo/Zotero/storage/8WYJAH84/Vizzo et al. - 2023 - KISS-ICP In Defense of Point-to-Point ICP -- Simple, Accurate, and Robust Registration If Done the.pdf}
+}
+
+@inproceedings{wangDeepVOEndtoEndVisual2017,
+  title = {{{DeepVO}}: {{Towards End-to-End Visual Odometry}} with {{Deep Recurrent Convolutional Neural Networks}}},
+  shorttitle = {{{DeepVO}}},
+  booktitle = {2017 {{IEEE International Conference}} on {{Robotics}} and {{Automation}} ({{ICRA}})},
+  author = {Wang, Sen and Clark, Ronald and Wen, Hongkai and Trigoni, Niki},
+  date = {2017-05},
+  eprint = {1709.08429},
+  eprinttype = {arXiv},
+  eprintclass = {cs},
+  pages = {2043--2050},
+  doi = {10.1109/ICRA.2017.7989236},
+  url = {http://arxiv.org/abs/1709.08429},
+  urldate = {2025-08-15},
+  abstract = {This paper studies monocular visual odometry (VO) problem. Most of existing VO algorithms are developed under a standard pipeline including feature extraction, feature matching, motion estimation, local optimisation, etc. Although some of them have demonstrated superior performance, they usually need to be carefully designed and specifically fine-tuned to work well in different environments. Some prior knowledge is also required to recover an absolute scale for monocular VO. This paper presents a novel end-to-end framework for monocular VO by using deep Recurrent Convolutional Neural Networks (RCNNs). Since it is trained and deployed in an end-to-end manner, it infers poses directly from a sequence of raw RGB images (videos) without adopting any module in the conventional VO pipeline. Based on the RCNNs, it not only automatically learns effective feature representation for the VO problem through Convolutional Neural Networks, but also implicitly models sequential dynamics and relations using deep Recurrent Neural Networks. Extensive experiments on the KITTI VO dataset show competitive performance to state-of-the-art methods, verifying that the end-to-end Deep Learning technique can be a viable complement to the traditional VO systems.},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Robotics},
+  note = {Comment: Published in 2017 IEEE International Conference on Robotics and Automation (ICRA 2017). Official version at http://ieeexplore.ieee.org/document/7989236/ . Project website and videos at http://senwang.gitlab.io/DeepVO/},
+  file = {/home/gugo/Zotero/storage/EAGJYH56/Wang et al. - 2017 - DeepVO Towards End-to-End Visual Odometry with Deep Recurrent Convolutional Neural Networks.pdf;/home/gugo/Zotero/storage/4ZK6XBGW/1709.html}
 }
 
 @inproceedings{wanUnscentedKalmanFilter2000,

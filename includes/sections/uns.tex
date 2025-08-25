@@ -1,10 +1,4 @@
-\section{Metódy fúzie s využitím umelej inteligencie a strojového učenia}
-
-Cieľom technológií umelej inteligencie (\acrshort{ui}) je pomocou technických prostriedkov napodobniť biologické princípy ako ľudského organizmu, iných živočíchov a~rastlín, ale aj prírodných zákonitostí ako takých. Výskum v~oblasti \acrshort{ui} začal už v~prvej polovici 20.\ storočia, dlhé desaťročia boli však viaceré koncepty \acrshort{ui} len na úrovni matematickej teórie, keďže vtedy známe technické prostriedky nedisponovali takým výpočtovým výkonom, ktorý by postačoval na efektívnu implementáciu týchto návrhov. V~posledných desaťročiach, keď sa hranice výpočtových možností posúvajú závratným tempom ďalej, sme však svedkami masívneho rozmachu v~oblasti výskumu a~aplikácií metód umelej inteligencie. Uplatnenie nachádzajú najmä v~riešení komplexných úloh, ktoré sú problémové na analytický opis a~riešenie konvenčnými analytickými metódami.
-
-Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo rôzneho typu je tiež jednou z~možných aplikácií \acrshort{ui}. Cieľom je aj v~tomto prípade zabezpečiť stabilitu výsledného dátového toku, znížiť šum meraní či zamedziť negatívnym vplyvom skokovitej chyby meraní niektorého zo senzorov. Oproti klasickým metódam ako sú Kalmanove či časticové filtre, potenciál nástrojov \acrshort{ui} je v~rozpoznávaní zložitejších vzorov v~senzorických dátach, schopnosti spracúvať veľké množstvo zdrojov dát, ale tiež v~možnosti uskutočniť komplexnejší rozhodovací proces. Na to sa využívajú viaceré prístupy \acrshort{ui}, ako sú umelé neurónové siete a~ich modifikácie (hlboké, konvolučné, rekurentné), strojové učenie a~jeho modifikácie (učenie s~posilňovaním, hlboké učenie) či fuzzy logika. V~nasledujúcich častiach si predstavíme základný princíp fungovania niektorých z týchto metód a~ukážeme aj príklady ich použitia v~konkrétnych aplikáciách na fúziu údajov pre lokalizáciu.
-
-\subsection{Čo sú umelé neurónové siete}
+\section{Čo sú umelé neurónové siete}
   Cieľom umelých neurónových sietí (\acrshort{uns}) je napodobniť štruktúru a~spôsob fungovania ľudského mozgu. Ten je na vonkajšej strane pokrytý mozgovou kôrou, ktorá obsahuje obrovské množstvo neurónov (v literatúre sa uvádza číslo približne $10^{10}$~\cite{mehligMachineLearningNeural2021}), ktoré sú vzájomne prepojené axónmi cez spojenia tvorené synapsami na jednej strane a~dendridmi na druhej, vďaka čomu dochádza k~prenosu informácií v~podobe elektrického signálu. Jeden ľudský neurón môže byť prepojený s~tisíckami iných~\cite{mehligMachineLearningNeural2021}. Centrálna nervová sústava je schopná paralelne spracúvať veľké množstvo informácií z~receptorov, pracovať s~pamäťou a~učiť sa z~poznatkov, názorných aj analogických príkladov, zovšeobecňovať, konkretizovať a~v~konečnom dôsledku generovať riadiace pokyny pre ostatné časti tela.
 
   Elementárnym prvkom \acrshort{uns} je \emph{umelý neurón}. Zjednodušený model umelého neurónu, používaný v~podstate dodnes, bol predstavený ešte v~roku 1943 v~práci McCullocha a~Pittsa~\cite{mccullochLogicalCalculusIdeas1943}. Jeho grafické znázornenie môžeme vidieť na obrázku~\ref{fig:neuron}. Matematicky je možné vyjadriť vstupno-výstupnú závislosť umelého neurónu ako
@@ -16,7 +10,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   \begin{figure}[b!]
     \centering
     \includegraphics[width=0.55\textwidth]{img/neuron.tex}
-    \caption[McCulloch-Pittsov model neurónu]{McCulloch-Pittsov model neurónu. $x_i$ sú vstupy neurónu, $w_i$ váhy synaptických spojení, $\theta$ je prah neurónu, $f(a)$ predstavuje aktivačnú funkciu, $a$ vnútornú aktivitu, $y$ je výstup z~neurónu.}\label{fig:neuron}
+    \caption[McCulloch-Pittsov model neurónu.]{McCulloch-Pittsov model neurónu. $x_i$ sú vstupy neurónu, $w_i$ váhy synaptických spojení, $\theta$ je prah neurónu, $f(a)$ predstavuje aktivačnú funkciu, $a$ vnútornú aktivitu, $y$ je výstup z~neurónu.}\label{fig:neuron}
   \end{figure}
 
   \acrshort{uns} sa skladajú z~množstva neurónov, ktoré sú usporiadané do vrstiev. Prvá vrstva sa nazýva vstupná, neuróny v~nej prijímajú vstupné informácie a~posielajú ich ďalej. Posledná vrstva neurónovej siete, ktorá poskytuje výsledok, sa nazýva výstupná. Medzi vstupnou a~výstupnou vrstvou sa môžu vyskytovať tzv.\ skryté vrstvy, ktoré slúžia na vykonávanie medzivýpočtov, čím umožňujú riešenie komplexnejších úloh. Výpočtový výkon siete je daný práve schopnosťou skrytých vrstiev modelovať nelineárne vzťahy medzi vstupmi a~výstupmi.\ \acrshort{uns} je možné rozdeliť do viacerých kategórií:
@@ -48,7 +42,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   %   \item \emph{Neuro-evolúcia}~--~princíp je podobný ako pri \acrshort{rl}, s~tým rozdielom, že na hľadanie parametrov \acrshort{uns} sa využívajú evolučné algoritmy. Tie sú založené na generovaní veľkého množstva riešení (v tomto prípade parametrov \acrshort{uns}) v~početných iteráciách, pričom rôznymi metódami modifikácie jednotlivých riešení, generovania nových náhodných riešení a~výberu tých najvhodnejších pomocou zvolenej kriteriálnej funkcie dochádza k~postupnej konvergencii výsledného riešenia.
   % \end{enumerate}
 
-  \subsubsection{Aktivačná funkcia}
+  \subsection{Aktivačná funkcia}
 
   Aktivačná funkcia zabezpečuje nelinearitu neurónu, vďaka čomu je \acrshort{uns} schopná riešiť zložitejšie problémy. Výber vhodnej aktivačnej funkcie je jednou z~kritických častí návrhu \acrshort{uns} a~musí byť prispôsobený typu úlohy, ktorú má neurónová sieť vykonávať. V~pôvodnom modeli~\cite{mccullochLogicalCalculusIdeas1943} sa používala len binárna (skoková) funkcia $f(a) = \mathrm{sgn}(a)$. Tá je stále používaná v~perceptrónových neurónových sieťach, ktoré vykonávajú klasifikáciu. V~mnohých prípadoch sa však vyžaduje spojitý výstup siete, preto sa používajú viaceré typy spojitých aktivačných funkcií~\cite{aggarwalNeuralNetworksDeep2018}:
   \begin{itemize}
@@ -95,7 +89,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
       \input{img/activation/htanh.tex}
       \caption{Hard Tanh}\label{fig:htanh}
     \end{subfigure}      
-    \caption[Vybrané aktivačné funkcie]{Vybrané aktivačné funkcie}\label{fig:activation}
+    \caption{Vybrané aktivačné funkcie.}\label{fig:activation}
   \end{figure}
 
   Aktivačné funkcie ReLU a~Hard Tanh v~poslednej dobe zväčša nahrádzajú klasické typy, ako sú sigmoid a~hyperbolický tangens, a~to pre zjednodušenie trénovania viacvrstvových neurónových sietí s~týmito funkciami~\cite{aggarwalNeuralNetworksDeep2018}. Grafické znázornenia aktivačných funkcií sa nachádzajú na obr.\ \ref{fig:activation}.
@@ -107,13 +101,13 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   kde $H = {(h_1,\dots,h_k)}^{\top}$ je vektor výstupov poslednej skrytej vrstvy a~$k$ je počet výstupných neurónov aj neurónov poslednej skrytej vrstvy. Tento typ aktivačnej funkcie je výhodné použiť na klasifikáciu väčšieho množstva tried~\cite{aggarwalNeuralNetworksDeep2018}.
 
 
-\subsection{Perceptróny}\label{ssec:slp}
+\section{Perceptróny}\label{ssec:slp}
 
   Základným typom neurónových sietí sú perceptróny. Slúžia na klasifikáciu vstupných údajov a~pôvodne boli predstavené predstavené Rosenblattom v~roku 1958~\cite{rosenblattPerceptronProbabilisticModel1958}, ktorý ich architektúru rozdelil na tri vrstvy: senzorickú, asociačnú a~výstupnú. Senzorická vrstva sa namiesto plnohodnotných neurónov skladá len zo vstupných terminálov, ktorých počet zodpovedá rozmeru vstupného vektora a~ich úlohou je preposielanie vstupných hodnôt ďalej (príp.\ normalizácia vstupných hodnôt). Za ňou môže nasledovať asociačná, teda skrytá vrstva, v~ktorej neuróny slúžia na vykonávanie medzivýpočtov a~umožňujú riešenie lineárne neseparovateľných problémov (viac v časti~\ref{ssec:lin-sep}). Výstupy skrytej vrstvy nie sú čitateľné, slúžia ako vstupy pre neuróny poslednej, výstupnej vrstvy. V~pôvodnej architektúre váhy skrytej vrstvy nepodliehali učeniu. Napokon, výstupná vrstva slúži na výsledné výpočty siete. Počet neurónov v~nej zodpovedá počtu tried, ktoré sa v~rámci úlohy klasifikácie rozlišujú. Neuróny v~takejto sieti sú pospájané v~doprednom smere (angl.\ \emph{feed-forward}), teda zľava doprava. Všetky prepojenia perceptrónu sú jednosmerné, informácie sa posielajú len v~smere dopredu k~neurónom susediacim sprava. Nenachádzajú sa v~ňom žiadne spätné prepojenia ani prepojenia preskakujúce vrstvu~\cite{mehligMachineLearningNeural2021}.
 
   Počas nasledujúceho vývoju v~oblasti \acrshort{uns} však došlo z~didaktických dôvodov k~ustáleniu termínu \emph{perceptrón} iba na jednovrstvovú lineárne separovateľnú architektúru, \emph{jednovrstvový perceptrón (\acrshort{slp})}. Klasifikačné siete s~menej ako štyrmi skrytými vrstvami sa zvyknú označovať aj \emph{viacvrstvové perceptróny (\acrshort{mlp})}.
   
-  \subsubsection{Jednovrstvové perceptróny}
+  \subsection{Jednovrstvové perceptróny}
   Vstupná vrstva jednovrstvového perceptrónu obsahuje $d$ vstupných terminálov pre vstupný vektor $X = {(x_1, x_2, \dots, x_d)}^{\top}$, ku ktorým je priradený vektor váh $W = {(w_1, w_2, \dots, w_d)}^{\top}$. Výstupná jednotka vypočíta vážený súčet vstupov a~výsledok spracuje pomocou skokovej funkcie, ktorá určuje výstupnú triedu~\cite{aggarwalNeuralNetworksDeep2018}:
 
   \begin{equation}
@@ -123,14 +117,14 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
 
   Perceptrón funguje ako lineárny klasifikátor: rozhodovaciu hranicu tvorí hyper-rovina \( W \cdot X + \theta = 0 \), ktorá rozdeľuje vstupný priestor na dve triedy. Tento prístup je účinný v~prípadoch, keď sú dáta \emph{lineárne separovateľné}.
 
-  \subsubsection{Lineárna separovateľnosť~--~problém klasifikácie}\label{ssec:lin-sep}
+  \subsection{Lineárna separovateľnosť~--~problém klasifikácie}\label{ssec:lin-sep}
 
   Problém lineárnej separovateľnosti je možné priblížiť na jednoduchom príklade. Majme klasifikačnú úlohu pre dvojrozmerné reálne vstupné vektory $X = {(x_1, x_2)}^{\top}$, ktoré majú byť rozdelené do cieľových skupín, teda tried $y \in \{-1, 1\}$. Na riešenie teoreticky stačí použiť jeden neurón so skokovou aktivačnou funkciou, teda výstup neurónu je počítaný ako skalárny súčin vstupov a~váh:
   \begin{equation}
     \hat y = \mathrm{sgn}(w_1 x_1 + w_2 x_2 - \theta) = \mathrm{sgn}(W \cdot X - \theta),
     \label{eq:lin-sep1}
   \end{equation}
-  kde $W = {(w_1, w_2)}$ je vektor váh, ktoré pripájajú vstupy neurónu~\cite{mehligMachineLearningNeural2021}. Skalárny súčin, ktorý vystupuje vo vzťahu~\ref{eq:lin-sep1}, je možné riešiť aj geometricky po úprave:
+  kde $W = {(w_1, w_2)}$ je vektor váh, ktoré pripájajú vstupy neurónu~\cite{mehligMachineLearningNeural2021}. Skalárny súčin, ktorý vystupuje vo vzťahu~\eqref{eq:lin-sep1}, je možné riešiť aj geometricky po úprave:
   
   \begin{eqnarray}
     W &=& |W|
@@ -150,10 +144,10 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   \begin{figure}[b!]
     \centering
     \input{img/linear_separation/lin_sep_classification.tex}
-    \caption[Geometrické riešenie klasifikácie]{Geometrické riešenie klasifikácie}\label{fig:classification-geometry}
+    \caption{Geometrické riešenie klasifikácie.}\label{fig:classification-geometry}
   \end{figure}
 
-  V~uvedenom príklade sme pre zjednodušenie neuvažovali s~biasom neurónu $\theta$. Jeho vplyv na rozhodovaciu hranicu je však zrejmý keď položíme argument zo vzťahu~\ref{eq:lin-sep1} rovný nule a~odvodíme
+  V~uvedenom príklade sme pre zjednodušenie neuvažovali s~biasom neurónu $\theta$. Jeho vplyv na rozhodovaciu hranicu je však zrejmý keď položíme argument zo vzťahu~\eqref{eq:lin-sep1} rovný nule a~odvodíme
   \begin{equation}
     x_2 = -\frac{w_1}{w_2} x_1 + \frac{\theta}{w_2},
   \end{equation}
@@ -174,7 +168,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
       \input{img/linear_separation/xor.tex}
       \caption{Exkluzívna disjunkcia (XOR)~--~lineárne neseparovateľná}
     \end{subfigure}
-    \caption[Lineárna separovateľnosť vybraných logických funkcií]{Lineárna separovateľnosť vybraných logických funkcií.\ $\bullet{}$ pre pravd.\ hodnotu \uv{TRUE} ($y = 1$), $\circ{}$ pre pravd.\ hodnotu \uv{FALSE} ($y = -1$).}\label{fig:boolean}
+    \caption[Lineárna separovateľnosť vybraných logických funkcií.]{Lineárna separovateľnosť vybraných logických funkcií.\ $\bullet{}$ pre pravd.\ hodnotu \uv{TRUE} ($y = 1$), $\circ{}$ pre pravd.\ hodnotu \uv{FALSE} ($y = -1$).}\label{fig:boolean}
   \end{figure}
 
   % Perceptrón sa teda skladá zo vstupných terminálov ${\bf x}^{(\mu)} = {\left(x_1^{(\mu)}, x_2^{(\mu)}, \dots, x_N^{(\mu)}\right)}^\top$, kde $N$ vyjadruje rozmer vstupných vektorov označených $\mu = 1,\dots,p$, $M$ výstupných neurónov podľa rozmeru riešenia úlohy (napr.\ počtu tried pri klasifikácii) a~určitého počtu skrytých vrstiev. V~prípade, že sieť neobsahuje skryté vrstvy, ide o~jednovrstvovú neurónovú sieť; ak obsahuje aspoň jednu skrytú vrstvu, je to viac-vrstvová neurónová sieť. Výstupy skrytých neurónov $V_j$ a~výstupných neurónov $O_i$ sú potom počítané analogicky ako
@@ -195,7 +189,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   % \begin{equation}
   %   w'_{ij} = w_{ij} + \delta w^{(\mu)}_{ij};\ \delta w^{(\mu)}_{ij} = \eta t^{(\mu)}_i x^{(\mu)}_j,
   % \end{equation}
-  % kde $\eta > 0$ je faktor učenia. Tento vzťah je aplikovaný iteratívne na množinu trénovacích vstupov, až kým nie je splnená podmienka~\ref{eq:classification}.
+  % kde $\eta > 0$ je faktor učenia. Tento vzťah je aplikovaný iteratívne na množinu trénovacích vstupov, až kým nie je splnená podmienka~\eqref{eq:classification}.
   
 
   % \begin{figure}[b!]
@@ -204,7 +198,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   %   \caption{Lineárne separovateľná a~neseparovateľná klasifikácia~\cite{mehligMachineLearningNeural2021}}\label{fig:lin-sep}
   % \end{figure}    
 
-\subsubsection{Viacvrstvové perceptróny}\label{ssec:mlp}
+\subsection{Viacvrstvové perceptróny}\label{ssec:mlp}
 
   V~prípade \acrshort{slp} je jediná výpočtová vrstva výstupná, keďže vstupná vrstva nevykonáva žiadne výpočty. Viacvrstvové perceptróny (\acrshort{mlp}) obsahujú viacero výpočtových vrstiev. Keďže ale výsledky vrstiev pridaných medzi vstupnú a~výstupnú vrstvu nie sú viditeľné pre užívateľa, označujú sa ako \emph{skryté vrstvy}.
   
@@ -219,7 +213,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   \begin{figure}[b!]
     \centering
     \includegraphics[width=0.4\textwidth]{img/perceptron.tex}
-    \caption[Viacvrstvový perceptrón]{Viacvrstvový perceptrón s~jednou skrytou vrstvou so vstupnými terminálmi $x_k$, skrytými neurónmi $h_{j}$, výstupným neurónom $y_1$, a~váhami prepojení medzi vrstvami $w_{jk}$ a~$w_{1j}$.~\cite{mehligMachineLearningNeural2021}}\label{fig:mlp}
+    \caption[Viacvrstvový perceptrón.]{Viacvrstvový perceptrón s~jednou skrytou vrstvou so vstupnými terminálmi $x_k$, skrytými neurónmi $h_{j}$, výstupným neurónom $y_1$, a~váhami prepojení medzi vrstvami $w_{jk}$ a~$w_{1j}$.~\cite{mehligMachineLearningNeural2021}}\label{fig:mlp}
   \end{figure}
 
   \begin{figure}[t!]
@@ -233,7 +227,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
       \input{img/linear_separation/lin_unsep.tex}
       \caption{Lineárne neseparovateľný problém klasifikovaný pomocou \acrshort{mlp}, tvoriacej po častiach lineárnu rozhodovaciu hranicu.}
     \end{subfigure}
-    \caption[Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}]{Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}}\label{fig:lin-sep-solution}
+    \caption{Porovnanie klasifikácie pomocou \acrshort{slp} a~\acrshort{mlp}.}\label{fig:lin-sep-solution}
   \end{figure}
 
   Mechanizmus klasifikácie je možné si predstaviť tak, že každý zo vstupných bodov obdrží množinu výstupných hodnôt skrytých neurónov $\{h_1, h_2, h_3\}$. Každý zo segmentov je potom charakterizovaný unikátnou kombináciou výstupov skrytej vrstvy. Váhy $w_{1j}$ a~prahové hodnoty ${\theta_j}$ musia byť nastavené tak, aby každému vzniknutému segmentu vstupnej roviny pridelil výstupný neurón správnu triedu $y_i$, čo už opäť predstavuje lineárne separovateľný problém. To prebieha v~tomto konkrétnom príklade na základe vzťahu
@@ -255,17 +249,17 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   
   Základnými parametrami pri návrhu siete sú teda počet skrytých vrstiev, počty skrytých vrstiev a~neurónov v~jednotlivých vrstvách, a~tiež výber aktivačných funkcií neurónov. V~neposlednom rade, úspešnosť trénovania neurónovej siete závisí od výberu optimalizačnej funkcie odchýlky.
   
-\subsection{Trénovanie UNS}\label{ssec:training}
+\section{Trénovanie UNS}\label{ssec:training}
 
   Trénovanie umelých neurónových sietí predstavuje kľúčový proces, prostredníctvom ktorého sa model učí z~dostupných dát optimalizáciou svojich parametrov, najmä váh a~prahov neurónov. Cieľom trénovania je minimalizovať odchýlku medzi výstupom siete $\hat y$ a~požadovaným výstupom $y$, čo sa dosahuje iteratívnym prispôsobovaním parametrov na základe výpočtu gradientu chyby. Jedným z~kľúčových aspektov trénovania je preto výber vhodnej funkcie na výpočet odchýlky (v angl.\ literatúre označovanej \emph{loss function}) vzhľadom ku konkrétnemu typu úlohy, ktorú \acrshort{uns} rieši. Obrázok~\ref{fig:training} znázorňuje základný princíp trénovania \acrshort{uns}. V~tejto časti sa podrobnejšie pozrieme na jeden z~prvých používaných algoritmov~--~perceptrónové kritérium~-- ale aj na v~súčasnosti najbežnejšiu metódu spätného šírenia chyby. Priblížime tiež časté problémy, ktoré sa pri procese trénovania môžu vyskytnúť.
 
   \begin{figure}[b!]
     \centering
     \input{img/training.tex}
-    \caption[Základná schéma algoritmov trénovania UNS]{Základná schéma algoritmov trénovania UNS}\label{fig:training}
+    \caption{Základná schéma algoritmov trénovania UNS.}\label{fig:training}
   \end{figure}
 
-  \subsubsection{Perceptrónové kritérium}
+  \subsection{Perceptrónové kritérium}
     Pôvodný perceptrónový algoritmus prebiehal heuristicky pomocou elektrických obvodov, na rozdiel od súčasného chápania problému ako optimalizačnej úlohy. V~každom prípade, cieľ ostáva zachovaný a~je ním nájsť také váhy $W$, ktoré minimalizujú počet chybne klasifikovaných príkladov v~množine trénovacích vstupno-výstupných párov $(X, y)$. Úlohu perceptrónového algoritmu je teda možné zapísať v~tvare účelovej funkcie najmenších štvorcov pre všetky trénovacie objekty datasetu $\mathcal{D}$~\cite{aggarwalNeuralNetworksDeep2018} ako
     \begin{equation}
       \mathcal{L} = \arg\min_{W} \sum_{(X, y) \in \mathcal{D}} {\left( y - \hat y \right)}^2 = \sum_{(X, y) \in \mathcal{D}} {\left[ y - \operatorname{sign}(W \cdot X) \right]}^2
@@ -301,13 +295,13 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   %   \begin{equation}
   %     \mathcal{L} = \frac{1}{2} \sum_{i\mu} {\left( y_i^{(\mu)} - \hat y_i^{(\mu)} \right)}^2,
   %   \end{equation}
-  %   ktorej vstupom sú hodnoty váh a~globálne minimum dosahuje keď je splnený vzťah~\ref{eq:classification}. Trénovanie prebieha postupným modifikovaním hodnôt váh pomocou gradientného zostupu~\cite{mehligMachineLearningNeural2021}:
+  %   ktorej vstupom sú hodnoty váh a~globálne minimum dosahuje keď je splnený vzťah~\eqref{eq:classification}. Trénovanie prebieha postupným modifikovaním hodnôt váh pomocou gradientného zostupu~\cite{mehligMachineLearningNeural2021}:
   %   \begin{equation}
   %      W \:\leftarrow\: W + \delta w_{mn}^{(\mu)};\ \delta w_{mn}^{(\mu)} = -\alpha \frac{\partial\, \mathcal{L}}{\partial\, w_{mn}} = \alpha \sum_{\mu} {\left( y^{(\mu)}_m - \hat y^{(\mu)}_m \right)}x^{(\mu)}_n.
   %   \end{equation} 
 
 
-  \subsubsection{Spätné šírenie chyby}
+  \subsection{Spätné šírenie chyby}
 
     Optimalizačné kritérium pre \acrshort{slp} je ľahko definovateľné, keďže výstup siete je priamou funkciou váh. To umožňuje jednoduchý výpočet gradientu pomocou diferenciácie. Pri viacvrstvových sieťach je však odchýlka výstupu komplikovanou zloženou funkciou váh v~predošlých vrstvách, ktorú môžeme zjednodušene zapísať ako $\mathcal{L} = f(o(h_r(w_r)))$. Preto sa za účelom výpočtu jej gradientu používa algoritmus \emph{spätného šírenia chyby}. Ten využíva reťazové pravidlo diferenciálneho počtu, ktoré počíta gradienty chyby ako sumu násobkov lokálnych gradientov skrytých neurónov pozdĺž rôznych ciest od daného neurónu až po výstup. Keďže počet ciest medzi skrytým neurónom a~výstupom môže rásť exponenciálne s~hĺbkou a~šírkou siete, priamy výpočet všetkých príspevkov by bol výpočtovo náročný. Preto sa spätné šírenie realizuje efektívne pomocou dynamického programovania, ktoré opakovane (rekurzívne) využíva už vypočítané medzivýsledky. Výpočet spätného šírenia chyby prebieha vo viacerých cykloch, tzv.\ \emph{epochách}, pričom každá pozostáva z~dvoch hlavných fáz:
     \begin{enumerate}
@@ -325,7 +319,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
         \label{eq:chain-rule-single}
     \end{equation}
 
-    Vo všeobecnosti však bude v~\acrshort{mlp} sieti existovať exponenciálne väčšia množina prepojení neurónov $h_r$ a~$o$, ktorú označíme $\mathcal{P}$. Vzťah~\ref{eq:chain-rule-single} je teda možné zovšeobecniť pre všetky existujúce prepojenia pomocou reťazového pravidla viacerých premenných:
+    Vo všeobecnosti však bude v~\acrshort{mlp} sieti existovať exponenciálne väčšia množina prepojení neurónov $h_r$ a~$o$, ktorú označíme $\mathcal{P}$. Vzťah~\eqref{eq:chain-rule-single} je teda možné zovšeobecniť pre všetky existujúce prepojenia pomocou reťazového pravidla viacerých premenných:
     \begin{equation}
       \frac{\partial\, \mathcal{L}}{\partial\, w_{(h_{r-1},h_r)}} = 
       \underbrace{
@@ -351,13 +345,13 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
       \frac{\partial\, h}{\partial\, h_r} = \frac{\partial\, h}{\partial\, a_h} \cdot \frac{\partial\, a_h}{\partial\, h_r} = \frac{\partial\, f(a_h)}{\partial\, a_h} \cdot w_{(h_r, h)} = f'(a_h) \cdot w_{(h_r, h)}
       \label{eq:back-prop2}
     \end{equation}
-    Dosadením vzťahu~\ref{eq:back-prop2} do~\ref{eq:back-prop1} získavame konečný rekurzívny vzťah pre výpočet agregovaného gradientu chyby vzhľadom na aktiváciu neurónu $h_r$, ktorý umožňuje efektívny výpočet gradientov bez opakovaného prechodu rovnakých ciest v~sieti.~\cite{aggarwalNeuralNetworksDeep2018}:
+    Dosadením vzťahu~\eqref{eq:back-prop2} do~\eqref{eq:back-prop1} získavame konečný rekurzívny vzťah pre výpočet agregovaného gradientu chyby vzhľadom na aktiváciu neurónu $h_r$, ktorý umožňuje efektívny výpočet gradientov bez opakovaného prechodu rovnakých ciest v~sieti.~\cite{aggarwalNeuralNetworksDeep2018}:
     \begin{equation}
       \Delta (h_r,o) = \sum_{h:h_r \:\rightarrow\: h} f'(a_h) \cdot w_{(h_r,h)} \cdot \Delta (h,o).
       \label{eq:back-prop3}
     \end{equation}
 
-    Rekurzívny vzťah dynamického programovania zo vzťahu~\ref{eq:back-prop3} je v~skutočnosti možné vypočítať viacerými spôsobmi, v~závislosti od toho, ktoré premenné sa použijú ako medzičlánky v~reťazovom pravidle. Všetky tieto varianty výpočtu sú ekvivalentné z~hľadiska výsledného gradientu získaného spätným šírením chyby. Vo vzťahu~\ref{eq:chain-rule-multi} sa ako premenné medzičlánku reťazového pravidla používajú výstupy skrytých vrstiev $h$. V~literatúre sa však často uvádza alternatívna verzia, kedy sa namiesto nich použijú argumenty aktivačných funkcií neurónov $a_h$, teda hodnoty vypočítané po lineárnej transformácii, ale ešte pred aplikáciou aktivačnej funkcie. Preto je namiesto rovnice~\ref{eq:chain-rule-multi} možné použiť aj nasledovný variant reťazového pravidla~\cite{aggarwalNeuralNetworksDeep2018}:
+    Rekurzívny vzťah dynamického programovania zo vzťahu~\eqref{eq:back-prop3} je v~skutočnosti možné vypočítať viacerými spôsobmi, v~závislosti od toho, ktoré premenné sa použijú ako medzičlánky v~reťazovom pravidle. Všetky tieto varianty výpočtu sú ekvivalentné z~hľadiska výsledného gradientu získaného spätným šírením chyby. Vo vzťahu~\eqref{eq:chain-rule-multi} sa ako premenné medzičlánku reťazového pravidla používajú výstupy skrytých vrstiev $h$. V~literatúre sa však často uvádza alternatívna verzia, kedy sa namiesto nich použijú argumenty aktivačných funkcií neurónov $a_h$, teda hodnoty vypočítané po lineárnej transformácii, ale ešte pred aplikáciou aktivačnej funkcie. Preto je namiesto rovnice~\eqref{eq:chain-rule-multi} možné použiť aj nasledovný variant reťazového pravidla~\cite{aggarwalNeuralNetworksDeep2018}:
     \begin{equation}
       \frac{\partial\, \mathcal{L}}{\partial\, w_{(h_{r-1},h_r)}} = 
       \underbrace{
@@ -394,13 +388,13 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
 
     Proces trénovania \acrshort{uns} môže prebiehať v~dvoch režimoch. Pri \emph{vzorkovom režime} dochádza k~úprave váh po privedení každej novej vstupnej vzorky. V~\emph{dávkovom režime} sa váhy korigujú až po uskutočnení celej epochy, teda po kompletnom prechode celého trénovacieho súboru cez sieť, s~využitím globálnej chyby zo všetkých vzoriek a~výstupov.
         
-    \subsubsection{Problémy trénovania UNS}\label{ssec:training-problems}
+    \subsection{Problémy trénovania UNS}\label{ssec:training-problems}
 
       Neurónové siete poskytujú silný nástroj pri riešení komplexných a~analyticky ťažko odvoditeľných úloh. Aby ich trénovanie nebolo kontraproduktívne, je treba si uvedomiť problémy, ktoré s~ním môžu byť spojené. Medzi najzávažnejšie problémy patria \emph{pretrénovanie} a~\emph{problém miznúceho gradientu}. Ťažkosti môžu nastať aj pri nedostatočnej konvergencii účelovej funkcie, uviaznutí v~lokálnom alebo falošnom optime či nedostatočnom výpočtovom výkone.
 
-      \paragraph{Pretrénovanie} \
+      \subsubsection{Pretrénovanie} \
 
-      \noindent Podstata trénovania neurónových sietí, ktoré je príkladom \emph{učenia s~učiteľom}, spočíva v~tom, že sieť je schopná sa na základe testovacích dát naučiť všeobecné závislosti medzi vstupnými a~výstupnými hodnotami, ktoré má byť následne schopná rozlíšiť aj na neznámych dátach. Po ukončení trénovania siete teda vždy prebieha fáza testovania, kedy je na vstup siete privedená množina vzoriek, ktoré sú odlišné od trénovacích.
+      Podstata trénovania neurónových sietí, ktoré je príkladom \emph{učenia s~učiteľom}, spočíva v~tom, že sieť je schopná sa na základe testovacích dát naučiť všeobecné závislosti medzi vstupnými a~výstupnými hodnotami, ktoré má byť následne schopná rozlíšiť aj na neznámych dátach. Po ukončení trénovania siete teda vždy prebieha fáza testovania, kedy je na vstup siete privedená množina vzoriek, ktoré sú odlišné od trénovacích.
 
       Pretrénovanie (angl.\ \emph{overfitting}) je jav, ktorý môže nastať dôsledkom neskorého ukončenia procesu trénovania, nedostatočnej trénovacej množiny dát, či nevhodnej architektúry siete. Prejavuje sa tak, že neurónová sieť síce dosahuje vysokú úspešnosť pri trénovacích dátach, no jej úspešnosť výrazne klesá pri zovšeobecnení na testovacích dátach, ktoré sú odlišné. Tento problém nastáva často napríklad vtedy, keď \acrshort{uns} obsahuje viac neurónov a~prepojení, než zodpovedá skutočnej zložitosti riešenej úlohy, či v~prípade nedostatočne veľkej testovacej množiny, čo do počtu a~rozsahu prvkov vstupných vzoriek. V~prvom prípade je dôsledkom, že sieť sa naučí zaznamenať aj také súvislosti vo vstupných dátach, ktoré nie sú všeobecné a~súvisia len s~danou množinou vstupných dát. V~druhom prípade je zase problém v~tom, že sieť sa nestihne naučiť všetky vstupno-výstupné závislosti.
 
@@ -412,9 +406,9 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
         \item \emph{výmena šírky za hĺbku}~--~namiesto veľkého počtu neurónov v~jednej vrstve a~malému počtu skrytých vrstiev sa preferuje málo neurónov a~veľa skrytých vrstiev. Takáto \emph{hlboká sieť} je schopná dosiahnuť rovnakú, a~často aj lepšiu úspešnosť, a~navyše môže obsahovať menšie množstvo parametrov.
       \end{enumerate}
 
-      \paragraph{Miznúce a~explodújúce gradienty} \
+      \subsubsection{Miznúce a~explodújúce gradienty}
 
-        \noindent Problém miznúcich a~explodujúcich gradientov býva zvyčajne spojený s~trénovaním hlbokých neurónových sietí a~súvisí s~využívaním reťazového pravidla (vzťah~\ref{eq:chain-rule-multi}) pri spätnom šírení chyby. Keďže pri výpočte celkového gradientu účelovej funkcie dochádza k~početnému násobeniu lokálnych gradientov pozdĺž prepojení, zvlášť pri veľkom počte skrytých vrstiev môže spôsobiť buď exponenciálny útlm k~nule alebo naopak rýchly nárast gradientu. Oba javy tak spôsobujú nestabilitu procesu trénovania.
+        Problém miznúcich a~explodujúcich gradientov býva zvyčajne spojený s~trénovaním hlbokých neurónových sietí a~súvisí s~využívaním reťazového pravidla (vzťah~\eqref{eq:chain-rule-multi}) pri spätnom šírení chyby. Keďže pri výpočte celkového gradientu účelovej funkcie dochádza k~početnému násobeniu lokálnych gradientov pozdĺž prepojení, zvlášť pri veľkom počte skrytých vrstiev môže spôsobiť buď exponenciálny útlm k~nule alebo naopak rýchly nárast gradientu. Oba javy tak spôsobujú nestabilitu procesu trénovania.
 
         Častou príčinou vzniku miznúceho gradientu býva napríklad použitie aktivačnej funkcie sigmoid. Tá má v~celom definičnom obore deriváciu menšiu ako 0,25. Riešením je jej náhrada funkciou \acrshort{relu}. Okrem tohto riešenia existujú aj pokročilejšie prístupy, ako napríklad~\cite{aggarwalNeuralNetworksDeep2018}:
         \begin{enumerate}
@@ -423,24 +417,24 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
           \item \emph{Normalizácia po dávkach} (angl.\ \emph{batch normalization})~--~normalizuje vstupy každej vrstvy v~rámci jednej dávky tak, aby mali nulový priemer a~jednotkovú varianciu. Tým sa potláča nežiaduce kolísanie rozdelenia vstupných hodnôt spôsobené priebežným menením váh vo vrstvách. Výsledkom je rýchlejšia a~stabilnejšia konvergencia počas učenia, ako aj zmiernenie problémov s~miznúcim gradientom. Normalizácia v~rámci dávky tiež často umožňuje použiť vyššiu rýchlosť učenia a~znižuje závislosť na počiatočnom nastavení váh. Je však menej účinná pri veľmi malých dávkach alebo v~rekurentných sieťach.
         \end{enumerate}
 
-      \paragraph{Ťažkosti s~konvergenciou} \
+      \subsubsection{Ťažkosti s~konvergenciou} \
 
-        \noindent Zvlášť v~prípade hlbokých neurónových sietí sa vyskytuje problém s~konvergenciou účelovej funkcie, keďže veľký počet skrytých vrstiev spôsobuje ťažší tok gradientov cez sieť. Čiastočne tento problém súvisí s~miznutím gradientov, ale má svoje osobitné špecifiká~\cite{aggarwalNeuralNetworksDeep2018}.
+        Zvlášť v~prípade hlbokých neurónových sietí sa vyskytuje problém s~konvergenciou účelovej funkcie, keďže veľký počet skrytých vrstiev spôsobuje ťažší tok gradientov cez sieť. Čiastočne tento problém súvisí s~miznutím gradientov, ale má svoje osobitné špecifiká~\cite{aggarwalNeuralNetworksDeep2018}.
 
         Jedným so spôsobov riešenia sú tzv.\ \emph{bránové siete}. Využívajú špecifické neuróny (bunky), obsahujúce adaptívne riadiace mechanizmy (brány), ktoré selektívne kontrolujú tok informácie v~sieti. Ich cieľom je zabezpečiť, aby sa relevantné informácie udržali a~prenášali počas spracovania vstupu, zatiaľ čo menej dôležité sa potláčajú. Tento prístup je kľúčový najmä pri modelovaní sekvenčných dát (napr.\ spracovanie textu, videa), kde dlhodobé závislosti často bránia efektívnemu učeniu. Takéto siete sa radia medzi rekurentné neurónové siete a~patria tu napr.\ \acrshort{lstm} či \acrshort{gru} (bližšie o~nich v~časti~\ref{ssec:rnn}).
         
         Ďalšou možnosťou sú \emph{reziduálne siete}, ktoré zavádzajú reziduálne prepojenia, teda obchádzajúce vetvy, ktoré umožňujú prenášať informáciu aj gradient priamo naprieč viacerými vrstvami bez ich transformácie. Tým sa výrazne znižuje riziko miznutia gradientu a~zlepšuje sa stabilita učenia, čo umožňuje trénovať siete s~desiatkami až stovkami vrstiev. Tento prístup zároveň urýchľuje konvergenciu a~vedie k~lepšiemu využitiu kapacity modelu. Známy príklad takejto architektúry je ResNet~\cite{heDeepResidualLearning2016}. Princíp fungovania reziduálnych sietí spočíva v~tom, že namiesto učenia sa váh, teda priamej transformácie vstupu na výstup, sa učí len rozdiel medzi vstupom a~výstupom. Takéto prepojenie umožňuje gradientom efektívne pretekať aj do veľmi hlbokých vrstiev siete počas spätného šírenia chyby.
 
-      \paragraph{Lokálne a~falošné optimá} \
+      \subsubsection{Lokálne a~falošné optimá}
         
-      \noindent Optimalizačná funkcia neurónových sietí je silne nelineárna a~obsahuje veľké množstvo lokálnych extrémov. Preto je výber vhodnej inicializácie parametrov kľúčový. Nesprávne inicializačné body môžu viesť k~nevhodným (lokálnym alebo falošným) minimám. Jednou z~metód, ako sa tomu vyhnúť, je tzv.\ \emph{predtrénovanie} (angl.\ \emph{pretraining}), ktoré spočíva v~postupnom trénovaní jednotlivých vrstiev siete, často pomocou učenia bez učiteľa. Tento prístup poskytuje rozumné počiatočné hodnoty váh, ktoré obchádzajú irelevantné časti parametrového priestoru. Predtrénovanie tiež pomáha znižovať riziko pretrénovania, keďže sa vyhýba minimám, ktoré sú síce vhodné pre trénovaciu množinu, no zlyhávajú na testovacích dátach~--~tzv.\ falošným optimám~\cite{aggarwalNeuralNetworksDeep2018}.
+      Optimalizačná funkcia neurónových sietí je silne nelineárna a~obsahuje veľké množstvo lokálnych extrémov. Preto je výber vhodnej inicializácie parametrov kľúčový. Nesprávne inicializačné body môžu viesť k~nevhodným (lokálnym alebo falošným) minimám. Jednou z~metód, ako sa tomu vyhnúť, je tzv.\ \emph{predtrénovanie} (angl.\ \emph{pretraining}), ktoré spočíva v~postupnom trénovaní jednotlivých vrstiev siete, často pomocou učenia bez učiteľa. Tento prístup poskytuje rozumné počiatočné hodnoty váh, ktoré obchádzajú irelevantné časti parametrového priestoru. Predtrénovanie tiež pomáha znižovať riziko pretrénovania, keďže sa vyhýba minimám, ktoré sú síce vhodné pre trénovaciu množinu, no zlyhávajú na testovacích dátach~--~tzv.\ falošným optimám~\cite{aggarwalNeuralNetworksDeep2018}.
 
-      \paragraph{Výpočtová náročnosť} \
+      \subsubsection{Výpočtová náročnosť}
 
         \noindent Jednou z~hlavných výziev pri návrhu neurónových sietí je dlhá doba trénovania, ktorá môže v~oblastiach ako spracovanie textu či obrazu trvať aj celé týždne. Kľúčový pokrok v~tomto smere priniesol vývoj výkonnejšej hardvérovej infraštruktúry, najmä grafických procesorov (\acrshort{gpu}), ktoré sú schopné paralelne vykonávať výpočty typické pre neurónové siete. Platformy ako Torch alebo TensorFlow majú vstavanú podporu pre \acrshort{gpu}, čo umožňuje efektívnejšie učenie aj zložitých architektúr. Hoci k~pokroku v~hlbokom učení prispeli aj algoritmické vylepšenia, značná časť úspechu spočíva v~tom, že existujúce algoritmy dnes dokážeme lepšie využiť vďaka výkonnejšiemu hardvéru.Výhodou väčšiny neurónových sietí je, že náročné výpočty prebiehajú počas trénovania, zatiaľ čo predikčná fáza je už relatívne rýchla, čo je dôležité pri aplikáciách v~reálnom čase~\cite{aggarwalNeuralNetworksDeep2018}.
   
   
-    \subsubsection{Súčasné prístupy k~trénovaniu}
+    \subsection{Súčasné prístupy k~trénovaniu}
 
       Snaha o~vyriešenie vyššie spomenutých problémov trénovania \acrshort{uns} podnietila vznik množstva variácií učiacich algoritmov, ktoré sú síce v~základoch postavené na metódach gradientného zostupu a~spätného šírenia chyby, ale obsahujú aj ďalšie modifikácie a~vylepšenia, týkajúce sa či už len samotného procesu trénovania, alebo aj architektúry celej siete, resp.\ jej buniek.
 
@@ -458,16 +452,16 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
 
       \begin{subequations}
         \begin{align}
-          F_i &\:\leftarrow\: \rho_f F_i + (1 - \rho_f) \left( \frac{\partial\, \mathcal{L}}{\partial\, w_i} \right);\ \forall i, \\
-          A_i &\:\leftarrow\: \rho A_i + (1 - \rho) {\left( \frac{\partial\, \mathcal{L}}{\partial\, w_i} \right)}^2;\ \forall i, \\
+          F_i &\:\leftarrow\: \rho_f F_i + (1 - \rho_f) \left( \frac{\partial\, \mathcal{L}}{\partial\, \mathcal{w_i}} \right);\ \forall i, \\
+          A_i &\:\leftarrow\: \rho A_i + (1 - \rho) {\left( \frac{\partial\, \mathcal{L}}{\partial\, \mathcal{w_i}} \right)}^2;\ \forall i, \\
           \alpha_t &= \alpha \left( \frac{\sqrt{1 - \rho^t}}{1 - \rho_f^t} \right),
         \end{align}
       \end{subequations}
       pričom $\rho, \rho_f \in (0,1)$ sú voliteľné parametre. Novšia verzia algoritmu, AdamW~\cite{loshchilovDecoupledWeightDecay2019} vylepšuje pôvodný Adam v~tom, že regularizačný člen nemieša s~výpočtom gradientného momentu, ale počíta ho osobitne, čo vedie k~stabilnejšiemu trénovaniu a~lepšiemu generalizačnému výkonu siete.
   
-\subsection{Hlboké učenie}
+\section{Hlboké učenie}
 
-  \emph{Hlboké učenie} (angl.\ \emph{deep learning}) predstavuje jednu z najdôležitejších súčasných oblastí vývoja \acrshort{ui}. Prekonáva ťažkosti klasických perceptrónových sietí v riešení komplexnejších úloh využitím viacvrstvových neurónových architektúr, kde každá vrstva extrahuje čoraz abstraktnejšie znaky z~výstupov predchádzajúcich vrstiev. Vďaka tejto hierarchickej reprezentácii je možné modelovať zložité funkcie priamo z~dát bez nutnosti manuálne definovaných príznakov~\cite{lecunDeepLearning2015}. Hlboké siete tak výrazne prevyšujú tradičné \acrshort{mlp} v~schopnosti učiť sa reprezentácie priamo zo surových dát, čím umožňujú riešiť zložité úlohy ako rozpoznávanie objektov, preklad jazykov alebo predikciu dynamiky systémov.
+  \emph{Hlboké učenie} (angl.\ \emph{\acrfull{dl}}) predstavuje jednu z najdôležitejších súčasných oblastí vývoja \acrshort{ui}. Prekonáva ťažkosti klasických perceptrónových sietí v riešení komplexnejších úloh využitím viacvrstvových neurónových architektúr, kde každá vrstva extrahuje čoraz abstraktnejšie znaky z~výstupov predchádzajúcich vrstiev. Vďaka tejto hierarchickej reprezentácii je možné modelovať zložité funkcie priamo z~dát bez nutnosti manuálne definovaných príznakov~\cite{lecunDeepLearning2015}. Hlboké siete tak výrazne prevyšujú tradičné \acrshort{mlp} v~schopnosti učiť sa reprezentácie priamo zo surových dát, čím umožňujú riešiť zložité úlohy ako rozpoznávanie objektov, preklad jazykov alebo predikciu dynamiky systémov.
 
   Na rozdiel od plytkých sietí vyžaduje trénovanie hlbokých modelov pokročilejšie optimalizačné techniky. Kým \acrshort{mlp} siete často využívali obyčajný gradientný zostup s~fixnou rýchlosťou učenia, hlboké siete zvyknú používať algoritmy ako Adam, RMSProp alebo momentové metódy, ktoré zohľadňujú historické hodnoty gradientov a~adaptívne upravujú parametre učenia~\cite{kingmaAdamMethodStochastic2017}. Za účelom predchádzania vyššie spomenutým problémom, ako je miznúci a~vybuchujúci gradient, sa zároveň používajú metódy ako regularizácia (napr. L2 penalizácia alebo \uv{dropout}), váhová inicializácia a~plánovanie rýchlosti učenia~\cite{goodfellowDeepLearning2016}.
 
@@ -477,7 +471,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
   %   \item \emph{Rekurentné neurónové siete (RNN)}, ktoré sú vhodné na modelovanie sekvenčných údajov a~nachádzajú využitie pri spracovaní senzorických tokov, predikcii pohybu či fúzii dát z~viacerých senzorov s~časovou závislosťou.
   % \end{itemize}
 
-  \subsubsection{Konvolučné neurónové siete}\label{ssec:cnn}
+  \subsection{Konvolučné neurónové siete}\label{ssec:cnn}
 
     Konvolučné neurónové siete (\acrshort{cnn}) sú špeciálne navrhnuté na efektívne spracovanie dát so štruktúrou v~priestore. Hoci boli vynájdené ešte koncom 20.\ storočia, do širšieho používania sa dostali až po práci kolektívu A. Krizhevsky~\cite{krizhevskyImageNetClassificationDeep2012} a~dodnes sú najúspešnejším nástrojom na rozpoznávanie a~klasifikáciu obrazu z~kamery. Oproti klasickým plne prepojeným sieťam majú pri rovnakom počte neurónov menej prepojení, vďaka čomu sú jednoduchšie na natrénovanie a~odolnejšie voči pretrénovaniu. Princíp ich fungovania je inšpirovaný fungovaním mozgu cicavcov pri spracovaní zrakových vnemov~\cite{mehligMachineLearningNeural2021}.
 
@@ -494,12 +488,12 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
     \begin{figure}[t!]
       \centering
       \includegraphics[width=0.8\textwidth]{img/cnn.png}
-      \caption[Schéma architektúry konvolučnej neurónovej siete]{Schéma architektúry konvolučnej neurónovej siete~\cite{mehligMachineLearningNeural2021}}
+      \caption{Schéma architektúry konvolučnej neurónovej siete.~\cite{mehligMachineLearningNeural2021}}
     \end{figure}
 
     Medzi najvyužívanejšie implementácie patria TensorFlow a~PyTorch, ktoré ponúkajú predpripravené moduly na tvorbu a~trénovanie \acrshort{cnn}, ako aj množstvo predtrénovaných modelov (napr.\ VGG, ResNet, MobileNet či EfficientNet) vhodných na prenos znalostí. Tieto knižnice podporujú aj hardvérovú akceleráciu (napr.\ pomocou \acrshort{gpu}), čo umožňuje efektívne trénovanie rozsiahlych sietí. V~praxi sa \acrshort{cnn} implementácie uplatňujú v~prostrediach ako OpenCV, ktoré ponúka jednoduché rozhranie na inferenciu \acrshort{cnn} modelov v~reálnom čase a~je často využívaný vo vnorených systémoch a~robotike. Vďaka týmto nástrojom je dnes práca s~\acrshort{cnn} prístupná aj bez potreby vlastnej implementácie architektúr od základu.
 
-  \subsubsection{Rekurentné neurónové siete}\label{ssec:rnn}
+  \subsection{Rekurentné neurónové siete}\label{ssec:rnn}
   
     Rekurentné neurónové siete (\acrshort{rnn}) tvoria triedu architektúr umelých neurónových sietí navrhnutých špecificky na spracovanie sekvenčných dát. Na rozdiel od bežných dopredných sietí, ktoré spracúvajú vstupy ako nezávislé a~nemajú vnútornú pamäť, \acrshort{rnn} obsahujú mechanizmus \emph{rekurencie}, ktorý im umožňuje uchovávať informácie o~predchádzajúcich vstupoch v~tzv.\ \emph{skrytom stave}. Táto schopnosť ich predurčuje na úlohy, v~ktorých poradie alebo časový kontext zohráva rozhodujúcu úlohu~--~napríklad pri spracovaní textu, zvuku, signálov zo senzorov či trajektórií v~priestore.
 
@@ -512,7 +506,7 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
     \begin{figure}[b!]
       \centering
       \input{img/rnn.tex}
-      \caption[Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase]{Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase}
+      \caption{Rekurentná neurónová sieť~--~znázornenie toku informácií v~čase.}
     \end{figure}
 
     Vďaka schopnosti modelovať dlhodobé závislosti v~čase sú \acrshort{rnn} vhodné na spracovanie senzorických dát, kde každé meranie tvorí súčasť väčšej sekvencie. Môžu slúžiť aj ako časový filter, nakoľko dokážu integrovať informácie z~predchádzajúcich meraní a~korigovať neistotu v~aktuálnych pozorovaniach. K~ich výhodám patrí aj prispôsobivosť a~univerzálnosť, keďže tá istá architektúra sa dá použiť na rôzne typy sekvencií. Sú však náročné na trénovanie a~citlivé na dĺžku a~kvalitu sekvencie. Medzi najčastejšie používané implementácie \acrshort{rnn} patria tieto architektúry:
@@ -534,55 +528,257 @@ Problematika fúzie dátových tokov z~viacerých snímačov rovnakého alebo r�
         \includegraphics[width=\textwidth]{img/gru.png}
         \caption{GRU sieť~--~aktualizačná a~resetovacia brána}\label{fig:gru}
       \end{subfigure}
-      \caption[Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí]{Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí~\cite{jiangMixedDeepRecurrent2019}}
+      \caption{Porovnanie štruktúr LSTM a~GRU rekurentných neurónových sietí.~\cite{jiangMixedDeepRecurrent2019}}
     \end{figure}
 
-% \section{Strojové učenie}
-
-%   Strojové učenie sa využíva na aplikácie, ktoré kvôli svojej komplexite nie je možné naprogramovať tak, aby bol riadiaci program schopný optimálne reagovať na všetky možné stavy, ktoré môžu nastať. Týmto spôsobom prebieha postupná adaptácia na reálne podmienky na základe spätnej väzby zo systému. Najzákladnejšie typy strojového učenia sú:
-
-%   \subsection{Učenie s~posilňovaním}
-
-%   \subsection{Hlboké učenie}
-
-% \section{Fuzzy logika}
-
-\subsection{Využitie UNS a hlbokého učenia pre fúziu snímačov}
-
+\section{Fúzia lokalizácie pomocou UNS}
   Presná znalosť polohy v~prostredí~--~lokalizácia~--~predstavuje jeden zo základných predpokladov pre spoľahlivú prevádzku a~efektívne plnenie úloh mobilného robota. Na tento účel sa bežne využíva viacero typov senzorov, ako napríklad \acrshort{gnss}, \acrshort{ins}, vizuálne systémy alebo laserové snímače. Každý z~týchto senzorov však podlieha určitým obmedzeniam a~v~praxi neposkytuje dokonale presné ani spoľahlivé údaje. Na zníženie neistoty a~zvýšenie robustnosti odhadu aktuálnej polohy sa preto využíva fúzia údajov, t.\ j.\ inteligentná integrácia viacerých dátových tokov do jedného spoločného odhadu, ktorý je spravidla presnejší a~konzistentnejší než jednotlivé zdroje samostatne.
 
   Tradičné prístupy k~fúzii údajov sú založené prevažne na pravdepodobnostných modeloch (napr. Bayesovská filtrácia, Kalmanove filtre, časticové filtre) alebo metódach intervalového odhadu. Najväčšou výzvou pri použití týchto metód je však získanie presného modelu systému. V~prípade komplexných a~vysoko dynamických systémov môže byť odvodenie presného modelu zvlášť náročné. Navyše, senzorické dáta bývajú sprevádzané vlastnou nepresnosťou a~neistotou, ktorých zapracovanie do modelu je problematické. Vo výsledku tak nepresný model systému môže vážne obmedziť úspešnosť analytických metód fúzie~\cite{fayyadDeepLearningSensor2020}. 
   
-  S~nástupom moderných techník umelej inteligencie~--~predovšetkým umelých neurónových sietí a~hlbokého učenia~--~sa postupne presadzuje aj ich uplatnenie v~tejto oblasti. Tieto modely sú schopné spracovávať veľké objemy vysoko dimenzionálnych dát, učiť sa zložité nelineárne vzťahy medzi jednotlivými vstupmi a~zohľadňovať aj ich časové závislosti bez hlbokej analytickej znalosti modelu, čo z~nich robí atraktívny nástroj pre riešenie úloh lokalizácie prostredníctvom senzorickej fúzie.
+  S~nástupom moderných techník umelej inteligencie~--~predovšetkým umelých neurónových sietí a~hlbokého učenia~--~sa postupne presadzuje aj ich uplatnenie v~tejto oblasti. Tieto modely sú schopné spracovávať veľké objemy vysoko dimenzionálnych dát, učiť sa zložité nelineárne vzťahy medzi jednotlivými vstupmi a~zohľadňovať aj ich časové závislosti bez hlbokej analytickej znalosti modelu, čo z~nich robí atraktívny nástroj pre riešenie úloh lokalizácie prostredníctvom senzorickej fúzie. V nasledujúcich častiach predstavíme niekoľko konkrétnych aplikácií rôznych typov \acrshort{uns} na účely fúzie lokalizačných údajov pre mobilný robotický systém.
 
-  \begin{figure}[b!]
+  \subsection{Fúzia vnímania prostredia s využitím DFFN}
+
+  Príkladom využitia štandardnej, plne prepojenej \acrshort{dffn} siete na fúziu senzorických dát je práca autorov Barreto-Cuberto a~kol~\cite{barreto-cuberoSensorDataFusion2022}. Využíva sa tu kombinácia troch typov senzorov: 360-stupňový 2D lidar, stereokamera a~ultrazvukové senzory (viď obr.~\ref{fig:bar-cub-sensors-layout}). Pre úspešnosť lokalizácie a navigácie v neznámom prostredí bez externej lokalizačnej infraštruktúry je dôležitá spoľahlivá detekcia vzdialenosti okolitých objektov. Rôzne typy senzorov majú odlišnú schopnosť detegovať objekty a povrchy v rozličných výškach, z rôznych materiálov (sklo, betón, drevo, hliník, apod.), a to aj vzhľadom na aktuálne svetelné podmienky. Kým ultrazvuk vie spoľahlivo detegovať sklo, stereo kamera zachytáva trojrozmernú hĺbkovú štruktúru a~lidar poskytuje vysoké rozlíšenie v~2D rovine. Hlavným cieľom práce tak bolo pomocou kombinácie viacerých senzorov maximalizovať kvalitu mapovania pri prechode prostredím a tým znížiť lokalizačné a navigačné odchýlky.
+
+  \begin{figure}[t!]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/mlp_fusion.png}
-    \caption[Fúzia senzorov pomocou \acrshort{dffn}]{Fúzia senzorov pomocou \acrshort{dffn}~\cite{barreto-cuberoSensorDataFusion2022}}\label{fig:dffn}
+    \includegraphics[width=0.5\textwidth]{img/barreto-cuberto/sensors_layout.jpg}
+    \caption[Rozloženie senzorov na mobilnom robote]{Rozloženie senzorov na mobilnom robote v práci~\cite{barreto-cuberoSensorDataFusion2022}.}\label{fig:bar-cub-sensors-layout}
   \end{figure}
+
+  \refstepcounter{subsubsection} % posunie číslovanie
+  \subsubsection*{\thesubsubsection\quad Predspracovanie dát}
   
-  Príkladom využitia štandardnej, plne prepojenej \acrshort{dffn} siete na fúziu lokalizácie môže byť práca Barreto-Cuberto a~kol.~\cite{barreto-cuberoSensorDataFusion2022}. Architektúra tejto siete pre fúziu senzorov je znázornená na obr.~\ref{fig:dffn}. Využíva sa tu kombinácia troch typov senzorov: 360-stupňový 2D lidar, stereokamera a~ultrazvukové senzory. Úlohou neurónovej siete bolo zlepšiť schopnosť mobilného robota detegovať rôzne druhy prekážok vrátane sklenených povrchov, ktoré sú pre lidar často neviditeľné. Každý z~týchto senzorov má iné výhody: ultrazvuk vie spoľahlivo detegovať sklo, stereo kamera zachytáva trojrozmernú hĺbkovú štruktúru a~lidar poskytuje vysoké rozlíšenie v~2D rovine. Pred fúziou sa surové senzorické dáta upravujú~--~aplikujú sa filtre (napr. Kalmanov filter na ultrazvuk), transformácie do spoločného súradnicového systému a~projekcia mračien bodov na 2D rovinu. Neurónová sieť bola trénovaná na predikciu spoľahlivých vzdialeností k~prekážkam spojením vstupov zo všetkých troch senzorov. Používa Adam optimalizátor, aktivačnú funkciu \acrshort{relu} a~ďalšie osvedčené techniky pre nelineárne dáta. Výsledkom fúzie je jednotná metrika vzdialeností, ktorú systém využíva na tvorbu 2D okupačnej mapy (angl.\ Occupancy Grid Map). Experimentálne porovnanie viacerých stratégií (lidar-sólo, lidar+sonar, lidar+kamera+sonar) ukázalo, že fúzia pomocou \acrshort{uns} výrazne znižuje strednú kvadratickú chybu (\acrshort{rmse}) (až pod 3~cm), pričom samotný lidar mal chybu cez 2 metre pri prítomnosti skla. Navyše, kombinácia kamery a~sonaru umožňuje rozpoznať aj objekty pod úrovňou skenovania lidaru, čím sa zvyšuje bezpečnosť a~spoľahlivosť navigácie.
+    Pred samotnou fúziou je potrebné predspracovanie surových senzorických dát, a to za účelom odstránenia odľahlých a irelevantných meraní, redukcie šumu a transformácie meraní do spoločného súradnicového systému. Ultrazvukové merania sa vyznačujú veľkým rozptylom, preto je na ne najskôr aplikovaný kĺzavý mediánový filter, ktorého výstupom je medián posledných 15-tich meraní. Následne sa aplikuje Kalmanov filter pre ďalšiu redukciu šumu. Nakoľko ultrazvuk neposkytuje angulárnu informáciu, prisudzuje sa rovnaká vzdialenosť v celom jeho uhlovom rozsahu merania.
 
-  \subsubsection{CNN fúzia}
+    Stereokamera poskytuje vďaka porovnaniu obrazu z dvoch objektívov hĺbkovú informáciu o prostredí vo forme 3D mračna bodov. Z poskytnutého mračna bodov sú na základe zvislej $z$ súradnice použité len tie body, ktoré môžu predstavovať prekážku pre robot. Tieto body sú projektované do 2D roviny tak, že sa ďalej využívajú len súradnice $x,y$. Týmto spôsobom sa redukuje objem dát zo stereokamery, ktoré vstupujú do fúzie.
 
-    Nakoľko je architektúra \acrshort{cnn} sietí prispôsobená na spracovanie dvojrozmerných dát, v~súvislosti s~fúziou sa ich využitie objavuje najčastejšie pri spracovaní kamerového obrazu, príp.\ máp.
+    Predmetom spracovania dát z lidaru je redukcia meraní z 360-stupňového okolia na uhlový výsek, ktorý sa prekrýva so zorným poľom kamery alebo ultrazvukov. Napokon, keďže každý zo senzorov poskytuje merania relatívne voči vlastnej polohe, je nevyhnutná ich reprezentácia v spoločnom súradnicovom systéme. Tento prepočet sa vykoná pomocou statických homogénnych transformácií na základe vopred nameraných vzdialeností medzi senzormi.
+
+  \refstepcounter{subsubsection}
+  \subsubsection*{\thesubsubsection\quad Konfigurácia a trénovanie neurónovej siete}
+
+    \acrshort{dffn} je priamo zodpovedná za fúziu troch dátových tokov do jedného, na základe ktorého sa zostaví mapa prostredia v podobe okupačnej mriežky. Tá rozlišuje v zásade tri stavy: voľný priestor, prekážku a neznámy priestor. Vstupná vrstva siete obsahuje tri neuróny, jeden pre každý zo senzorov. Ďalej sa nachádza niekoľko skrytých vrstiev a na konci je jeden výstupný neurón, poskytujúci fúziu meranej vzdialenosti. Základná štruktúra siete je znázornená na obr.~\ref{fig:dffn}. Všetky neuróny využívajú \acrshort{relu} aktivačnú funkciu. V jednom čase sú na vstup privedené merania vzdialenosti v tom istom smere. Ako už bolo spomenuté, každý zo senzorov má svoje špecifiká. Kým ultrazvuk je schopný zaznamenať prekážku prakticky bez ohľadu na jej materiál, jeho meranie môže byť zašumené a navyše nedokáže určiť presný smer. Lidar nedokáže zaznamenať sklenú prekážku, zatiaľ čo kamera zaznamená prekážky nachádzajúce sa ďalej za sklom. Navyše, lidar zaznamenáva prekážky len v jednej úrovni, takže niektoré si nemusí stihnúť. Úlohou neurónovej siete je teda určiť najpravdepodobnejšiu hodnotu vzdialenosti pre daný smer.
+
+    \begin{figure}[b!]
+      \centering
+      \includegraphics[width=0.6\textwidth]{img/barreto-cuberto/mlp_fusion.png}
+      \caption[Fúzia senzorov pomocou \acrshort{dffn}]{Fúzia senzorov pomocou \acrshort{dffn} podľa~\cite{barreto-cuberoSensorDataFusion2022}. Vstupmi sú údaje o nameranej vzdialenosti k prekážke v danom smere po transformácii do jednotného súradnicového systému.}\label{fig:dffn}
+    \end{figure}
+
+    Na trénovanie neurónovej siete bol použitý optimalizačný algoritmus Adam, pričom kriteriálnou funkciou bola \acrshort{rmse}. Na implementáciu \acrshort{uns} boli využité knižnice TensorFlow a Keras. Chyba siete bola počítaná na základe porovnania dvoch typov datasetov: skutočných a detegovaných vzdialeností k prekážkam. Datasety skutočných vzdialeností boli získané pomocou lidaru, pričom prekážky boli vo výške lidaru prelepené nepriehľadnou páskou, aby sa zaručilo neskreslené určenie vzdialenosti. Takéto páry datasetov boli vyhotovené na viacerých pozíciách v prostredí. Trénovacie a testovacie datasety boli vyhotovené na rôznych pozíciách.
+
+  \refstepcounter{subsubsection}
+  \subsubsection*{\thesubsubsection\quad Overenie a výsledky}
+
+    \begin{figure}[b!]
+      \centering
+      \begin{subfigure}[b]{\textwidth}\centering
+        \includegraphics[width=0.8\textwidth]{img/barreto-cuberto/experiment01.png}
+      \caption{Experiment č. 1}\label{fig:bar-cub-experiment01}
+      \end{subfigure}
+
+      \begin{subfigure}[b]{\textwidth}\centering
+        \includegraphics[width=0.8\textwidth]{img/barreto-cuberto/experiment02.png}
+      \caption{Experiment č. 2}\label{fig:bar-cub-experiment02}
+      \end{subfigure}
+      \caption[Výsledky experimentov]{Výsledky experimentov~\cite{barreto-cuberoSensorDataFusion2022}. Farebné body predstavujú merania z lidaru, biele body sú výstupom fúzie pomocou \acrshort{dffn}.}
+    \end{figure}
+
+    Na validáciu navrhnutého prístupy fúzie autori Barreto-Cuberto a kol.~\cite{barreto-cuberoSensorDataFusion2022} použili viacero experimentálnych scenárov, kde testovali úspešnosť mapovania okolia pri rôznom type prekážok. V prvom scenári stál robot pred sklenenými prekážkami a v jeho blízkosti sa nachádzali aj nízke prekážky, ktoré nedosahovali úroveň snímania lidaru. Na obr.~\ref{fig:bar-cub-experiment01} je znázornený úspešný výsledok fúzie senzorov. V druhom experimente stál robot pred prekážkami z rôznych materiálov~--~dreveného panelu, pred ktorým stáli dva hliníkové objekty. Výsledok fúzie tohto experimentu sa nachádza na obr.~\ref{fig:bar-cub-experiment02}. Analýzou výsledkov z oboch experimentov sa ukázalo, že fúzia senzorov plní svoj účel, keďže kompenzuje výpadky meraní lidaru, ktorý síce poskytuje najpresnejšie meranie polohy, no má obmedzené schopnosti detekcie prekážok v prostredí.
+
+  \subsection{Fúzia odometrie s využitím DL a CNN} \
+
+    Nakoľko je architektúra \acrshort{cnn} sietí prispôsobená na spracovanie dvojrozmerných dát, v~súvislosti s~fúziou sa ich využitie objavuje najčastejšie pri spracovaní kamerového obrazu, príp.\ máp. Spočiatku nachádzali \acrshort{cnn} využitie najmä pri detekcii prekážok a klasifikácii okolitých objektov na základe dát z kamery alebo lidaru. Avšak čo sa týka riešenia lokalizácie samotného robota, jednou z~prvých implementácií metód hlbokého učenia na účely fúzie odometrie vôbec bola práca autorov Valente a~kol.\ z~roku 2019~\cite{valenteDeepSensorFusion2019}, ktorí sa zaoberali fúziou monokamery a~2D laserového skenera. Ich cieľom bolo eliminovať potrebu presnej kalibrácie medzi senzormi a~zložitosť návrhu manuálne definovaných pravidiel fúzie. 
     
-    Jednou z~prvých implementácií metód hlbokého učenia na účely fúzie odometrie vôbec je práca autorov Valente a~kol.\ z~roku 2019~\cite{valenteDeepSensorFusion2019}, ktorí sa zaoberali fúziou monokamery a~2D laserového skenera. Cieľom bolo eliminovať závislosť od presnej kalibrácie medzi senzormi a~zložitosť návrhu ručne definovaných fúznych pravidiel. Navrhnutý prístup transformuje klasický regresný problém odometrie (odhadu vzdialenosti a~natočenia medzi snímkami) na problém ordinálnej klasifikácie, čím zjednodušuje učenie siete. Vstupom do siete sú vždy dvojice po sebe idúcich 360° laserových skenov a~obrázkov z~kamery, pričom sieť predikuje transformáciu ${(\Delta d, \Delta \theta)}^{\top}$~--~teda prejdenú vzdialenosť a~rotačný uhol medzi dvoma časovými krokmi. Akumuláciou týchto lokálnych odhadov je možné rekurzívne rekonštruovať globálnu trajektóriu robota. Architektúra pozostáva z~dvoch vetiev (\acrshort{cnn} pre laser, \acrshort{cnn} pre kameru), ktorých výstupy sú zlúčené a~prevedené na odhad translácie a~rotácie. Výsledky na reálnych dátach z~KITTI datasetu ukazujú, že konvolučné siete dokážu efektívne fúzovať heterogénne senzorické údaje pre účely lokalizácie v~reálnom čase. Tento prístup je preto vhodný najmä v~situáciách, kde nie sú dostupné kinematické dáta (napr.\ z~enkodérov) alebo \acrshort{gnss}\@.
+    Navrhnutý prístup sa zaoberá extrakciou textúr z 2D laserového skenera a monokamery, sekvenčnou fúziou ktorých následne vzniká odhad odometrie. Jedinečnosťou tejto metódy je to, že transformuje klasický regresný problém odometrie (odhad vzdialenosti a~natočenia medzi snímkami) na problém ordinálnej klasifikácie, čím zjednodušuje učenie siete. Prehľad navrhnutého systému je na obr.~\ref{fig:valente-system-overview}.
 
-    Efektívne využitie \acrshort{cnn} technológie je predstavené v~článku~\cite{xiaoDynamicSLAMSemanticMonocular2019}, kde autori predstavujú systém Dynamic-SLAM, ktorý rozširuje klasické vizuálne \acrshort{slam} riešenia tak, aby dokázali spoľahlivo pracovať v~dynamickom prostredí. Kým tradičné \acrshort{slam} metódy predpokladajú, že všetky pozorované prvky sú statické, tento prístup využíva sémantickú segmentáciu pomocou \acrshort{ssd} konvolučnej neurónovej siete na rozpoznávanie dynamických objektov v~obraze. Tieto objekty sa detegujú v~samostatnom vlákne a~na základe toho sa ich zodpovedajúce obrazové prvky (napr.\ rohové body) vylúčia z~odhadu pohybu robota, čím sa výrazne znižuje chyba lokalizácie. Keďže \acrshort{ssd} môže niektoré objekty vynechať, autori navrhujú kompenzačný algoritmus, ktorý využíva fakt, že pohyb objektov medzi po sebe idúcimi snímkami býva plynulý~--~tzv.\ rýchlostnú invariantnosť~--~a na základe toho spätne identifikuje nedetekované objekty. Následne sa v~sledovacom vlákne aplikuje selektívne sledovanie, ktoré spracúva len spoľahlivé statické prvky. Výsledný systém je robustnejší voči narušeniu dynamikou prostredia, funguje v~reálnom čase, a~experimentálne preukazuje vyššiu presnosť a~úspešnosť lokalizácie než existujúce riešenia ako ORB-SLAM2 či DynaSLAM, a~to nielen v~simulovaných testoch, ale aj na mobilnej robotickej platforme v~reálnom svete.
+    \begin{figure}[b!]
+      \centering
+      \includegraphics[width=0.6\textwidth]{img/valente/system_overview.png}
+      \caption[Návrh systému fúzie kamery a lidaru pomocou CNN]{Návrh systému fúzie kamery a lidaru pomocou CNN podľa~\cite{valenteDeepSensorFusion2019}. Po sebe idúce lidarové skeny a kamerové snímky sú najskôr postupne spracované v osobitných sieťach a potom v jednej spoločnej pre určenie zmeny polohy vozidla.}\label{fig:valente-system-overview}
+    \end{figure}
+    
+    Vstupom do siete sú vždy dvojice po sebe idúcich 360-stupňových laserových skenov a~obrázkov z~kamery, pričom sieť sa snaží predikovať transformáciu $T = {(\Delta d, \Delta \theta)}^{\top}$~--~teda prejdenú vzdialenosť a~rotačný uhol medzi dvoma po sebe nasledujúcimi laserovými skenmi $(s_{t-1},s_t)$ a kamerovými snímkami $(c_{t-1},c_t)$. Cieľom \acrshort{cnn} teda má byť optimalizácia funkcie $g(\cdot)$ takej, že:
+    \begin{equation}
+      T_t = g((s_{t-1},s_t),\,(c_{t-1},c_t))
+    \end{equation}
+    
+    Akumuláciou týchto lokálnych odhadov je možné rekurzívne rekonštruovať globálnu trajektóriu robota. Algoritmus síce nezahŕňa uzavretie slučky, teda je z dlhodobého hľadiska náchylný na drift, cieľom tejto práce však bolo ukázať vôbec možnosť využitia \acrshort{cnn} na účely fúzie dát z kamery a lidaru.
+
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Predspracovanie dát}
+
+      Aby bolo možné využiť dáta z kamery a lidaru v neurónovej sieti, aj v tomto prípade je potrebné ich predspracovanie. Ako sme spomenuli v úvode tejto kapitoly, \acrshort{cnn} sú prispôsobené na spracovanie dvojrozmerných dát. Údaje z lidaru sú preto upravené do podoby jednorozmerného vektora vzdialeností s fixným krokom 0,1° a následne spojené s podobne upravenými predošlými dátami, tvoriac maticu rozmeru 2 $\times$ 3601. To umožňuje využitie štandardnej \acrshort{cnn} pre extrakciu textúr z okolitého prostredia. Čo sa týka predspracovania kamerových dát, tu sa vykoná len zmenšenie rozlíšenia obrázka pre redukciu výpočtového času. Následne sa dva nasledujúce obrázky spoja dokopy, čím vznikne tenzor reprezentujúci dve kamerové merania. Tak je možné tieto dva obrázky priviesť na vstup tej istej siete za účelom detekcie textúr v prostredí.
+
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Architektúra siete}
+
+      Architektúra pozostáva z~dvoch vetiev konvolučných sietí (\acrshort{cnn} pre laser, \acrshort{cnn} pre kameru), ktoré spracúvajú surové senzorické dáta. Ich výstupy sú zlúčené vo fúzii sa~prevedené na odhad translácie a~rotácie (viď obr.~\ref{fig:valente-system-architecture}).
+
+      \acrshort{cnn} pre laser spracúva tenzor vytvorený zreťazenými vektormi dvoch po sebe idúcich skenov. Ten je postupne spracovaný sekvenciou 1D konvolučných vrstiev a zhlukovacích vrstiev využívajúcich funkciu priemeru, ktoré extrahujú vzájomné črty medzi dvomi meraniami. Architektúra \acrshort{cnn} pozostáva zo šiestich 1D konvolučných vrstiev, z ktorých každá je nasledovaná nelineárnou aktivačnou funkciou \acrshort{relu}. Medzi každé dve konvolučné vrstvy je vložená zhlukovacia vrstva, ktorá znižuje výpočtovú náročnosť. Na konci CNN je pridaná lineárna vrstva, ktorá zmenší rozmer tenzora pred fúziou, aby bol zabezpečený rovnaký objem informácií z oboch snímačov.
+
+      Vstupom vetvy pre spracovanie obrazu z kamery sú dve po sebe zachytené surové kamerové snímky. Vzorom pre architektúru tejto \acrshort{cnn} bola práca autorov Wang a kol.~\cite{wangDeepVOEndtoEndVisual2017}, avšak podobne ako v lidarovej vetve, aj tu bola pridaná lineárna vrstva na redukciu veľkosti tenzora pred fúziou. Výstupom tejto časti sú kompaktné reprezentácie textúr obrazu pripravené na zlúčenie s výstupom z lidarovej časti.
+
+      \begin{figure}[t!]
+        \centering
+        \includegraphics[width=\textwidth]{img/valente/system_architecture.png}
+        \caption[Architektúra CNN sietí pre fúziu odometrie]{Architektúra CNN sietí pre fúziu odometrie podľa~\cite{valenteDeepSensorFusion2019}.}\label{fig:valente-system-architecture}
+      \end{figure}
+
+      Po extrakcii príznakov z dvojice po sebe nasnímaných laserových skenov a dvojice kamerových snímok sa tieto výstupy spoja do jedného vektora. Ten sa následne spracúva dvomi nezávislými sekvenciami lineárnych vrstiev~--~jedna je určená na odhad rotácie a druhá na odhad translácie vozidla. Pôvodne bola testovaná aj architektúra so spoločnými vrstvami pre oba odhady, avšak lepšie výsledky sa dosiahli ich oddelením. Na zníženie rizika pretrénovania sú pred každú z lineárnych vrstiev zaradené \emph{dropout} vrstvy.
+
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Trénovanie siete}
+      Učenie navrhnutej siete prebiehalo v dvoch hlavných krokoch.Najskôr boli trénované konvolučné podsiete pre jednotlivé senzory (CNN-Laser a CNN-Cam) samostatne, aby sa získali čo najlepšie predtrénované váhy. Každá podsieť bola v tejto fáze napojená na dvojicu samostatných lineárnych vrstiev~--~jednu pre odhad rotácie a druhú pre odhad translácie.
+
+      V predchádzajúcej práci tohto autorského kolektívu~\cite{valenteLSTMNetworkRealTime2019} sa ukázalo, že lepšie výsledky sú dosiahnuté, ak sa úloha odhadu rotácie formuluje ako klasifikačný problém, zatiaľ čo translácia sa rieši regresiou. V tomto výskume sa tento prístup rozšíril~--~aj odhad translácie sa transformoval na klasifikačnú úlohu, čím sa uľahčil proces učenia a zlepšila stabilita konvergencie siete, bez zníženia presnosti.
+
+      Pre rotáciu boli definované triedy s rozlíšením 0,1$^{\circ}$ v intervaloch po 5,6$^{\circ}$, čo viedlo k 112-im možným triedam. Pre transláciu bolo vytvorených 270 tried s rozlíšením 0,01 m v rozsahu od 0,0 m do približne 2,6 m (čo zodpovedá maximálnemu posunu medzi dvomi snímkami v datasete KITTI).
+
+      Klasické klasifikačné prístupy však neberú do úvahy poradie hodnôt (napr. že 2$^{\circ}$ je viac ako 0,1$^{\circ}$), preto v tomto prípade autori využili princíp tzv.\ \emph{ordinálnej klasifikácie}. Tento prístup prevádza ordinálny regresný problém na sériu jednoduchších binárnych klasifikácií, kde sa pre každú triedu určuje, či je hodnota väčšia ako daný prah. Takéto značenie umožňuje sieti naučiť sa relatívne poradie medzi triedami.
+
+      Výsledná účelová funkcia sa počíta ako súčet binárnej krížovej entropie (\acrshort{bce}) pre rotáciu a transláciu, s váhovým faktorom $b$ na vyrovnanie rozdielov v mierke chýb oboch veličín:
+      \begin{equation}
+        L = L_{BCE}(\hat d, \, d) + b \cdot L_{BCE}(\hat q, q),
+      \end{equation}
+      kde $d, q$ sú ordinálne značky pre transláciu a rotáciu a $\hat d, \hat q$ sú príslušné výstupy siete po aplikácii sigmoidnej funkcie.
+
+      Vo finálnej fáze sa predtrénované podsiete pripojili k fúznej časti siete a spoločne dotrénovali. Implementácia bola realizovaná v prostredí PyTorch, optimalizácia prebiehala pomocou algoritmu Adam s počiatočnou rýchlosťou učenia 0,0001. Pri predtrénovaní kamery sa využili váhy modelu FlowNet, čím sa skrátil čas učenia.
+    
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Overenie a výsledky}
+
+      Metóda bola testovaná na podmnožine dátovej sady KITTI~\cite{geigerAreWeReady2012} pre odometriu, pričom tréning prebiehal na ôsmich sekvenciách a testovanie na troch odlišných sekvenciách. Výsledky experimentov na testovacích sekvenciách môžeme vidieť na obr.~\ref{fig:valente-experiments}. Podľa autorov sa ukázalo, že navrhnutá architektúra fúzie údajov z kamery a laserového skenera dosahuje chyby translácie a rotácie v porovnateľnom rozsahu s referenčnou metódou DeepVO~\cite{wangDeepVOEndtoEndVisual2017}, no s podstatne rýchlejším spracovaním (až desaťnásobne), a to aj bez použitia GPU\@.
+
+      Analýza ukázala, že fúzia senzorov viedla k rovnakej alebo lepšej presnosti než samostatné spracovanie údajov z jednotlivých senzorov, pričom najväčšie zlepšenie bolo viditeľné pri odhade rotácie. V náročných prípadoch, ako je sekvencia s vysokou rýchlosťou a nízkym počtom detegovaných bodov z laseru, kamera významne prispela k presnejšiemu určeniu uhlov, hoci odhad translácie zostal menej presný.
+
+      Obmedzenia metódy súvisia s absenciou mechanizmov uzatvárania slučiek a s tým, že model nevyužíva časové závislosti, čo môže viesť k akumulácii chyby pri dlhších sekvenciách. Nedostatok trénovacích príkladov pre špecifické typy pohybov (napr.\ výrazné otočenia) sa tiež prejavil nižšou presnosťou v týchto situáciách. Autori konštatujú, že rozšírenie tréningovej množiny by mohlo výrazne zvýšiť spoľahlivosť a presnosť odhadu.
+
+      \begin{figure}[t!]
+      \centering
+      \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/valente/experimetn01.pdf}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/valente/experimetn02.pdf}
+        \end{subfigure}
+        \caption[Výsledky experimentov na testovacích sekvenciách z KITTI datasetu.]{Výsledky experimentov na testovacích sekvenciách z KITTI datasetu.~\cite{valenteDeepSensorFusion2019}}\label{fig:valente-experiments}
+    \end{figure}
+
+    % Efektívne využitie \acrshort{cnn} technológie je predstavené v~článku~\cite{xiaoDynamicSLAMSemanticMonocular2019}, kde autori predstavujú systém Dynamic-SLAM, ktorý rozširuje klasické vizuálne \acrshort{slam} riešenia tak, aby dokázali spoľahlivo pracovať v~dynamickom prostredí. Kým tradičné \acrshort{slam} metódy predpokladajú, že všetky pozorované prvky sú statické, tento prístup využíva sémantickú segmentáciu pomocou \acrshort{ssd} konvolučnej neurónovej siete na rozpoznávanie dynamických objektov v~obraze. Tieto objekty sa detegujú v~samostatnom vlákne a~na základe toho sa ich zodpovedajúce obrazové prvky (napr.\ rohové body) vylúčia z~odhadu pohybu robota, čím sa výrazne znižuje chyba lokalizácie. Keďže \acrshort{ssd} môže niektoré objekty vynechať, autori navrhujú kompenzačný algoritmus, ktorý využíva fakt, že pohyb objektov medzi po sebe idúcimi snímkami býva plynulý~--~tzv.\ rýchlostnú invariantnosť~--~a na základe toho spätne identifikuje nedetekované objekty. Následne sa v~sledovacom vlákne aplikuje selektívne sledovanie, ktoré spracúva len spoľahlivé statické prvky. Výsledný systém je robustnejší voči narušeniu dynamikou prostredia, funguje v~reálnom čase, a~experimentálne preukazuje vyššiu presnosť a~úspešnosť lokalizácie než existujúce riešenia ako ORB-SLAM2 či DynaSLAM, a~to nielen v~simulovaných testoch, ale aj na mobilnej robotickej platforme v~reálnom svete.
 
     % - [\cite{matsuguSubjectIndependentFacial2003},\cite{gaoObjectClassificationUsing2018}]: CNN na odhad hĺbky z~monokulárnej kamery
 
-    DeepFusion je riešenie predstavené v~práci~\cite{laidlowDeepFusionRealTimeDense2022}, ktoré systém pre hustú 3D rekonštrukciu z~monokulárneho videa. Kombinuje výhody geometrických metód a~hlbokého učenia. Motiváciou je prekonanie obmedzení existujúcich metód, ako je obmedzený dosah hĺbkových kamier a~nejednoznačnosť mierky pri rekonštrukcii z~fotometrických chýb, čo je kľúčové pre robotické úlohy. Na rozdiel od klasických \acrshort{slam} systémov, ktoré vytvárajú len riedke mapy na základe kľúčových bodov, DeepFusion generuje husté hĺbkové mapy v~mierke pomocou \acrshort{cnn}, ktorá predikuje nielen hĺbku z~jedného obrazu, ale aj jej gradienty a~neistoty. Tieto výstupy sa potom pravdepodobnostne spájajú so čiastočne hustou rekonštrukciou z~viacerých pohľadov, čím sa zachováva globálna konzistencia aj absolútna mierka. Optimalizácia prebieha priebežne počas prechodu novými snímkami, ale sieť sa spúšťa len raz pre každý kľúčový snímok, čím sa zachováva reálny čas spracovania na \acrshort{gpu}. Tento hybridný prístup využíva prednosti učenia (presnosť vo vnútri objektov) aj geometrie (ostré hrany) a~podľa experimentov dosahuje porovnateľné alebo lepšie výsledky ako iné existujúce systémy.
+    % \subsection{DeepFusion}
+
+    %   DeepFusion je riešenie predstavené v~práci~\cite{laidlowDeepFusionRealTimeDense2022}, ktoré systém pre hustú 3D rekonštrukciu z~monokulárneho videa. Kombinuje výhody geometrických metód a~hlbokého učenia. Motiváciou je prekonanie obmedzení existujúcich metód, ako je obmedzený dosah hĺbkových kamier a~nejednoznačnosť mierky pri rekonštrukcii z~fotometrických chýb, čo je kľúčové pre robotické úlohy. Na rozdiel od klasických \acrshort{slam} systémov, ktoré vytvárajú len riedke mapy na základe kľúčových bodov, DeepFusion generuje husté hĺbkové mapy v~mierke pomocou \acrshort{cnn}, ktorá predikuje nielen hĺbku z~jedného obrazu, ale aj jej gradienty a~neistoty. Tieto výstupy sa potom pravdepodobnostne spájajú so čiastočne hustou rekonštrukciou z~viacerých pohľadov, čím sa zachováva globálna konzistencia aj absolútna mierka. Optimalizácia prebieha priebežne počas prechodu novými snímkami, ale sieť sa spúšťa len raz pre každý kľúčový snímok, čím sa zachováva reálny čas spracovania na \acrshort{gpu}. Tento hybridný prístup využíva prednosti učenia (presnosť vo vnútri objektov) aj geometrie (ostré hrany) a~podľa experimentov dosahuje porovnateľné alebo lepšie výsledky ako iné existujúce systémy.
   
-  \subsubsection{RNN fúzia}
+  \subsection{Fúzia GNSS a INS s využitím RNN} \
 
-    Ako už bolo spomenuté v~časti~\ref{ssec:rnn}, silnou stránkou \acrshort{rnn} sietí je schopnosť spracúvať časovo-závislé dáta a~pamätať si z~nich vzniknuté závislosti. Vďaka tomu je táto architektúra vhodná na spracovanie meraní z~\acrshort{gnss} a~\acrshort{imu}. 
+    Ako už bolo spomenuté v~časti~\ref{ssec:rnn}, silnou stránkou \acrshort{rnn} sietí je schopnosť spracúvať časovo závislé dáta a~pamätať si z~nich vzniknuté závislosti. Vďaka tomu je táto architektúra vhodná napríklad na spracovanie meraní z~\acrshort{gnss} a~\acrshort{imu}\@. \acrshort{gnss} signál môže totiž vypadávať v rôznych náročnejších prostrediach. Kompenzácia výpadku signálu \acrshort{gnss} pomocou \acrshort{ins} naráža na spravidla výrazný šum \acrshort{imu} snímačov. To je problém, v ktorom našli autori Dai a kol.\ uplatnenie pre zapojenie \acrshort{rnn} do fúzie \acrshort{gnss}/\acrshort{ins}.
 
-    Autori článku~\cite{daiINSGNSSIntegrated2020} reagujú na obmedzenia tradičných metód integrovanej navigácie \acrshort{ins}/\acrshort{gnss}, najmä rozšíreného Kalmanovho filtra (\acrshort{ekf}), ktorý si vyžaduje presný model chýb senzorov a~trpí zníženou presnosťou pri dlhodobom výpadku \acrshort{gnss} signálu v~silne nelineárnych alebo rušených prostrediach. Na rozdiel od statických neurónových sietí, ktoré nedokážu zachytiť časové závislosti chýb \acrshort{ins}, navrhujú autori využitie \acrshort{rnn} schopnej modelovať dynamické väzby medzi aktuálnymi a~minulými chybami \acrshort{ins}\@. \acrshort{rnn} sa trénuje na dátach z~obdobia, keď je \acrshort{gnss} dostupné, a~následne dokáže počas výpadku \acrshort{gnss} predikovať chyby polohy a~rýchlosti \acrshort{ins} na základe vlastnej \uv{pamäte} a~údajov o~dynamike vozidla (napr.\ zmeny rýchlosti a~orientácie). Tento prístup umožňuje kontinuálne a~presné určovanie polohy bez potreby zložitého modelovania alebo ladenia parametrov ako v~prípade \acrshort{ekf}. Výsledky zo simulácií aj reálnych experimentov (napr.\ počas 10-hodinovej plavby lode) ukázali, že navrhovaná metóda dosahuje výrazné zníženie chýb v~porovnaní s~\acrshort{ekf} (až o~61~\% v~polohe a~40~\% v~rýchlosti) aj s~\acrshort{elm}, čo potvrdzuje jej potenciál pre navigáciu v~prostrediach s~nedostupným alebo rušeným \acrshort{gnss} signálom.
+    Autori článku~\cite{daiINSGNSSIntegrated2020} reagujú na obmedzenia tradičných metód integrovanej navigácie \acrshort{ins}/\acrshort{gnss}, najmä rozšíreného Kalmanovho filtra (\acrshort{ekf}), ktorý vyžaduje poznanie presného modelu chýb senzorov a~trpí zníženou presnosťou pri dlhodobom výpadku \acrshort{gnss} signálu v~silne nelineárnych alebo rušených prostrediach. Na rozdiel od statických neurónových sietí, ktoré nedokážu zachytiť časové závislosti chýb \acrshort{ins}, navrhujú autori využitie \acrshort{rnn} schopnej modelovať dynamické väzby medzi aktuálnymi a~minulými chybami \acrshort{ins}\@. \acrshort{rnn} sa trénuje na dátach z~obdobia, keď je \acrshort{gnss} dostupné, a~následne dokáže počas výpadku \acrshort{gnss} predikovať chyby polohy a~rýchlosti \acrshort{ins} na základe vlastnej \uv{pamäte} a~údajov o~dynamike vozidla. Tento prístup umožňuje kontinuálne a~presné určovanie polohy bez potreby zložitého modelovania alebo ladenia parametrov ako v~prípade \acrshort{ekf}.
 
-    Podobný problém súvisiaci s~potenciálnym obmedzením dostupnosti a~presnosti \acrshort{gnss} signálu v~zastavaných mestských oblastiach či tuneloch sa rozhodli riešiť aj autori práce~\cite{kimDeepLearningBasedGNSS2019}. Na preklenutie výpadkov \acrshort{gnss} meraní sa rozhodli zapojiť do kombinácie aj údaje z~\acrshort{imu} a~kolesovej odometrie, no v~snahe vyhnúť sa potrebe komplexného odhadu modelu jednotlivých senzorov využili \acrshort{lstm} sieť. Model predikuje aktuálnu polohu na základe predchádzajúcich meraní zo všetkých spomenutých senzorov. Autori uvádzajú 40\%-tné zmenšenie chyby odhadu v~porovnaní so samostatnou \acrshort{gnss} navigáciou v~zjednodušených testovacích podmienkach. Napriek ukázanému potenciálu metód hlbokého učenia v~podobe obídenia procesu kalibrácie a~modelovania, riešenie by ešte potrebovalo validáciu v~náročnejších reálnych podmienkach.
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Model merania}
+
+    \acrshort{ins} systém sa skladá z \acrshort{imu} senzora a z navigačného procesoru\@. \acrshort{imu} je schopná pomocou akcelerometra a gyroskopu merať silu $f$ pôsobiacu na vozidlo a jeho uhlovú rýchlosť $\omega$. Ich integráciou je možné získať odhad rýchlosti, orientácie a pozície vozidla. Kvôli odchýlkam merania (biasom) spomenutých senzorov by však tento odhad časom divergoval. Merací model \acrshort{imu} je možné zapísať v tvare:
+    \begin{subequations}
+      \begin{align}
+        \tilde{f} &= f + 
+        \underbrace{\overbrace{b_a}^{b_{as} + b_{ad}} + w_a}_{\delta f} \\
+      \tilde{\omega} &= \omega + 
+        \underbrace{\overbrace{b_g}^{b_{gs} + b_{gd}} + w_g}_{\delta \omega},
+      \end{align}
+
+    \end{subequations}
+    kde $b_a, b_g$ sú biasy akcelerometra a gyroskopu, pričom každý z nich je možné rozložiť na statickú a dynamickú zložku; $w_a, w_g$ sú gaussovské procesné šumy. Odchýlky merania je tak možné reprezentovať pomocou $\delta f$ a $\delta \omega$. Statická zložka biasov je považovaná za konštantná počas celého procesu merania, zatiaľ čo dynamická sa mení vzhľadom na prostredie a dynamiku vozidla. Výsledná chyba odhadu polohy pomocou \acrshort{ins} je tak funkciou aktuálneho merania, predošlej odchýlky, statických biasov senzorov, dynamických vlastností vozidla a okolitých podmienok prostredia. Je však zrejmé, že táto závislosť je nelineárna a ťažko modelovateľná. V práci~\cite{daiINSGNSSIntegrated2020} sa tak na odhad aktuálnej chyby \acrshort{ins} využíva \acrshort{rnn} sieť.
+
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Integrácia RNN}
+
+    \acrshort{rnn} sieť je schopná prepájať aktuálne vstupy s predošlým stavom siete, ktorý si zapamätáva. Výpočet stavu siete v čase $t$ sa dá zapísať v tvare
+    \begin{equation}
+      s_t = F(U \cdot x_t + W \cdot s_{t-1}),
+    \end{equation}
+    kde $F$ je aktivačná funkcia, $U$ sú váhy vstupu $x_t$ a $W$ sú váhy predošlého stavu $s_{t-1}$. Ilustrácia toku informácií v priebehu času v rámci siete je na obr.~\ref{fig:dai-rnn}.
+
+    \begin{figure}[t!]
+      \centering
+      \includegraphics[width=0.7\textwidth]{img/dai/rnn.png}
+      \caption[Rozbor RNN z hľadiska toku informácií v čase]{Rozbor RNN z hľadiska toku informácií v čase~\cite{daiINSGNSSIntegrated2020}. }\label{fig:dai-rnn}
+    \end{figure}
+
+    Architektúra systému s využitím \acrshort{rnn} na predikciu chyby \acrshort{ins} pozostáva z dvoch základných režimov: trénovacieho a predikčného (viď obr.~\ref{fig:dai-architecture}).
+    
+    Pokiaľ je dostupný \acrshort{gnss} signál, systém je v trénovacom režime, kedy je \acrshort{rnn} trénovaná na základe rozdielu medzi odhadovanou a skutočnou chybou \acrshort{ins}. Vstupom do siete sú zmena rýchlosti $\Delta v$, zmena orientácie $\Delta \phi$ a predošlý odhad chyby (spätná väzba). Výstupom siete sú odhady chyby polohy $\delta \hat p_{INS}$ a rýchlosti $\delta \hat v_{INS}$. Rozdiel merania polohy a rýchlosti medzi \acrshort{ins} a \acrshort{gnss} je využívaný na trénovanie siete pomocou trénovacieho kritéria, ktoré je definované ako:
+    \begin{subequations}
+      \begin{align}
+        \delta p_{INS|GNSS}(k) &= p_{INS}(k) - p_{GNSS}(k) \\
+        \delta v_{INS|GNSS}(k) &= v_{INS}(k) - v_{GNSS}(k)
+      \end{align}
+    \end{subequations}
+
+    \begin{figure}[t!]
+      \centering
+      \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/dai/rnn_train.png}
+        \caption{Režim trénovania}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \vspace*{\fill}
+        \includegraphics[width=\textwidth]{img/dai/rnn_predict.png}
+        \vspace*{\fill}
+        \caption{Režim predikcie}
+      \end{subfigure}
+      \caption[Architektúra systému s RNN na predikciu odchýlky INS]{Architektúra systému s RNN na predikciu odchýlky INS~\cite{daiINSGNSSIntegrated2020}}\label{fig:dai-architecture}
+    \end{figure}
+
+    Zároveň sa počítajú reziduá odhadu polohy a rýchlosti:
+    \begin{subequations}
+      \begin{align}
+        \gamma_p(k) &= \delta p_{INS|GNSS}(k) - \delta \hat{p}_{INS}(k) \\
+        \gamma_v(k) &= \delta v_{INS|GNSS}(k) - \delta \hat{v}_{INS}(k),
+      \end{align}
+    \end{subequations}
+    pričom podmienkou úspešného natrénovanie je $\gamma_p < 3 \delta_p, \gamma_v < 3 \delta_v$, kde $\delta_p, \delta_v$ sú štandardné odchýlky \acrshort{gnss} meraní.
+
+    V prípade, že \acrshort{gnss} signál z akéhokoľvek dôvodu nie je k dispozícii, systém sa prepína do predikčného režimu. Vtedy sa využíva natrénovaná \acrshort{rnn} sieť na predikciu odchýlky merania \acrshort{ins}, na základe čoho sa následne vypočíta odhad aktuálnej polohy:
+    \begin{subequations}
+      \begin{align}
+        \hat p_{INS}(k) = p_{INS}(k) - \delta \hat p_{INS}(k) \\
+        \hat v_{INS}(k) = v_{INS}(k) - \delta \hat v_{INS}(k)
+      \end{align}
+    \end{subequations}
+
+    \refstepcounter{subsubsection}
+    \subsubsection*{\thesubsubsection\quad Overenie a výsledky}
+
+    \begin{figure}[t!]
+      \centering
+      \includegraphics[width=0.65\textwidth]{img/dai/experiment.png}
+      \caption[Priebeh simulovaného experimentu pre fúziu GNSS/INS s využitím RNN]{Priebeh simulovaného experimentu pre fúziu GNSS/INS s využitím RNN.~\cite{daiINSGNSSIntegrated2020}}\label{fig:dai-experiment}
+    \end{figure}
+
+    % V rámci experimentálneho overenia bola navrhnutá metóda testovaná jednak v simulovanom prostredí, jednak na reálnych dátach. V simulačnej štúdii bol modelovaný let bezpilotného prostriedku so známou referenčnou trajektóriou, pričom merania inerciálnej jednotky boli systematicky zaťažované šumom a odchýlkami zodpovedajúcimi reálnym podmienkam. Výsledky ukázali, že pri výpadku GNSS signálu dokázala navrhnutá metóda presnejšie predikovať polohové a rýchlostné chyby v porovnaní s konvenčnými prístupmi. Kvantitatívna analýza potvrdila významné zníženie strednej kvadratickej chyby, pričom zlepšenie oproti tradičnému filtrovanému riešeniu dosiahlo rádovo desiatky percent.
+
+    % Reálne experimenty boli realizované na dátach získaných počas námorných skúšok testovacej lode, vybavenej inerciálnym navigačným systémom a GNSS prijímačom. Pre tréning a validáciu modelu boli využité dlhodobé záznamy, zatiaľ čo testovanie sa sústredilo na horizontálne polohové a rýchlostné chyby. Aj v tomto prípade boli výsledky konzistentné – navrhnutá metóda vykazovala najnižšie hodnoty chýb spomedzi porovnávaných prístupov, s výrazným znížením odchýlok v pozícii aj rýchlosti. Získané výsledky potvrdzujú, že využitie prediktívneho modelu, založeného na historických odhadoch a dynamike pohybu, umožňuje zvýšiť spoľahlivosť inerciálnej navigácie v podmienkach obmedzenej dostupnosti GNSS signálu.
+    
+    Overenie navrhovanej metódy autori uskutočnili ako v simulovaných, tak v experimentálnych podmienkach. Tento prístup bol porovnaný s metódou rozšíreného Kalmanovho filtra (EKF) aj s metódou extrémneho učenia (ELM). V simulačnom experimente bol modelovaný let bezpilotného prostriedku so známou referenčnou trajektóriou, pričom merania inerciálnej jednotky boli systematicky zaťažované šumom a odchýlkami zodpovedajúcimi reálnym podmienkam. Reálne experimenty boli realizované na dátach získaných počas námorných skúšok testovacej lode, vybavenej inerciálnym navigačným systémom a \acrshort{gnss} prijímačom. Pre tréning a validáciu modelu boli využité dlhodobé záznamy, zatiaľ čo testovanie sa sústredilo na horizontálne polohové a rýchlostné chyby. 
+    
+    Výsledky zo simulácií aj reálnych experimentov ukázali, že navrhovaná metóda dosahuje výrazné zníženie chýb v~porovnaní s~\acrshort{ekf} (až o~61~\% v~polohe a~40~\% v~rýchlosti) aj s~\acrshort{elm}, čo potvrdzuje jej potenciál pre navigáciu v~prostrediach s~nedostupným alebo rušeným \acrshort{gnss} signálom.
+
+    % Podobný problém súvisiaci s~potenciálnym obmedzením dostupnosti a~presnosti \acrshort{gnss} signálu v~zastavaných mestských oblastiach či tuneloch sa rozhodli riešiť aj autori práce~\cite{kimDeepLearningBasedGNSS2019}. Na preklenutie výpadkov \acrshort{gnss} meraní sa rozhodli zapojiť do kombinácie aj údaje z~\acrshort{imu} a~kolesovej odometrie, no v~snahe vyhnúť sa potrebe komplexného odhadu modelu jednotlivých senzorov využili \acrshort{lstm} sieť. Model predikuje aktuálnu polohu na základe predchádzajúcich meraní zo všetkých spomenutých senzorov. Autori uvádzajú 40\%-tné zmenšenie chyby odhadu v~porovnaní so samostatnou \acrshort{gnss} navigáciou v~zjednodušených testovacích podmienkach. Napriek ukázanému potenciálu metód hlbokého učenia v~podobe obídenia procesu kalibrácie a~modelovania, riešenie by ešte potrebovalo validáciu v~náročnejších reálnych podmienkach.
 
     % Práca autorov Jiang a~kol.~\cite{jiangMixedDeepRecurrent2019} využíva kombinovanú \acrshort{lstm}+\acrshort{gru} sieť priamo na modelovanie šumu meraní \acrshort{ins}\@. Testované boli dve varianty architektúry: LSTM-GRU a~GRU-LSTM\@. V~oboch prípadoch sa vstupné dáta pre každú časovú vzorku najprv spracujú jednou rekurentnou jednotkou (\acrshort{lstm} alebo \acrshort{gru}), a~jej výstup sa potom okamžite odovzdá druhej jednotke. Zároveň každá z~jednotiek propaguje svoj vlastný stav naprieč časom (\acrshort{lstm} aj cez stav bunky, \acrshort{gru} len cez skrytý stav). Tento sériový spôsob spracovania umožňuje využiť výhody oboch mechanizmov~--~\acrshort{lstm} je vhodná pre zachovanie dlhodobých závislostí, zatiaľ čo \acrshort{gru} dosahuje dobrý výkon aj pri kratších sekvenciách a~s~menším počtom parametrov. Experimenty prebiehali v~statických podmienkach a~preukázali zníženie chyby odhadu orientácie vo všetkých troch osiach výraznejšie než pri použití samostatných \acrshort{lstm} alebo \acrshort{gru}. Architektúru by bolo ďalej žiadúce testovať v~dynamických podmienkach.
 
-    Rekurzívne neurónové siete je možné využiť nie len na nahradenie analytických prístupov fúzie, ale aj na ich doplnenie, resp.\ riešenie problémov, na ktoré štandardné metódy nie sú stavané. Príkladom je nedávno publikovaná práca~\cite{huangApplicationMultisensorFusion2025a}, v~ktorej je fúzia pomocou \acrshort{ekf} doplnená o~\acrshort{rnn} sieť za účelom riešenia asynchrónnych frekvencií jednotlivých senzorov, akumulácie driftu a~šumu merania. Algoritmus prebieha v~troch krokoch. V~prvom je fúzia údajov z~\acrshort{imu} a~kolesovej odometrie zabezpečená pomocou \acrshort{ekf}, následne je použitá \acrshort{rnn} sieť na modelovanie časových závislostí, čo umožňuje vyhladzovanie dát a~redukciu driftu a~šumu, ktoré \acrshort{ekf} sám o~sebe nedokáže dobre potlačiť, najmä pri nelineárnych dynamikách alebo asynchrónnom snímaní\@. \acrshort{rnn} tak vystupuje ako korekčný mechanizmus, ktorý spracúva už \acrshort{ekf}-fúzované dáta a~zohľadňuje dlhodobejšie závislosti v~signáli. Následne sa výsledok koriguje pomocou komplementárnej fúzie s~lidarom pre zvýšenie robustnosti a~spoľahlivosti. Vďaka tejto architektúre algoritmus dosahuje lokalizačnú chybu do 8 cm a~prekračuje výkon metód ako časticový filter alebo \acrshort{slam} založený na grafovej optimalizácii polôh (tzv.\ Graph \acrshort{slam}) pri zachovaní výpočtovej efektivity, čím je vhodný aj pre reálne aplikácie v~autonómnej navigácii.
+    % Rekurzívne neurónové siete je možné využiť nie len na nahradenie analytických prístupov fúzie, ale aj na ich doplnenie, resp.\ riešenie problémov, na ktoré štandardné metódy nie sú stavané. Príkladom je nedávno publikovaná práca~\cite{huangApplicationMultisensorFusion2025a}, v~ktorej je fúzia pomocou \acrshort{ekf} doplnená o~\acrshort{rnn} sieť za účelom riešenia asynchrónnych frekvencií jednotlivých senzorov, akumulácie driftu a~šumu merania. Algoritmus prebieha v~troch krokoch. V~prvom je fúzia údajov z~\acrshort{imu} a~kolesovej odometrie zabezpečená pomocou \acrshort{ekf}, následne je použitá \acrshort{rnn} sieť na modelovanie časových závislostí, čo umožňuje vyhladzovanie dát a~redukciu driftu a~šumu, ktoré \acrshort{ekf} sám o~sebe nedokáže dobre potlačiť, najmä pri nelineárnych dynamikách alebo asynchrónnom snímaní\@. \acrshort{rnn} tak vystupuje ako korekčný mechanizmus, ktorý spracúva už \acrshort{ekf}-fúzované dáta a~zohľadňuje dlhodobejšie závislosti v~signáli. Následne sa výsledok koriguje pomocou komplementárnej fúzie s~lidarom pre zvýšenie robustnosti a~spoľahlivosti. Vďaka tejto architektúre algoritmus dosahuje lokalizačnú chybu do 8 cm a~prekračuje výkon metód ako časticový filter alebo \acrshort{slam} založený na grafovej optimalizácii polôh (tzv.\ Graph \acrshort{slam}) pri zachovaní výpočtovej efektivity, čím je vhodný aj pre reálne aplikácie v~autonómnej navigácii.

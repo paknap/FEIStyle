@@ -34,13 +34,13 @@
         \label{eq:joint-prob}
       \end{equation}
 
-      Posledná rovnosť vo vzťahu~\ref{eq:joint-prob} platí len v~prípade, že premenné $X$ a~$Y$ sú \emph{nezávislé}. Naopak, jav, kedy hodnota jednej \acrshort{np} ovplyvňuje hodnotu druhej, sa nazýva \emph{podmienená pravdepodobnosť} a~označuje sa takto:
+      Posledná rovnosť vo vzťahu~\eqref{eq:joint-prob} platí len v~prípade, že premenné $X$ a~$Y$ sú \emph{nezávislé}. Naopak, jav, kedy hodnota jednej \acrshort{np} ovplyvňuje hodnotu druhej, sa nazýva \emph{podmienená pravdepodobnosť} a~označuje sa takto:
       \begin{equation}
         p(x\ |\ y) = p(X = x\ |\ Y = y) = \frac{p(x,y)}{p(y)}
         \label{eq:cond-prob}
       \end{equation}
 
-      Z~uvedeného vyplýva dôležitá súvislosť, nazývaná aj ako \emph{veta o~úplnej pravdepodobnosti}, ktorú je možné vyjadriť ako pre diskrétne (\ref{eq:total-prob-disc}) tak pre spojité (\ref{eq:total-prob-cont}) \acrshort{np}:
+      Z~uvedeného vyplýva dôležitá súvislosť, nazývaná aj ako \emph{veta o~úplnej pravdepodobnosti}, ktorú je možné vyjadriť ako pre diskrétne (\eqref{eq:total-prob-disc}) tak pre spojité (\eqref{eq:total-prob-cont}) \acrshort{np}:
       \begin{subequations}
         \begin{align}
           p(x) &= \sum_y p(x\ |\ y)\, p(y) \label{eq:total-prob-disc} \\
@@ -49,14 +49,14 @@
         \end{align}\label{eq:total-prob}
       \end{subequations}
 
-      Vzťahy~\ref{eq:joint-prob},~\ref{eq:cond-prob} a~\ref{eq:total-prob} je možné využiť na nasledujúce odvodenie:
+      Vzťahy~\eqref{eq:joint-prob},~\eqref{eq:cond-prob} a~\eqref{eq:total-prob} je možné využiť na nasledujúce odvodenie:
       \begin{eqnarray}
         p(x,y) &=& p(y,x) \nonumber \\
         p(x\ |\ y)\, p(y) &=& p(y\ |\ x)\, p(x) \nonumber \\
         p(x\ |\ y) &=& \frac{p(y\ |\ x)\, p(x)}{p(y)} = \frac{p(y\ |\ x)\, p(x)}{\int p(y\ |\ x')\, p(x')\, dx'} = \eta\, p(y\ |\ x)\, p(x) \label{eq:bayes-rule}
       \end{eqnarray}
 
-      Vzťah~\ref{eq:bayes-rule} sa nazýva \emph{Bayesova veta} a~zohráva kľúčovú rolu (nielen) v~pravdepodobnostnej robotike. Keď $x$ je veličina, ktorej hodnotu odvádzame z~údaju $y$ (napr.\ meranie senzora), $p(x)$ sa označuje ako \emph{apriórna pravdepodobnosť} a~predstavuje naše poznanie o~hodnote $X$ bred zapracovaním $y$. Pravdepodobnosť $p(x\ |\ y)$ sa nazýva \emph{aposteriórne rozdelenie pravdepodobnosti} premennej $X$. Substitúciu menovateľa pomocou normalizačnej premennej $\eta$ je možné zaviesť nakoľko menovateľ nezávisí od hodnoty $x$. Bayesova veta teda poskytuje nástroj pre odvodenie aposteriórneho odhadu veličiny $x$ na základe údajov zo senzora $y$, a~to pomocou inverznej pravdepodobnosti. Tá sa v~robotike často nazýva aj \uv{generatívny model}, nakoľko popisuje ako stavové premenné $X$ spôsobujú senzorické merania $Y$~\cite{thrunProbabilisticRobotics2005}.
+      Vzťah~\eqref{eq:bayes-rule} sa nazýva \emph{Bayesova veta} a~zohráva kľúčovú rolu (nielen) v~pravdepodobnostnej robotike. Keď $x$ je veličina, ktorej hodnotu odvádzame z~údaju $y$ (napr.\ meranie senzora), $p(x)$ sa označuje ako \emph{apriórna pravdepodobnosť} a~predstavuje naše poznanie o~hodnote $X$ bred zapracovaním $y$. Pravdepodobnosť $p(x\ |\ y)$ sa nazýva \emph{aposteriórne rozdelenie pravdepodobnosti} premennej $X$. Substitúciu menovateľa pomocou normalizačnej premennej $\eta$ je možné zaviesť nakoľko menovateľ nezávisí od hodnoty $x$. Bayesova veta teda poskytuje nástroj pre odvodenie aposteriórneho odhadu veličiny $x$ na základe údajov zo senzora $y$, a~to pomocou inverznej pravdepodobnosti. Tá sa v~robotike často nazýva aj \uv{generatívny model}, nakoľko popisuje ako stavové premenné $X$ spôsobujú senzorické merania $Y$~\cite{thrunProbabilisticRobotics2005}.
 
       Ak použijeme Bayesovu vetu na odvodenie závislosti aj od tretej premennej $Z$, jej tvar sa zmení takto:
       \begin{equation}
@@ -83,7 +83,7 @@
       \end{eqnarray*}
       kde $p(x_t\ |\ x_{t-1}, u_t)$ je \emph{prechodový model stavu}, ktorý reprezentuje stochastickú dynamiku systému a~$p(z_t\ |\ x_t)$ je \emph{model merania}, ktorá predstavuje distribúciu meraní pri danom stave.
 
-      Keďže všetky údaje, ktoré má robot k~dispozícii, či už merania alebo riadiace údaje, sú zaťažené neistotou, súčasný stav robota je potrebné odhadnúť na základe všetkých dostupných informácií. Takýto sa nazýva \emph{aposteriórny odhad stavu} a~budeme rozlišovať dve jeho variácie podľa toho, či vznikne po zapracovaní aktuálneho merania (\ref{eq:bel2}) alebo ešte pred ním (\ref{eq:bel1}):
+      Keďže všetky údaje, ktoré má robot k~dispozícii, či už merania alebo riadiace údaje, sú zaťažené neistotou, súčasný stav robota je potrebné odhadnúť na základe všetkých dostupných informácií. Takýto sa nazýva \emph{aposteriórny odhad stavu} a~budeme rozlišovať dve jeho variácie podľa toho, či vznikne po zapracovaní aktuálneho merania (\eqref{eq:bel2}) alebo ešte pred ním (\eqref{eq:bel1}):
       \begin{subequations}
         \begin{align}
           \hat x_t &= p(x_t\ |\ z_{1:t},\, u_{1:t} ) \label{eq:bel1}\\
@@ -110,7 +110,7 @@
       \bar{x}_t &=& \eta\, p(z_t\ |\ x_t)\, \hat{x}_t \label{eq:update}
     \end{eqnarray}
 
-    Ďalej je možné pre $\hat{x}_t$ využitím vzťahu~\ref{eq:total-prob-cont} odvodiť:
+    Ďalej je možné pre $\hat{x}_t$ využitím vzťahu~\eqref{eq:total-prob-cont} odvodiť:
     \begin{eqnarray}
       \hat{x}_t &=& p(x_t\ |\ z_{1:t-1},\, u_{1:t}) \\
                 &=& \int p(x_t\ |\ x_{t-1},\, z_{1:t-1},\, u_{1:t})\, p(x_{t-1}\ |\ z_{1:t-1},\, u_{1:t})\, dx_{t-1}
@@ -127,23 +127,23 @@
       &=& \int p(x_t\ |\ x_{t-1},\, u_t)\, \bar{x}_{t-1}\, dx_{t-1} \label{eq:prediction}
     \end{eqnarray}
 
-    Algoritmus \acrshort{bf} teda pozostáva z~troch krokov. Stanovenie počiatočného odhadu stavu $\bar{x}_0$ tvorí prvý krok, \emph{inicializáciu}. Nasleduje periodické opakovanie \emph{predikcie} (\ref{eq:prediction}) a~\emph{aktualizácie} (\ref{eq:update}) (viď alg.~\ref{alg:bayes}). Akákoľvek konkrétna implementácia tohto algoritmu vyžaduje definíciu troch pravdepodobnostných funkcií: počiatočného odhadu stavu $p(x_0)$, pravdepodobnostného modelu merania $p(z_t\ |\ x_t)$ a~prechodového modelu stavu $p(u_t,\, x_{t-1})$. Ďalej je tiež potrebné definovať predikčný model odhadu stavu $\hat{x}_t$.
+    Algoritmus \acrshort{bf} teda pozostáva z~troch krokov. Stanovenie počiatočného odhadu stavu $\bar{x}_0$ tvorí prvý krok, \emph{inicializáciu}. Nasleduje periodické opakovanie \emph{predikcie} (\eqref{eq:prediction}) a~\emph{aktualizácie} (\eqref{eq:update}) (viď alg.~\ref{alg:bayes}). Akákoľvek konkrétna implementácia tohto algoritmu vyžaduje definíciu troch pravdepodobnostných funkcií: počiatočného odhadu stavu $p(x_0)$, pravdepodobnostného modelu merania $p(z_t\ |\ x_t)$ a~prechodového modelu stavu $p(u_t,\, x_{t-1})$. Ďalej je tiež potrebné definovať predikčný model odhadu stavu $\hat{x}_t$.
 
     \begin{algorithm}[t]
     \caption[Bayesov filter]{Bayesov filter podľa~\cite{thrunProbabilisticRobotics2005}}\label{alg:bayes}
-    \begin{algorithmic}
-      \REQUIRE{$\bar{x}_{t-1}$, $u_t$, $z_t$}
-      \ENSURE{$\bar{x}_t$}
+    \begin{algorithmic}[1]
+      \Require{$\bar{x}_{t-1}$, $u_t$, $z_t$}
+      \Ensure{$\bar{x}_t$}
       
-      \FOR{$\forall x_t$}
-        \STATE{\textbf{Prediction:}}
-        \STATE{$\hat{x}_t \Leftarrow \int p(x_t \mid u_t, x_{t-1}) \, \bar{x}_t \, dx_{t-1}$}
+      \For{$\forall x_t$}
+        \Statex{Prediction:}
+        \State{$\hat{x}_t \Leftarrow \int p(x_t \mid u_t, x_{t-1}) \, \bar{x}_t \, dx_{t-1}$}
         
-        \STATE{\textbf{Update:}}
-        \STATE{$\bar{x}_t \Leftarrow \eta \, p(z_t \mid x_t) \, \hat{x}_t$}
-      \ENDFOR{}
+        \Statex{Update:}
+        \State{$\bar{x}_t \Leftarrow \eta \, p(z_t \mid x_t) \, \hat{x}_t$}
+      \EndFor{}
       
-      \RETURN{$\bar{x}_t$}
+      \State{\Return{$\bar{x}_t$}}
     \end{algorithmic}
     \end{algorithm}
 
@@ -153,7 +153,7 @@
 
   \subsection{Gaussove filtre}
 
-    \emph{Gussove filtre} sú najstaršou a~zároveň aj najpopulárnejšou skupinou algoritmov odvodených z~Bayesovho filtra. Sú založené na základnej myšlienke, že všetky pravdepodobnostné odhady sú reprezentované viacrozmernými normálnymi rozdeleniami $\mathcal{N}(x; \mu, \sigma^2)$ (vzťah~\ref{eq:normal-dist}). Rozmer strednej hodnoty $\mu$ je zhodný s~rozmerom stavového vektora $x$ a~kovariančná matica $\Sigma$ je kvadratická, symetrická a~kladne semidefinitná. Jej rozmer je kvadraticky závislý od rozmeru stavu.
+    \emph{Gussove filtre} sú najstaršou a~zároveň aj najpopulárnejšou skupinou algoritmov odvodených z~Bayesovho filtra. Sú založené na základnej myšlienke, že všetky pravdepodobnostné odhady sú reprezentované viacrozmernými normálnymi rozdeleniami $\mathcal{N}(x; \mu, \sigma^2)$ (vzťah~\eqref{eq:normal-dist}). Rozmer strednej hodnoty $\mu$ je zhodný s~rozmerom stavového vektora $x$ a~kovariančná matica $\Sigma$ je symetrická a~kladne semidefinitná. Počet jej prvkov je kvadraticky závislý od rozmeru stavu.
     
     Gaussovská reprezentácia pravdepodobnosti má niekoľko dôsledkov. Najzávažnejším z~nich je unimodálnosť, teda má jediné maximum. Kvôli tomu nedokáže dobre reprezentovať systémy, kde existuje viacero odlišných hypotéz o~aposteriórnom odhade stavu~\cite{thrunProbabilisticRobotics2005}.
 
@@ -161,43 +161,24 @@
 
       Najzákladnejšou implementáciou Bayesoveho filtra je Lineárny Kalmanov filter (\acrshort{kf}). Je využiteľný iba pre lineárne spojité systémy. Popri Markovových predpokladoch majú ďalšie tri základné podmienky.
 
-      \begin{algorithm}[b]
-      \caption[Lineárny Kalmanov filter]{Lineárny Kalmanov filter podľa~\cite{thrunProbabilisticRobotics2005}}\label{alg:kalman}
-      \begin{algorithmic}
-        \REQUIRE{$\bm{\mu}_{t-1}, \bm{\Sigma}_{t-1}, u_t, z_t, A_t, B_t, Q_t, H_t, R_t$}
-        \ENSURE{$\bm{\mu}_t, \bm{\Sigma}_t$}
-
-        \STATE{\textbf{Prediction:}}
-        \STATE{$\bm{\hat{\mu}}_t \Leftarrow A_t \bm{\mu}_{t-1} + B_t u_t$}
-        \STATE{$\bm{\hat{\Sigma}}_t \Leftarrow A_t \bm{\Sigma}_{t-1} A_t^\top + Q_t$}
-
-        \STATE{\textbf{Correction:}}
-        \STATE{$K_t \Leftarrow \bm{\hat{\Sigma}}_t H_t^\top {(H_t \bm{\hat{\Sigma}}_t H_t^\top + R_t)}^{-1}$}
-        \STATE{$\bm{\mu}_t \Leftarrow \bm{\hat{\mu}}_t + K_t (z_t - H_t \bm{\hat{\mu}}_t)$}
-        \STATE{$\bm{\Sigma}_t \Leftarrow (I - K_t H_t) \bm{\hat{\Sigma}}_t$}
-
-        \RETURN{$\bm{\mu}_t,\ \bm{\Sigma}_t$}
-      \end{algorithmic}
-    \end{algorithm}
-
       Po prvé, pravdepodobnostná funkcia nasledujúceho stavu $p(x_t\ |\ u_t, x_{t-1})$ musí byť \emph{lineárna}, čo vyjadruje tento vzťah:
       \begin{equation}
         x_t = A_t\, x_{t-1} + B_t\, u_t + \varepsilon_t,
       \end{equation}
-      kde $x_t, x_{t-1}$ sú stavové vektory rozmeru $1\times n$, $u_t$ je vektor riadiacich signálov rozmeru $1\times m$, $A_t$ je prechodová matica stavu rozmeru $n\times n$, $B_t$ je riadiaca matica rozmeru $n\times m$ a~$\varepsilon_t \sim \mathcal{N}(0, R_t)$ slúži na modelovanie náhodných javov v~prechodových dejoch systému rozmeru $1\times n$. Dosadením do vzťahu~\ref{eq:total-prob-cont} tak vzniká vzťah pre pravdepodobnostnú funkciu prechodu stavu:
+      kde $x_t, x_{t-1}$ sú stavové vektory rozmeru $n\times 1$, $u_t$ je vektor riadiacich signálov rozmeru $m\times 1$, $A_t$ je prechodová matica stavu rozmeru $n\times n$, $B_t$ je riadiaca matica rozmeru $n\times m$ a~vektor $\varepsilon_t \sim \mathcal{N}(0, Q_t)$ rozmeru $n\times 1$ slúži na modelovanie náhodných javov v~prechodových dejoch systému. Dosadením do vzťahu~\eqref{eq:total-prob-cont} tak vzniká vzťah pre pravdepodobnostnú funkciu prechodu stavu:
       \begin{multline}
         p (x_t\ |\ u_t,\, x_{t-1}) = \\
         =\det{(2\pi{} Q_t)}^{-\frac{1}{2}} \exp{\left(-\frac{1}{2} {(x_t - A_t\, x_{t-1} - B_t\, u_t)}^{\top} Q_t^{-1} (x_t - A_t\, x_{t-1} - B_t\, u_t) \right)},
       \end{multline}
-      kde $Q_t$ je tzv.\ \emph{procesná matica šumu}, ktorá má rozmer $n\times n$ a~diagonálny charakter. Vyjadruje mieru zhody predikčného modelu systému s~realitou.
+      kde $Q_t$ je tzv.\ \emph{procesná matica šumu}, ktorá má rozmer $n\times n$ a~vyjadruje mieru zhody predikčného modelu systému s~realitou. Predstavuje jeden z~hlavných konfiguračných prvkov filtra, keďže ovplyvňuje do akej miery bude výsledok filtra ovplyvnený predikciou modelu a~do akej miery sa vezme do úvahy meranie. Keďže musí byť symetrická a~kladne definitná, v~praxi má väčšinou diagonálny charakter, ktorý umožňuje nezávislé nastavenie pre každý prvok stavového vektora.
 
       Po druhé, aj pravdepodobnostná funkcia merania $p(z_t\ |\ x_t)$ musí byť lineárna:
       \begin{equation}
-        z_t = H_t\, x_t + \delta_t,
+        z_t = C_t\, x_t + \delta_t,
       \end{equation}
-      kde $z_t$ je vektor merania s~rozmerom $1\times k$, $H_t$ je matica merania s~rozmerom $k\times n$ a~$\delta_t \sim \mathcal{N}(0,Q_t)$ predstavuje šum merania. Pravdepodobnostná funkcia merania je tak definovaná ako:
+      kde $z_t$ je vektor merania s~rozmerom $k\times 1$, $C_t$ je matica merania s~rozmerom $k\times n$ a~$\delta_t \sim \mathcal{N}(0,Q_t)$ predstavuje šum merania. Pravdepodobnostná funkcia merania je tak definovaná ako:
       \begin{equation}
-        p (z_t\ |\ x_t) = \det{(2\pi{} R_t)}^{-\frac{1}{2}} \exp{\left( -\frac{1}{2} {(z_t - H_t\, x_t)}^{\top} R_t^{-1} (z_t - H_t\, x_t) \right)},
+        p (z_t\ |\ x_t) = \det{(2\pi{} R_t)}^{-\frac{1}{2}} \exp{\left( -\frac{1}{2} {(z_t - C_t\, x_t)}^{\top} R_t^{-1} (z_t - C_t\, x_t) \right)},
       \end{equation}
       kde $R_t$ je matica rozmeru $k\times k$, ktorá vyjadruje lineárny merací model snímača.
 
@@ -206,65 +187,102 @@
         \bar{x}_0 = p (x_0) = \det{(2\pi{} \Sigma_0)}^{-\frac{1}{2}} \exp{\left( -\frac{1}{2} {(x_0 - \mu_0)}^{\top} \Sigma_0^{-1} (x_0 - \mu_0) \right)}
       \end{equation}
 
-      Vďaka týmto trom podmienkam bude mať aposteriórny odhad stavu $\bar{x}_t$ normálne rozdelenie pravdepodobnosti v~ľubovoľnom čase $t$. Prehľad postupnosti výpočtov \acrshort{kf} je zobrazený v~algoritme~\ref{alg:kalman}. Podrobné odvodenie \acrshort{kf} sa nachádza v~\cite[kap. 3.2.4]{thrunProbabilisticRobotics2005}.
+      Vďaka týmto trom podmienkam bude mať aposteriórny odhad stavu $\bar{x}_t$ normálne rozdelenie pravdepodobnosti $\mathcal{N}(x; \mu, \sigma^2)$ v~ľubovoľnom čase $t$, a teda môže byť reprezentovaný vektorom strednej hodnoty $\mu_t$ a kovariančnou maticou $\Sigma_t$. Vstupom do algoritmu je odhad stavu v čase $t - 1$ reprezentovaný pomocou $\mu_{t-1}$ a $\Sigma_{t-1}$. Aktualizácia týchto parametrov je zabezpečená zapracovaním akčných zásahov $u_t$ a meraní $z_t$.
+
+      \begin{algorithm}[b]
+      \caption[Lineárny Kalmanov filter]{Lineárny Kalmanov filter podľa~\cite{thrunProbabilisticRobotics2005}}\label{alg:kalman}
+      \begin{algorithmic}[1]
+        \Require{$\mu_{t-1}, \Sigma_{t-1}, u_t, z_t, A_t, B_t, Q_t, C_t, R_t$}
+        \Ensure{$\mu_t, \Sigma_t$}
+
+        \Statex{Prediction:}
+        \State{$\hat{\mu}_t \Leftarrow A_t \mu_{t-1} + B_t u_t$}
+        \State{$\hat{\Sigma}_t \Leftarrow A_t \Sigma_{t-1} A_t^\top + Q_t$}
+
+        \Statex{Correction:}
+        \State{$K_t \Leftarrow \hat{\Sigma}_t C_t^\top {(C_t \hat{\Sigma}_t C_t^\top + R_t)}^{-1}$}
+        \State{$\mu_t \Leftarrow \hat{\mu}_t + K_t (z_t - C_t \hat{\mu}_t)$}
+        \State{$\Sigma_t \Leftarrow (I - K_t C_t) \hat{\Sigma}_t$}
+
+        \State{\Return{$\mu_t,\ \Sigma_t$}}
+      \end{algorithmic}
+    \end{algorithm}
+      
+      Prehľad postupnosti výpočtov \acrshort{kf} je zobrazený v~algoritme~\ref{alg:kalman}. Na riadkoch 1~--~2 sa počíta predikcia stavu, a to ešte pred zapracovaním aktuálneho merania. Výpočet vychádza zo znalosti dynamického modelu reprezentovaného maticami $A_t, B_t$ a akčného zásahu $u_t$. K odhadu kovariancie sa pričítava už spomínaná procesná matica šumu $Q_t$, čím je potenciálne zvýšená neistota tohto odhadu (v závislosti od veľkosti prvkov v~tejto matici). V korekčnej časti algoritmu je najskôr počítané tzv.\ \emph{Kalmanovo zosilnenie} $K_t$ (angl.\ \emph{Kalman gain}, riadok 3 algoritmu~\ref{alg:kalman}). Predstavuje mieru zapracovania merania do odhadu stavu, pričom dôležitým parametrom v jeho výpočte je merací model reprezentovaný kovariančnou maticou $R_t$. Čím väčší je predpoklad neistoty merania, tým menšie Kalmanovo zosilnenie a teda aj menší vplyv merania $z_t$ na odhad stavu, čo je vidieť na nasledujúcom riadku algoritmu. Napokon je opätovným využitím Kalmanovho zosilnenia proporčne k zmene odhadu stavu aktualizovaný odhad kovariancie. Podrobné odvodenie \acrshort{kf} môžeme nájsť napríklad v~\cite[kap. 3.2.4]{thrunProbabilisticRobotics2005}.
 
     \subsubsection{Rozšírený Kalmanov filter}
 
-      Prepoklady \acrshort{kf}, že systém má lineárne prechodové deje a~lineárne merania s~Gaussovým šumom limitujú jeho využitie len na tie najtriviálnejšie prípady. Už len obyčajný oblúkový pohyb robota totiž musí byť opísaný nelineárnymi vzťahmi. Preto je oveľa častejšie využívaný \emph{Rozšírený Kalmanov filter (\acrshort{ekf})}, ktorý zovšeobecňuje modely pre odvodenie nasledujúcich stavov a~meraní pomocou nelineárnych funkcií $g$ (namiesto $A_t$ a~$B_t$) a~$h$ (namiesto $C_t$):
+      Predpoklady \acrshort{kf}, že systém má lineárne prechodové deje a~lineárne merania s~Gaussovým šumom limitujú jeho využitie len na tie najtriviálnejšie prípady. Už len obyčajný dvojrozmerný kinematický model mobilného robota s diferenciálnym podvozkom totiž musí byť opísaný nelineárnymi vzťahmi. Jeho stav je sa dá zapísať ako $x_t = {(x\ y\ \theta)}^{\top}$, kde $x,y$ sú jeho pozičné súradnice a $\theta$ vyjadruje orientáciu. Akčný zásah má podobu $u_t = {(v \ \omega)}^{\top}$, kde $v$ predstavuje lineárnu (tangenciálnu) a $\omega$ uhlovú rýchlosť vzťažného bodu. Ak uvažujeme konštantné hodnoty rýchlostí $v,\omega$ počas časového úseku $\Delta t$, robot sa bude vo všeobecnosti pohybovať po oblúku s polomerom $r$ (priamočiary pohyb je pohyb po oblúku s nekonečným polomerom), pričom platí:
+      \begin{equation}
+        r = \left| \frac{v}{\omega} \right|.
+      \end{equation}
+      Z toho je možné odvodiť, že nový stav $x_{t+1} = {(x'\ y'\ \theta')}^{\top}$ sa dá zapísať v tvare podľa~\cite[kap. 5.3.3]{thrunProbabilisticRobotics2005}:
+      \begin{equation}
+        \begin{pmatrix}
+          x' \\ y' \\ \theta'
+        \end{pmatrix} =
+        \begin{pmatrix}
+          x \\ y \\ \theta
+        \end{pmatrix} +
+        \begin{pmatrix}
+          -\frac{v_t}{\omega_t} \sin \theta + \frac{v_t}{\omega_t} \sin (\theta + \omega \Delta t) \\
+          \frac{v_t}{\omega_t} \cos \theta - \frac{v_t}{\omega_t} \cos(\theta + \omega_t \Delta t) \\
+          \omega_t \Delta t
+        \end{pmatrix}.
+        \label{eq:kin-model}
+      \end{equation}
+      
+      Nelineárne funkcie sú často potrebné nie len na zápis stavového modelu, ale aj modelu merania. Keď uvažujeme senzor merajúci vzdialenosť k určitým objektom, ktoré sú lokalizované, resp.\ na základe ktorých sa má spresniť odhad polohy robota, takýto senzor (napr.\ lidar alebo kamera) prirodzene poskytuje meranie v tzv.\ \emph{polárnych súradniciach}, teda v tvare $z_t = {(r_t\ \varphi_t)}^{\top}$, kde $r_t$ je veľkosť a $\varphi_t$ uhol smerového vektora merania v čase $t$. Polohu objektu vzhľadom na polohu robota je tak možné vyjadriť v~tvare~\cite{cyrillstachnissEKFSLAMCyrillStachniss2020}:
+      \begin{equation}
+        \begin{pmatrix}
+          m_x \\ m_y
+        \end{pmatrix} =
+        \begin{pmatrix}
+          x \\ y
+        \end{pmatrix} +
+        \begin{pmatrix}
+          r_t \cos (\varphi_t + \theta) \\
+          r_t \sin (\varphi_t + \theta)
+        \end{pmatrix}.
+        \label{eq:meas-model}
+      \end{equation}
+      
+      V praxi je preto je oveľa častejšie využívaný \emph{Rozšírený Kalmanov filter (\acrshort{ekf})}, ktorý zovšeobecňuje modely pre odvodenie nasledujúcich stavov a~meraní pomocou nelineárnych funkcií $g$ (namiesto $A_t$ a~$B_t$) a~$h$ (namiesto $C_t$)~\cite{thrunProbabilisticRobotics2005}:
       \begin{eqnarray}
         x_t &=& g(u_t,\, x_{t-1}) + \varepsilon_t, \\
         z_t &=& h(x_t) + \delta_t.
       \end{eqnarray}
 
-      Výsledkom použitia nelineárnych funkcií je, že pravdepodobnostné rozdelenie odhadu stavu už nie je Gaussovo\@. \acrshort{ekf} počíta len aproximáciu skutočného pravdepodobnostného rozdelenia stavu, ktorú ale reprezentuje opäť pomocou Gaussovho rozdelenia. Konkrétne, odhad stavu $\bar{x}_t$ v~čase $t$ je reprezentovaný strednou hodnotou $\bm{\mu}_t$ a~kovariančnou maticou $\bm{\Sigma_t}$\@. \acrshort{ekf} tak preberá základnú reprezentáciu odhadu stavu z~Kalmanovho filtra, avšak na rozdiel od neho je tento odhad len približný, nie presný ako v~prípade lineárneho Kalmanovho filtra.
+      Výsledkom použitia nelineárnych funkcií je, že pravdepodobnostné rozdelenie odhadu stavu už nie je Gaussovo\@. \acrshort{ekf} počíta len aproximáciu skutočného pravdepodobnostného rozdelenia stavu, ktorú ale reprezentuje opäť pomocou Gaussovho rozdelenia. Konkrétne, odhad stavu v~čase $t$ je reprezentovaný strednou hodnotou $\mu_t$ a~kovariančnou maticou $\Sigma_t$\@. \acrshort{ekf} tak preberá základnú reprezentáciu odhadu stavu z~lineárneho Kalmanovho filtra, avšak na rozdiel od neho je tento odhad len približný, nie presný ako v~prípade \acrshort{kf}\@~\cite{thrunProbabilisticRobotics2005}.
 
-      \begin{algorithm}[t]
-      \caption[Rozšírený Kalmanov filter]{Rozšírený Kalmanov filter podľa~\cite{thrunProbabilisticRobotics2005}}\label{alg:ekf}
-      \begin{algorithmic}
-        \REQUIRE{$\bm{\mu}_{t-1}, \bm{\Sigma}_{t-1}, u_t, z_t, g, h, G_t, H_t, R_t, Q_t$}
-        \ENSURE{$\bm{\mu}_t, \bm{\Sigma}_t$}
+      Kľúčovým aspektom pri \acrshort{ekf} je \emph{linearizácia}. Keďže projekcia Gaussovej distribučnej funkcie cez nelineárne funkcie $g$ a~$h$ by viedla k~ne-Gaussovej distribúcii, nahrádzajú sa tieto funkcie lineárnymi, ktoré sú ich dotyčnice v~strednej hodnote Gaussovej funkcie. Na linearizáciu sa v~\acrshort{ekf} používajú prvé dva členy \emph{Taylorovho radu}. Funkcia $g$ sa linearizuje v~bode poslednej najpravdepodobnejšej hodnoty $x_{t-1}$, ktorou je stredná hodnota predchádzajúceho aposteriórneho odhadu $\mu_{t-1}$ a~aktuálnej hodnoty riadiaceho signálu $u_t$. Jej sklon sa vypočíta ako parciálna derivácia v~tomto bode:
+      \begin{equation}
+        g'(u_t, x_{t-1}) := \left. \frac{\partial g(u_t, x_{t-1})}{\partial x_{t-1}} \right|_{x_{t-1} = \mu_{t-1}} = G_t,
+      \end{equation}
+      kde  $G_t$ je matica rozmeru $n \times n$ nazývaná \emph{Jakobián}. Na lineárnu extrapoláciu funkcie $g$ sa následne použijú prvé dva členy Taylorovho rozvoja:
+      \begin{equation}
+        g(u_t, x_{t-1}) \approx g(u_t, \mu_{t-1}) + G_t (x_{t-1} - \mu_{t-1})
+      \end{equation}
 
-        \STATE{\textbf{Prediction:}}
-        \STATE{$\bm{\hat{\mu}}_t \Leftarrow g(u_t, \bm{\mu}_{t-1})$}
-        \STATE{$\bm{\hat{\Sigma}}_t \Leftarrow G_t \bm{\Sigma}_{t-1} G_t^\top + Q_t$}
-
-        \STATE{\textbf{Correction:}}
-        \STATE{$K_t \Leftarrow \bm{\hat{\Sigma}}_t H_t^\top {(H_t \bm{\hat{\Sigma}}_t H_t^\top + R_t)}^{-1}$}
-        \STATE{$\bm{\mu}_t \Leftarrow \bm{\hat{\mu}}_t + K_t (z_t - h(\bm{\hat{\mu}}_t))$}
-        \STATE{$\bm{\Sigma}_t \Leftarrow (I - K_t H_t) \bm{\hat{\Sigma}}_t$}
-
-        \RETURN{$\bm{\mu}_t,\ \bm{\Sigma}_t$}
-      \end{algorithmic}
-    \end{algorithm}
-
-    Kľúčovým aspektom pri \acrshort{ekf} je \emph{linearizácia}. Keďže projekcia Gaussovej distribučnej funkcie cez nelineárne funkcie $g$ a~$h$ by viedla k~ne-Gaussovej distribúcii, nahrádzajú sa tieto funkcie lineárnymi, ktoré sú ich dotyčnice v~strednej hodnote Gaussovej funkcie. Na linearizáciu sa v~\acrshort{ekf} používa rozvoj \emph{Taylorovho radu} prvého stupňa. Funkcia $g$ sa linearizuje v~bode poslednej najpravdepodobnejšej hodnoty $x_{t-1}$, ktorou je stredná hodnota predchádzajúceho aposteriórneho odhadu $\mu_{t-1}$ a~aktuálnej hodnoty riadiaceho signálu $u_t$. Jej sklon sa vypočíta ako parciálna derivácia v~tomto bode:
-    \begin{equation}
-      g'(u_t, x_{t-1}) := \left. \frac{\partial g(u_t, x_{t-1})}{\partial x_{t-1}} \right|_{x_{t-1} = \mu_{t-1}} = G_t,
+      Pravdepodobnostnú funkciu nasledujúceho stavu je potom aproximovať takto:
+      \begin{equation}
+      \begin{split}
+        p(x_t\,|\,u_t, x_{t-1}) 
+        & \approx {\det(2\pi Q_t)}^{-\frac{1}{2}} \\
+        & \exp \left( 
+            -\frac{1}{2} 
+            {\left[
+              x_t - g(u_t, \mu_{t-1}) - G_t(x_{t-1} - \mu_{t-1})
+            \right]}^{\top}
+          \right. \\
+        & \left. 
+          \quad Q_t^{-1} 
+            \left[
+              x_t - g(u_t, \mu_{t-1}) - G_t(x_{t-1} - \mu_{t-1})
+            \right]
+        \right)
+      \end{split}
     \end{equation}
-    kde  $\bm{G_t}$ je matica rozmeru $n \times n$ nazývaná \emph{Jakobián}. Na lineárnu extrapoláciu funkcie $g$ sa následne použijú prvé dva členy Taylorovho rozvoja:
-    \begin{equation}
-      g(u_t, x_{t-1}) \approx g(u_t, \mu_{t-1}) + G_t (x_{t-1} - \mu_{t-1})
-    \end{equation}
-
-    Pravdepodobnostnú funkciu nasledujúceho stavu je potom aproximovať takto:
-    \begin{equation}
-    \begin{split}
-      p(x_t\,|\,u_t, x_{t-1}) 
-      & \approx \det(2\pi Q_t)^{-\frac{1}{2}} \\
-      & \exp \left( 
-          -\frac{1}{2} 
-          {\left[
-            x_t - g(u_t, \mu_{t-1}) - G_t(x_{t-1} - \mu_{t-1})
-          \right]}^{\top}
-        \right. \\
-      & \left. 
-        \quad Q_t^{-1} 
-          \left[
-            x_t - g(u_t, \mu_{t-1}) - G_t(x_{t-1} - \mu_{t-1})
-          \right]
-      \right)
-    \end{split}
-  \end{equation}
 
     Rovnaký spôsob linearizácie je použitý aj pre prechodovú funkciu merania $h$, ktorá je aproximovaná v~bode $\hat{\mu}_t$:
     \begin{equation}
@@ -275,7 +293,7 @@
     \begin{equation}
       \begin{split}
       p(z_t\,|\,x_t) 
-      & \approx \det(2\pi R_t)^{-\frac{1}{2}} \\
+      & \approx {\det(2\pi R_t)}^{-\frac{1}{2}} \\
       & \exp\left( 
           -\frac{1}{2} 
           {\left[
@@ -290,8 +308,86 @@
       \right)
     \end{split}
     \end{equation}
+
+    \begin{algorithm}[t]
+      \caption[Rozšírený Kalmanov filter]{Rozšírený Kalmanov filter podľa~\cite{thrunProbabilisticRobotics2005}}\label{alg:ekf}
+      \begin{algorithmic}[1]
+        \Require{$\mu_{t-1}, \Sigma_{t-1}, u_t, z_t, g, h, G_t, H_t, R_t, Q_t$}
+        \Ensure{$\mu_t, \Sigma_t$}
+
+        \Statex{Prediction:}
+        \State{$\hat{\mu}_t \Leftarrow g(u_t, \mu_{t-1})$}
+        \State{$\hat{\Sigma}_t \Leftarrow G_t \Sigma_{t-1} G_t^\top + Q_t$}
+
+        \Statex{Correction:}
+        \State{$K_t \Leftarrow \hat{\Sigma}_t H_t^{\top} {(H_t \hat{\Sigma}_t H_t^\top + R_t)}^{-1}$}
+        \State{$\mu_t \Leftarrow \hat{\mu}_t + K_t (z_t - h(\hat{\mu}_t))$}
+        \State{$\Sigma_t \Leftarrow (I - K_t H_t) \hat{\Sigma}_t$}
+
+        \State{\Return{$\mu_t,\ \Sigma_t$}}
+      \end{algorithmic}
+    \end{algorithm}
     
-    Jednotlivé výpočty \acrshort{ekf} sú znázornené v~algoritme~\ref{alg:ekf}. Odvodenie vzťahov pre \acrshort{ekf} je možné nájsť v~\cite[kap. 3.3.3]{thrunProbabilisticRobotics2005}
+    Jednotlivé výpočty \acrshort{ekf} sú znázornené v~algoritme~\ref{alg:ekf}. V princípe je algoritmus veľmi podobný lineárnej verzii, avšak zásadný rozdiel je v tom, že lineárne predikcie sú nahradené všeobecnejšími nelineárnymi funkciami. Odvodenie vzťahov pre \acrshort{ekf} je možné nájsť v~\cite[kap. 3.3.3]{thrunProbabilisticRobotics2005}.
+
+    Implementáciu \acrshort{ekf} si môžeme priblížiť na vyššie spomenutom prípade mobilného robota s diferenciálnym podvozkom. Kľúčové je pritom odvodiť Jakobiány $G_t$ a~$H_t$. Maticu $G_t$ získame parciálnou deriváciou funkcie $g(x)$, ktorá je reprezentovaná vzťahom~\eqref{eq:kin-model}~\cite{cyrillstachnissEKFSLAMCyrillStachniss2020}:
+    \begin{eqnarray}
+      G_t &=& \frac{\partial}{\partial {(x,y,\theta)}^{\top}}
+      \left[
+        \begin{pmatrix}
+          x \\ y \\ \theta
+        \end{pmatrix} +
+        \begin{pmatrix}
+          -\frac{v_t}{\omega_t} \sin \theta + \frac{v_t}{\omega_t} \sin (\theta + \omega \Delta t) \\
+          \frac{v_t}{\omega_t} \cos \theta - \frac{v_t}{\omega_t} \cos(\theta + \omega_t \Delta t) \\
+          \omega_t \Delta t
+        \end{pmatrix}
+      \right] \nonumber\\
+      &=& I + \frac{\partial}{\partial {(x,y,\theta)}^{\top}} +
+      \begin{pmatrix}
+        -\frac{v_t}{\omega_t} \sin \theta + \frac{v_t}{\omega_t} \sin (\theta + \omega \Delta t) \\
+        \frac{v_t}{\omega_t} \cos \theta - \frac{v_t}{\omega_t} \cos(\theta + \omega_t \Delta t) \\
+        \omega_t \Delta t
+      \end{pmatrix} \nonumber\\
+      &=& I +
+      \begin{pmatrix}
+        0 & 0 & -\frac{v_t}{\omega_t} \cos \theta + \frac{v_t}{\omega_t} \cos (\theta + \omega \Delta t) \\
+        0 & 0 & - \frac{v_t}{\omega_t} \sin \theta + \frac{v_t}{\omega_t} \sin(\theta + \omega_t \Delta t) \\
+        0 & 0 & 0
+      \end{pmatrix} \nonumber\\
+      G_t &=& 
+      \begin{pmatrix}
+        1 & 0 & -\frac{v_t}{\omega_t} \cos \theta + \frac{v_t}{\omega_t} \cos (\theta + \omega \Delta t) \\
+        0 & 1 & - \frac{v_t}{\omega_t} \sin \theta + \frac{v_t}{\omega_t} \sin(\theta + \omega_t \Delta t) \\
+        0 & 0 & 1
+    \end{pmatrix}
+    \end{eqnarray}
+
+    Na výpočet Jakobiánu $H_t$ je potrebné si najskôr zadefinovať funkciu $h(x)$ na základe vzťahu~\eqref{eq:meas-model} a za predpokladu, že odhad stavu je reprezentovaný $\hat \mu_t$ a odhad polohy meraného objektu je $\mu_m$~\cite[text]{cyrillstachnissEKFSLAMCyrillStachniss2020}:
+    \begin{eqnarray}
+      \delta &=&
+      \begin{pmatrix}
+        \delta_x \\ \delta_y
+      \end{pmatrix} = 
+      \begin{pmatrix}
+        \hat \mu_{m,x} - \hat \mu_{t,x} \\
+        \hat \mu_{m,y} - \mu_{t,y}
+      \end{pmatrix} \nonumber\\
+      q &=& \theta^{\top} \theta \nonumber\\
+      \hat z_t &=&
+      \begin{pmatrix}
+        \sqrt{q} \\ \mathrm{atan2} (\delta_y, \delta_x) - \hat \mu_{t, \theta}
+      \end{pmatrix} = h(\hat \mu_t).
+    \end{eqnarray}
+    Derivovaním predošlého vzťahu s využitím reťazového pravidla pre stavový vektor rozšírený o súradnice objektu $\mu_t = {(x \ y \ \theta \ m_x \ m_y)}^{\top}$ je následne možné odvodiť~\cite{cyrillstachnissEKFSLAMCyrillStachniss2020}:
+    \begin{eqnarray}
+      H_t &=& \frac{\partial h(\hat \mu_t)}{\partial \hat \mu_t} \nonumber \\
+       &=& \frac{1}{q}
+      \begin{pmatrix}
+        - \sqrt{q} \delta_x & - \sqrt{q} \delta_y & 0 & \sqrt{q} \delta_x & \sqrt{q} \delta_y \\
+        \delta_y & -\delta_x & -q & -\delta_y & \delta_x
+      \end{pmatrix}
+    \end{eqnarray}
 
 \subsection{Využitie Kalmanových filtrov pre fúziu snímačov}
 
@@ -316,4 +412,4 @@
 
   V~posledných rokoch sa do popredia dostáva aj invariantný EKF (IEKF), ktorý pri fúzii údajov z~vizuálnych a~inerciálnych senzorov zohľadňuje symetrickú štruktúru systému (napr.\ $SE(2)$ alebo $SE(3)$), čím sa zlepšuje konzistentnosť filtra a~eliminujú kumulatívne chyby spôsobené chybnou linearizáciou. Tieto prístupy sa ukazujú ako veľmi efektívne pri vizuálno-inerciálnych lokalizačných systémoch v~interiéri aj exteriéri~\cite{barrauInvariantExtendedKalman2017}.
 
-  Nové trendy tiež zahŕňajú hybridné prístupy, kde sú niektoré časti modelu (napr.\ dynamika robota alebo senzorový model) aproximované neurónovými sieťami. Takto vznikajú tzv.\ \emph{learned EKF}, kde sa časť odhadu odovzdáva trénovateľnému modulu, čo umožňuje modelovať aj komplexné nelinearity a~kompenzovať senzorické chyby bez explicitného modelovania~\cite{krishnanDeepKalmanFilters2015}. Viac o~tejto problematike uvádzame v~nasledujúcej kapitole.
+  Nové trendy tiež zahŕňajú hybridné prístupy, kde sú niektoré časti modelu (napr.\ dynamika robota alebo senzorový model) aproximované neurónovými sieťami. Takto vznikajú tzv.\ \emph{learned EKF}, kde sa časť odhadu odovzdáva trénovateľnému modulu, čo umožňuje modelovať aj komplexné nelinearity a~kompenzovať senzorické chyby bez explicitného modelovania~\cite{krishnanDeepKalmanFilters2015}.
