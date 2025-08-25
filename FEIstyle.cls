@@ -119,7 +119,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{algorithm}
-\usepackage{algorithmic}
+% \usepackage{algorithmic}
+\usepackage{algpseudocode}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{pdfpages}
@@ -133,6 +134,7 @@
 \usepackage{graphicx}
 \usepackage{standalone}
 \usepackage{bm}
+\usepackage{IEEEtrantools}
 %\usepackage{showframe} % debugging overflows
 \usepackage{chngcntr} % Allows changing counters
 \numberwithin{figure}{section} % Figure numbering within sections
