@@ -134,6 +134,8 @@
 \usepackage{standalone}
 \usepackage{bm}
 %\usepackage{showframe} % debugging overflows
+\usepackage{chngcntr} % Allows changing counters
+\numberwithin{figure}{section} % Figure numbering within sections
 
 % \cftsetpnumwidth{1.8em} % set the dots width in loX (f,t,l,a...) https://tex.stackexchange.com/q/369283/106389
 
